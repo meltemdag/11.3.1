@@ -8,6 +8,7 @@ tailwind.config = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         serif: ['"Cormorant Garamond"', 'Lora', 'Georgia', 'serif'],
+        lora: ['Lora', 'Georgia', 'serif'],
       },
       colors: {
         parchment: {

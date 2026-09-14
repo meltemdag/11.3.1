@@ -145,7 +145,7 @@ function loadAstrolabeStage(index) {
   if (isCurrentStageLocked) {
     setAstrolabeSealState(true);
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-serif text-xs sm:text-sm text-emerald-900 leading-relaxed font-semibold';
+      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-emerald-950 leading-relaxed font-bold';
       astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Bu dönem başarıyla kilitlendi.</span> ${stage.explanation}`;
     }
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
@@ -160,7 +160,7 @@ function loadAstrolabeStage(index) {
   } else {
     setAstrolabeSealState(false);
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-serif text-xs sm:text-sm text-[#4a321d] leading-relaxed';
+      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-stone-900 leading-relaxed font-bold';
       astrolabeStatusText.textContent = 'Kadranları çevirerek gelişme, tetikleyici neden ve ortaya çıkan sonucu altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.';
     }
     if (btnCheckLock) btnCheckLock.classList.remove('hidden');
@@ -220,7 +220,7 @@ function rotateRingManual(ringNumber, directionOrSlot, isDirectSlot = false) {
   // Durum metnini sıfırla
   if (astrolabeStatusText) {
     astrolabeStatusText.textContent = 'Kadranları çevirerek gelişme, tetikleyici neden ve ortaya çıkan sonucu altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.';
-    astrolabeStatusText.className = 'font-serif text-xs sm:text-sm text-[#4a321d] leading-relaxed';
+    astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-stone-900 leading-relaxed font-bold';
   }
 }
 window.rotateRingManual = rotateRingManual;
@@ -471,7 +471,7 @@ function checkAstrolabeLock() {
     renderAstrolabePills();
 
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-serif text-xs sm:text-sm text-emerald-900 leading-relaxed font-semibold';
+      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-emerald-950 leading-relaxed font-bold';
       astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı.</span> ${stage.explanation}`;
     }
 
@@ -491,7 +491,7 @@ function checkAstrolabeLock() {
     // Yanlış işlem geri bildirimi: Kırmızı renk ve açıklama
     playAstrolabeMismatchSound();
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-serif text-xs sm:text-sm text-[#8c1e1e] leading-relaxed font-semibold';
+      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-[#8c1e1e] leading-relaxed font-bold';
       astrolabeStatusText.textContent = 'Halkalar henüz doğru neden ve sonuç bağıyla hizalanmadı. Gelişmeleri ve gerekçeleri gözden geçirerek tekrar deneyiniz.';
     }
     
