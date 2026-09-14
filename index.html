@@ -5,76 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Savaşlar, Fikirler, Değişim (1876 - 1909) | MEBİ Etkileşimli Tarih</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['"Cormorant Garamond"', 'Lora', 'Georgia', 'serif'],
-          },
-          colors: {
-            parchment: {
-              50: '#fdfbf7',
-              100: '#f8f4eb',
-              200: '#eee3d0',
-              300: '#e1cdb0',
-              800: '#644e33',
-              900: '#433422',
-            },
-            ottoman: {
-              red: '#8b1e1e',
-              darkred: '#661414',
-              gold: '#c49a45',
-              darkgold: '#9a752b',
-              navy: '#18263e',
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    /* Dokunmatik cihazlar için seçim engelleme */
-    .no-select {
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    @keyframes constellationPulse {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 10px rgba(202, 165, 93, 0.4);
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.08);
-        box-shadow: 0 0 25px rgba(245, 223, 158, 0.85);
-      }
-    }
-    .constellation-active-node {
-      animation: constellationPulse 2.2s ease-in-out infinite;
-    }
-    @keyframes beamFlowAnim {
-      to {
-        stroke-dashoffset: -36;
-      }
-    }
-    .beam-animated {
-      animation: beamFlowAnim 1.4s linear infinite;
-    }
-    @keyframes nodeShake {
-      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-      20% { transform: translate(calc(-50% - 4px), -50%) rotate(-2deg); }
-      40% { transform: translate(calc(-50% + 4px), -50%) rotate(2deg); }
-      60% { transform: translate(calc(-50% - 3px), -50%) rotate(-1deg); }
-      80% { transform: translate(calc(-50% + 3px), -50%) rotate(1deg); }
-    }
-    .shake-node {
-      animation: nodeShake 0.5s ease-in-out;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-stone-100 text-stone-800 font-sans h-full min-h-screen flex flex-col antialiased overflow-y-auto lg:overflow-hidden">
 
@@ -164,19 +99,22 @@
           </div>
         </div>
 
-        <!-- Yeniden Başlat Butonu (Osmanlı Mührü / Yakut Kırmızı Damga) -->
-        <button id="btnResetProgress" class="w-full py-2.5 px-3 rounded-lg bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] hover:from-[#661010] hover:via-[#821717] hover:to-[#661010] text-[#fff6e0] border border-[#d8b058] shadow-[0_4px_12px_rgba(90,16,16,0.35),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_6px_18px_rgba(196,154,69,0.4)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] shrink-0 font-serif tracking-wider font-semibold text-xs sm:text-sm flex items-center justify-center gap-2">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e]"></span>
-          <span>Yeniden Başlat</span>
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e]"></span>
-        </button>
+        <!-- Butonlar Alanı (Zaman Kadranı ve Yeniden Başlat) -->
+        <div class="w-full flex flex-col gap-2 shrink-0">
+          <!-- Zaman Kadranı Butonu (Osmanlı Zümrüt Mührü / Altın Varaklı) -->
+          <button id="btnOpenAstrolabe" class="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] shadow-[0_3px_10px_rgba(20,60,30,0.35),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_5px_15px_rgba(212,175,88,0.4)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] font-serif tracking-wider font-semibold text-xs sm:text-sm flex items-center justify-center gap-2">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
+            <span>Zaman Kadranı</span>
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
+          </button>
 
-        <!-- Değişim Takım Yıldızı Butonu -->
-        <button id="btnOpenConstellationFerman" class="w-full mt-2 py-2 px-2.5 rounded-lg bg-gradient-to-r from-[#111e33] via-[#1d2f4d] to-[#111e33] hover:from-[#0a1424] hover:to-[#0a1424] text-[#fef5d8] border border-[#caa55d] shadow-[0_3px_10px_rgba(15,25,45,0.4)] hover:shadow-[0_4px_14px_rgba(202,165,93,0.35)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] shrink-0 font-serif tracking-wide font-semibold text-xs flex items-center justify-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
-          <span>Değişim Takım Yıldızı</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
-        </button>
+          <!-- Yeniden Başlat Butonu (Osmanlı Mührü / Yakut Kırmızı Damga) -->
+          <button id="btnResetProgress" class="w-full py-1.5 px-3 rounded-lg bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] hover:from-[#661010] hover:via-[#821717] hover:to-[#661010] text-[#fff6e0] border border-[#d8b058] shadow-[0_2px_8px_rgba(90,16,16,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] hover:shadow-[0_4px_12px_rgba(196,154,69,0.35)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] font-serif tracking-wider font-semibold text-xs flex items-center justify-center gap-2">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e]"></span>
+            <span>Yeniden Başlat</span>
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e]"></span>
+          </button>
+        </div>
       </div>
 
       <!-- Ferman Alt Rulo Çubuğu (Lake Ahşap ve Pirinç Boğumlu) -->
@@ -321,12 +259,12 @@
         1876 Kanun-ı Esasi'den 1909 31 Mart Olayı'na uzanan tüm gelişmeleri ve aralarındaki neden ve sonuç zincirini başarıyla tamamladınız.
       </p>
       <div class="flex flex-col sm:flex-row items-center gap-2.5 mt-2 w-full justify-center">
-        <button id="btnOpenConstellationModal" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#18263e] via-[#283f63] to-[#18263e] hover:from-[#0f1a2e] hover:to-[#0f1a2e] text-[#fff6e0] border-2 border-[#caa55d] font-serif font-bold text-xs sm:text-sm tracking-wider shadow-[0_4px_16px_rgba(25,40,65,0.5)] transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
-          <span>Değişim Takım Yıldızı'nı Başlat</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
+        <button id="btnStartAstrolabeFromComplete" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
+          <span>Zaman Kadranını Başlat</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
         </button>
-        <button id="btnFinishComplete" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2e7d32] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
+        <button id="btnFinishComplete" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-600 font-serif font-semibold text-xs sm:text-sm tracking-wider shadow transition-all cursor-pointer active:scale-95">
           Etkinliği Bitir
         </button>
         <button id="btnRestartComplete" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] hover:from-[#661010] hover:to-[#661010] text-[#fff6e0] border border-[#d8b058] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
@@ -336,910 +274,229 @@
     </div>
   </div>
 
-  <!-- DEĞİŞİM TAKIM YILDIZI (1876 - 1909) ÖLÇME VE PEKİŞTİRME MODALI -->
-  <div id="constellationModal" class="fixed inset-0 z-50 hidden flex flex-col bg-gradient-to-b from-[#060a14] via-[#0d1629] to-[#04070e] text-white select-none overflow-hidden">
-    
-    <!-- Takım Yıldızı Üst Barı -->
-    <div class="px-4 sm:px-6 py-2.5 sm:py-3 bg-[#080e1b]/90 backdrop-blur-md border-b border-[#caa55d]/40 flex items-center justify-between shrink-0 shadow-xl z-30">
-      <div class="flex items-center gap-2.5 sm:gap-3">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#caa55d] via-[#f5df9e] to-[#8c6729] flex items-center justify-center text-[#1a1105] shadow-[0_0_12px_rgba(202,165,93,0.6)] shrink-0">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
-          </svg>
-        </div>
-        <div class="truncate">
-          <h2 class="font-serif text-sm sm:text-base md:text-lg font-bold text-[#fef7e6] tracking-wide drop-shadow truncate">
-            Değişim Takım Yıldızı (1876 – 1909)
-          </h2>
-          <p class="text-[11px] sm:text-xs text-[#d8c397] font-sans truncate">
-            Gelişmeler arasındaki neden ve sonuç bağlarını sırasıyla oluşturarak gök kubbeyi tamamlayınız.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-2 shrink-0">
-        <button id="btnResetConstellation" class="px-3 py-1.5 rounded-lg text-xs font-serif font-semibold bg-[#142036] hover:bg-[#1b2c4a] text-[#fef7e6] border border-[#caa55d]/60 shadow-sm transition-all cursor-pointer active:scale-95">
-          Sıfırla
-        </button>
-        <button id="btnCloseConstellation" aria-label="Kapat" class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#500f0f] hover:bg-[#3d0b0b] text-[#fff4db] border border-[#d8b058] shadow transition-all cursor-pointer active:scale-95 group">
-          <svg class="w-4 h-4 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Takım Yıldızı Gökyüzü Tuvali (Sky Canvas) -->
-    <div class="relative flex-1 min-h-0 w-full overflow-hidden flex items-center justify-center p-2 sm:p-4">
+  <!-- ZAMAN KADRANI / OSMANLI USTURLABI ÖLÇME VE DEĞERLENDİRME MODALI -->
+  <!-- ZAMAN KADRANI / OSMANLI USTURLABI ÖLÇME VE DEĞERLENDİRME MODALI -->
+  <div id="astrolabeModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-2 sm:p-3 md:p-4 lg:p-5 bg-stone-950/85 backdrop-blur-md select-none overflow-hidden">
+    <div class="bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] rounded-2xl shadow-[0_25px_80px_rgba(20,10,5,0.65)] w-full max-w-[95vw] xl:max-w-[1320px] 2xl:max-w-[1440px] h-[92vh] max-h-[94vh] flex flex-col overflow-hidden border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-2 relative">
       
-      <!-- Responsive Kaydırılabilir Konteynır (Mobilde panlanabilir, büyük ekranlarda tam oturur) -->
-      <div id="constellationSkyArea" class="relative w-full h-full max-w-6xl min-w-[760px] sm:min-w-full max-h-[640px] mx-auto overflow-hidden rounded-2xl border border-[#caa55d]/20 bg-[#060a14]/60 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)]">
+      <!-- Modal Üst Başlık Barı (Klasik Bordo ve Altın Serlevha) -->
+      <div class="flex items-center justify-between px-5 sm:px-7 py-3 bg-gradient-to-r from-[#6b1414] via-[#8c1e1e] to-[#6b1414] text-white border-b-2 border-[#caa55d] shadow-md shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3.5 truncate">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#e8c878] shadow-[0_0_6px_#f5df9e] shrink-0"></span>
+          <h2 class="font-serif text-base sm:text-lg md:text-xl font-bold text-[#fff7e6] tracking-wide truncate drop-shadow">
+            Zaman Kadranı: Neden ve Sonuç Usturlabı
+          </h2>
+        </div>
+
+        <!-- Kadran Dönem Butonları (Sayaçsız ve İkonsuz) -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <div id="astrolabeStagePills" class="flex items-center gap-1.5 sm:gap-2 text-xs font-serif">
+            <!-- JS ile dinamik doldurulur: I. Dönem, II. Dönem, III. Dönem -->
+          </div>
+          <button id="btnAstrolabeClose" aria-label="Kapat" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-serif font-semibold bg-gradient-to-r from-[#500f0f] to-[#681414] hover:from-[#3d0b0b] hover:to-[#500f0f] text-[#fff4db] border border-[#d8b058] shadow transition-all cursor-pointer active:scale-95 shrink-0">
+            Kapat
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Ana Gövdesi (Genişletilmiş ve Dengelenmiş İki Kolonlu Yerleşim) -->
+      <div class="flex-1 overflow-y-auto lg:overflow-hidden p-3 sm:p-5 lg:p-6 flex flex-col lg:flex-row items-stretch justify-between gap-5 lg:gap-7 min-h-0">
         
-        <!-- SVG Gökyüzü Çizgileri ve Usturlap Katmanı -->
-        <svg id="constellationSvgSky" class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="3.5" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+        <!-- Sol Alan: Dönen Osmanlı Usturlap Aygıtı (Büyük ve Görkemli) -->
+        <div class="w-full lg:w-[500px] xl:w-[550px] 2xl:w-[580px] shrink-0 flex flex-col items-center justify-between h-full py-1">
+          
+          <!-- Kadran Dönem Başlığı -->
+          <div class="text-center mb-1 shrink-0">
+            <h3 id="astrolabeStageTitle" class="font-serif font-bold text-lg sm:text-xl text-[#6b1414] tracking-wide">
+              I. Dönem: 1876 – 1878 (Meclis-i Umumi'nin Tatili)
+            </h3>
+            <p class="font-serif text-xs sm:text-sm text-[#4a321d]">
+              Halkaları çevirerek neden ve sonuç zincirini altın ibre hizasında birleştiriniz.
+            </p>
+          </div>
 
-          <!-- Arka Plan Usturlap Koordinat Çemberleri -->
-          <circle cx="50%" cy="50%" r="42%" fill="none" stroke="#caa55d" stroke-width="1" stroke-dasharray="3 6" opacity="0.12" />
-          <circle cx="50%" cy="50%" r="28%" fill="none" stroke="#caa55d" stroke-width="0.8" opacity="0.1" />
-          <ellipse cx="50%" cy="50%" rx="48%" ry="36%" fill="none" stroke="#caa55d" stroke-width="1" stroke-dasharray="4 8" opacity="0.1" />
+          <!-- Dairesel Usturlap Mekanizması Kaidesi (Kusursuz Kutupsal Yörüngeler) -->
+          <div class="relative flex items-center justify-center my-auto pt-7 pb-2 shrink-0">
+            
+            <!-- Osmanlı Usturlap Kürsüsü ve Asma Halkası (Halqa ve Kursi) -->
+            <div class="absolute -top-5 z-30 flex flex-col items-center pointer-events-none">
+              <!-- Asma Halkası (Halqa) -->
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-[3px] border-[#caa55d] bg-gradient-to-b from-[#8c6225] via-[#e2be68] to-[#6a4214] shadow-md flex items-center justify-center -mb-2.5">
+                <div class="w-4 h-4 rounded-full bg-[#1c1208]/90 border border-[#8c6225]"></div>
+              </div>
+              <!-- Kürsü Gövdesi (Rûmî Kemer) -->
+              <svg class="w-32 sm:w-36 h-7 text-[#caa55d] filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" viewBox="0 0 120 28" fill="none" aria-hidden="true">
+                <path d="M10 26 C28 22 42 12 60 4 C78 12 92 22 110 26 Z" fill="url(#kursiGrad2)" stroke="#e4c272" stroke-width="1.2"/>
+                <path d="M30 26 C42 20 50 14 60 9 C70 14 78 20 90 26" stroke="#5a3814" stroke-width="0.8"/>
+                <circle cx="60" cy="8" r="2" fill="#8c1e1e"/>
+                <defs>
+                  <linearGradient id="kursiGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#7d5320"/>
+                    <stop offset="50%" stop-color="#e8ca7b"/>
+                    <stop offset="100%" stop-color="#5a3814"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <!-- Altın Hizalama İbresi (El-Mîrî Üçgen Gösterge Dişi) -->
+              <div class="w-0 h-0 border-l-[9px] border-l-transparent border-r-[9px] border-r-transparent border-t-[16px] border-t-[#ffd978] filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)] -mt-1"></div>
+            </div>
 
-          <!-- Arka Plan Minik Samanyolu Yıldızları -->
-          <circle cx="6%" cy="14%" r="1.2" fill="#ffffff" opacity="0.45" />
-          <circle cx="14%" cy="84%" r="0.9" fill="#f5df9e" opacity="0.35" />
-          <circle cx="24%" cy="18%" r="1.1" fill="#ffffff" opacity="0.3" />
-          <circle cx="36%" cy="88%" r="1.3" fill="#caa55d" opacity="0.4" />
-          <circle cx="48%" cy="12%" r="1" fill="#ffffff" opacity="0.45" />
-          <circle cx="58%" cy="84%" r="1.2" fill="#f5df9e" opacity="0.35" />
-          <circle cx="69%" cy="14%" r="0.9" fill="#ffffff" opacity="0.4" />
-          <circle cx="82%" cy="86%" r="1.3" fill="#caa55d" opacity="0.35" />
-          <circle cx="91%" cy="16%" r="1.1" fill="#ffffff" opacity="0.5" />
-          <circle cx="97%" cy="72%" r="0.8" fill="#f5df9e" opacity="0.3" />
+            <!-- Ana Usturlap Çarkı (Büyük Ebat, Doğrudan Dokunarak / Sürükleyerek Döndürülebilir) -->
+            <div id="astrolabeDialContainer" class="relative w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] md:w-[440px] md:h-[440px] lg:w-[470px] lg:h-[470px] xl:w-[500px] xl:h-[500px] rounded-full flex items-center justify-center shadow-[0_18px_50px_rgba(20,10,5,0.75),inset_0_0_35px_rgba(0,0,0,0.85)] border-[6px] border-[#9c752c] ring-2 ring-[#ffd978]/60 bg-gradient-to-br from-[#241508] via-[#140b04] to-[#241508] select-none cursor-grab active:cursor-grabbing" style="touch-action: none;">
+              
+              <!-- Dış Derece Çizgileri Çerçevesi -->
+              <div class="absolute inset-0 rounded-full border border-[#caa55d]/40 pointer-events-none"></div>
+              <div class="absolute inset-1.5 rounded-full border border-dashed border-[#ffd978]/25 pointer-events-none"></div>
 
-          <!-- Bağlantı Çizgileri Grubu -->
-          <g id="constellationLinesGroup"></g>
-        </svg>
+              <!-- 1. Dış Kadran (Olay / Dönüm Noktası Halkası) -->
+              <div id="ringElement1" class="absolute w-[94%] h-[94%] left-[3%] top-[3%] rounded-full border-2 border-[#caa55d]/80 bg-gradient-to-br from-[#3d250e] via-[#593917] to-[#3d250e] shadow-inner transition-transform duration-500 ease-out">
+                <div id="ringSlot1_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 0, true)">
+                  <span id="ringLabel1_0"></span>
+                </div>
+                <div id="ringSlot1_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 1, true)">
+                  <span id="ringLabel1_1"></span>
+                </div>
+                <div id="ringSlot1_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 2, true)">
+                  <span id="ringLabel1_2"></span>
+                </div>
+              </div>
 
-        <!-- 9 Yıldız Düğümü Katmanı -->
-        <div id="constellationNodesContainer" class="absolute inset-0 w-full h-full">
-          <!-- JS tarafından 9 düğüm yerleştirilir -->
+              <!-- 2. Orta Kadran (Tetikleyici Neden Halkası) -->
+              <div id="ringElement2" class="absolute w-[72%] h-[72%] left-[14%] top-[14%] rounded-full border-2 border-[#dfb76c]/80 bg-gradient-to-br from-[#4d3014] via-[#6e461e] to-[#4d3014] shadow-md transition-transform duration-500 ease-out z-10">
+                <div id="ringSlot2_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 0, true)">
+                  <span id="ringLabel2_0"></span>
+                </div>
+                <div id="ringSlot2_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 1, true)">
+                  <span id="ringLabel2_1"></span>
+                </div>
+                <div id="ringSlot2_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 2, true)">
+                  <span id="ringLabel2_2"></span>
+                </div>
+              </div>
+
+              <!-- 3. İç Kadran (Ortaya Çıkan Sonuç Halkası) -->
+              <div id="ringElement3" class="absolute w-[50%] h-[50%] left-[25%] top-[25%] rounded-full border-2 border-[#f3d07e] bg-gradient-to-br from-[#5e3b18] via-[#835525] to-[#5e3b18] shadow-md transition-transform duration-500 ease-out z-20">
+                <div id="ringSlot3_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 0, true)">
+                  <span id="ringLabel3_0"></span>
+                </div>
+                <div id="ringSlot3_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 1, true)">
+                  <span id="ringLabel3_1"></span>
+                </div>
+                <div id="ringSlot3_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 2, true)">
+                  <span id="ringLabel3_2"></span>
+                </div>
+              </div>
+
+              <!-- Merkez Kilit Osmanlı Mührü -->
+              <div id="astrolabeCenterSeal" class="absolute z-30 w-14 h-14 sm:w-16 sm:h-16 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_18px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none">
+                <span id="centerSealIcon" class="font-serif font-bold text-xs sm:text-sm text-[#fff7e6] tracking-wider drop-shadow text-center">Kilit</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Çevirme Kumandaları (İkonsuz, Sade ve Ergonomik Kumanda Barı) -->
+          <div class="w-full max-w-[460px] grid grid-cols-3 gap-2 mt-2 text-center">
+            <!-- 1. Halka Kumandası -->
+            <div class="flex flex-col items-center bg-[#fffdf9]/90 border border-[#caa55d]/70 rounded-xl p-2 shadow-sm">
+              <span class="font-serif font-bold text-xs text-[#543b18] mb-1">Dış Kadran</span>
+              <div class="flex items-center gap-1.5 w-full justify-center">
+                <button id="btnRotateRing1Prev" class="flex-1 py-1 rounded bg-[#543b18] hover:bg-[#3d290f] text-[#fff7e6] border border-[#d8b058] text-xs font-serif font-semibold transition-all active:scale-90 cursor-pointer">Geri</button>
+                <button id="btnRotateRing1Next" class="flex-1 py-1 rounded bg-[#543b18] hover:bg-[#3d290f] text-[#fff7e6] border border-[#d8b058] text-xs font-serif font-semibold transition-all active:scale-90 cursor-pointer">İleri</button>
+              </div>
+            </div>
+
+            <!-- 2. Halka Kumandası -->
+            <div class="flex flex-col items-center bg-[#fffdf9]/90 border border-[#caa55d]/70 rounded-xl p-2 shadow-sm">
+              <span class="font-serif font-bold text-xs text-[#68411b] mb-1">Orta Kadran</span>
+              <div class="flex items-center gap-1.5 w-full justify-center">
+                <button id="btnRotateRing2Prev" class="flex-1 py-1 rounded bg-[#68411b] hover:bg-[#4d2f11] text-[#fff7e6] border border-[#d8b058] text-xs font-serif font-semibold transition-all active:scale-90 cursor-pointer">Geri</button>
+                <button id="btnRotateRing2Next" class="flex-1 py-1 rounded bg-[#68411b] hover:bg-[#4d2f11] text-[#fff7e6] border border-[#d8b058] text-xs font-serif font-semibold transition-all active:scale-90 cursor-pointer">İleri</button>
+              </div>
+            </div>
+
+            <!-- 3. Halka Kumandası -->
+            <div class="flex flex-col items-center bg-[#fffdf9]/90 border border-[#caa55d]/70 rounded-xl p-2 shadow-sm">
+              <span class="font-serif font-bold text-xs text-[#7d5220] mb-1">İç Kadran</span>
+              <div class="flex items-center gap-1.5 w-full justify-center">
+                <button id="btnRotateRing3Prev" class="flex-1 py-1 rounded bg-[#7d5220] hover:bg-[#593711] text-[#fff7e6] border border-[#d8b058] text-xs font-serif font-semibold transition-all active:scale-90 cursor-pointer">Geri</button>
+                <button id="btnRotateRing3Next" class="flex-1 py-1 rounded bg-[#7d5220] hover:bg-[#593711] text-[#fff7e6] border border-[#d8b058] text-xs font-serif font-semibold transition-all active:scale-90 cursor-pointer">İleri</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sağ Alan: Hizalanan Zincir Kartları ve Kilit Kontrolü (Tam Yükseklik Kaplayan Düzen) -->
+        <div class="flex-1 w-full flex flex-col justify-between h-full min-w-0 gap-3 sm:gap-4">
+          
+          <!-- Üçlü Hizalama Kartları (Tüm Yüksekliği Eşit Dolduran Kartlar) -->
+          <div class="flex-1 flex flex-col justify-between gap-3 min-h-0">
+            
+            <!-- 1. Kart: Olay / Gelişme -->
+            <div id="cardAligned1" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#caa55d]"></span>
+                <h4 class="font-serif font-bold text-xs sm:text-sm uppercase text-[#7c531d] tracking-wider">Tarihî Gelişme</h4>
+              </div>
+              <p id="textAligned1" class="font-serif font-bold text-base sm:text-lg text-[#221206] leading-snug">
+                <!-- JS ile güncellenir -->
+              </p>
+            </div>
+
+            <!-- 2. Kart: Tetikleyici Neden -->
+            <div id="cardAligned2" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#dfb76c]"></span>
+                <h4 class="font-serif font-bold text-xs sm:text-sm uppercase text-[#8c4d16] tracking-wider">Tetikleyici Neden</h4>
+              </div>
+              <p id="textAligned2" class="font-serif font-semibold text-sm sm:text-base text-[#2b190c] leading-relaxed">
+                <!-- JS ile güncellenir -->
+              </p>
+            </div>
+
+            <!-- 3. Kart: Ortaya Çıkan Sonuç -->
+            <div id="cardAligned3" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#f3d07e]"></span>
+                <h4 class="font-serif font-bold text-xs sm:text-sm uppercase text-[#8c6729] tracking-wider">Ortaya Çıkan Sonuç</h4>
+              </div>
+              <p id="textAligned3" class="font-serif font-semibold text-sm sm:text-base text-[#2b190c] leading-relaxed">
+                <!-- JS ile güncellenir -->
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Canlı Geri Bildirim ve Eylem Paneli -->
+          <div id="astrolabeFeedbackPanel" class="p-3.5 sm:p-4 rounded-xl border border-[#caa55d]/70 bg-[#fffbf2] shadow-inner shrink-0 flex flex-col items-center text-center gap-3">
+            <p id="astrolabeStatusText" class="font-serif text-xs sm:text-sm text-[#4a321d] leading-relaxed max-w-xl">
+              Kadranları çevirerek gelişme, tetikleyici neden ve ortaya çıkan sonucu altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.
+            </p>
+            
+            <div class="flex items-center gap-3 w-full justify-center">
+              <button id="btnCheckLock" class="px-8 py-3 rounded-xl bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-sm sm:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
+                <span>Kilidi Kontrol Et</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
+              </button>
+
+              <button id="btnNextKadran" class="hidden px-8 py-3 rounded-xl bg-gradient-to-r from-[#caa55d] via-[#e2be68] to-[#caa55d] hover:from-[#b99041] hover:to-[#b99041] text-[#261508] border border-[#8c6520] font-serif font-bold text-sm sm:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
+                Sonraki Döneme Geç
+              </button>
+            </div>
+          </div>
+
         </div>
 
       </div>
 
     </div>
-
-    <!-- Alt Rehberlik ve Soru Paneli (Ferman Bant Stili) -->
-    <div class="px-4 py-3 sm:py-3.5 bg-gradient-to-r from-[#0d1627]/95 via-[#080e1b]/95 to-[#0d1627]/95 backdrop-blur-md border-t-2 border-[#caa55d]/50 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl z-30">
-      <div class="flex items-center gap-3 min-w-0 flex-1 w-full">
-        <div id="constellationStepBadge" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#caa55d] to-[#8c6729] border border-[#fef5d8] text-[#1a1105] flex items-center justify-center shadow-[0_0_10px_rgba(202,165,93,0.5)] shrink-0">
-          <svg class="w-4 h-4 text-[#1a1105]" viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
-          </svg>
-        </div>
-        <div class="min-w-0 flex-1">
-          <p id="constellationPromptText" class="font-serif text-xs sm:text-sm md:text-base text-[#fef5d8] font-semibold leading-relaxed">
-            <!-- JS ile doldurulur -->
-          </p>
-          <p id="constellationFeedbackText" class="text-xs sm:text-sm text-[#70dc95] font-sans font-medium mt-0.5 hidden">
-            <!-- Doğru eşleşmede çıkan özet -->
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tamamlanma Kutlama Katmanı (Takım Yıldızı Bittiğinde Açılır) -->
-    <div id="constellationVictoryModal" class="fixed inset-0 z-40 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-      <div class="bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] text-[#221206] rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 flex flex-col items-center text-center gap-4 border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-2 relative">
-        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#caa55d] via-[#f5df9e] to-[#8c6729] border-2 border-[#fef5d8] flex items-center justify-center text-[#1a1105] shadow-[0_0_20px_rgba(202,165,93,0.6)]">
-          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
-          </svg>
-        </div>
-        <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1f1207]">
-          Değişim Takım Yıldızı Tamamlandı!
-        </h3>
-        <p class="font-serif text-[#3a220f] text-xs sm:text-sm md:text-base font-medium leading-relaxed">
-          1876 Kanun-ı Esasi'den 1909 Meclis Üstünlüğü'ne uzanan 33 yıllık dönemin neden ve sonuç bağlarını başarıyla ördünüz.
-        </p>
-        <div class="flex items-center gap-3 mt-2">
-          <button id="btnConstellationReviewSky" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#18263e] to-[#253c61] text-[#fff7e6] border border-[#caa55d] font-serif font-bold text-xs sm:text-sm tracking-wider shadow transition-all cursor-pointer active:scale-95">
-            Gökyüzünü İncele
-          </button>
-          <button id="btnConstellationRestart" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#7a1414] to-[#941c1c] text-[#fff7e6] border border-[#d8b058] font-serif font-bold text-xs sm:text-sm tracking-wider shadow transition-all cursor-pointer active:scale-95">
-            Yeniden Başlat
-          </button>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Uygulama Mantığı ve Veriler -->
-  <script>
-    // 9 Olayın Veri Yapısı (PDF'teki kazanımlar ve kronolojik akışa tam uyumlu)
-    const EVENTS = [
-      {
-        id: 1,
-        stepTitle: "1. Olay",
-        title: "1876 – Kanun-ı Esasi ve I. Meşrutiyet",
-        image: "1.görsel.png",
-        video: "videolar/info1.mp4",
-        coords: { left: "1.04%", top: "9.38%", width: "31.64%", height: "26.37%" },
-        narration: "Osmanlı Devleti, 1876 yılında ilk anayasası olan Kanun-ı Esasi’yi ilan ederek meşruti yönetime adım attı. Halkın temsilcilerinden oluşan Meclis-i Umumi açıldı. Ancak meclisin getirdiği bu yeni anayasal düzen, çok geçmeden patlak verecek büyük bir savaşla sarsılacaktı.",
-        connection: "İlk anayasal yönetimin kurulması, hemen ardından gelen 93 Harbi'nin yol açtığı büyük sarsıntıya ve meclisin kapatılmasına uzanan süreci başlatmıştır."
-      },
-      {
-        id: 2,
-        stepTitle: "2. Olay",
-        title: "1877-1878 – 93 Harbi",
-        image: "2.görsel.png",
-        video: "videolar/info2.mp4",
-        coords: { left: "35.16%", top: "9.38%", width: "30.47%", height: "26.37%" },
-        narration: "Yeni meclisin açılışının hemen ardından Osmanlı Devleti ile Rusya arasında 93 Harbi başladı. Cephelerde yaşanan ağır mağlubiyetler ve başkente ulaşan göç dalgaları, devleti derin bir idari ve mali bunalıma sürükleyerek meclisin geleceğini tartışmalı hale getirdi.",
-        connection: "Savaşın ortaya çıkardığı kriz ortamı, Sultan II. Abdülhamid'in meclisi süresiz tatil etmesine gerekçe oluşturmuştur."
-      },
-      {
-        id: 3,
-        stepTitle: "3. Olay",
-        title: "1878 – Meclis-i Umumi'nin Kapatılması",
-        image: "3.görsel.png",
-        video: "videolar/info3.mp4",
-        coords: { left: "67.71%", top: "9.38%", width: "31.12%", height: "26.37%" },
-        narration: "93 Harbi’nin yarattığı ağır şartları gerekçe gösteren Sultan II. Abdülhamid, 1878’de Meclis-i Umumi’yi süresiz olarak kapattı. Kanun-ı Esasi askıya alınırken meşruti idareden padişahın mutlak otoritesine dayanan otuz yıllık yeni bir yönetim evresine geçildi.",
-        connection: "Meclisin kapatılması ve anayasanın askıya alınması, otuz yıl sürecek merkeziyetçi ve mutlakıyetçi yönetimi başlatmıştır."
-      },
-      {
-        id: 4,
-        stepTitle: "4. Olay",
-        title: "II. Abdülhamid Dönemi (1878-1909)",
-        image: "4.görsel.png",
-        video: "videolar/info4.mp4",
-        coords: { left: "1.04%", top: "36.33%", width: "31.64%", height: "25.98%" },
-        narration: "Bu dönemde devletin parçalanmasını önlemek adına merkezi otorite güçlendirildi ve sıkı bir denetim politikası uygulandı. Ancak basına uygulanan sansür ve muhalif aydınların uzaklaştırılması, meşrutiyeti savunan yeni fikir hareketlerinin yer altına inip teşkilatlanmasına ortam hazırladı.",
-        connection: "Uygulanan sıkı denetim ve sürgünler, muhalif aydınların Jön Türkler adıyla gizli cemiyetler kurmasını hızlandırmıştır."
-      },
-      {
-        id: 5,
-        stepTitle: "5. Olay",
-        title: "Jön Türklerin Yükselişi (1902-1907)",
-        image: "5.görsel.png",
-        video: "videolar/info5.mp4",
-        coords: { left: "35.16%", top: "36.33%", width: "30.47%", height: "25.98%" },
-        narration: "Baskılara tepki gösteren aydınlar, anayasal düzeni yeniden kurmak amacıyla Jön Türkler hareketi altında birleşti. Zamanla İttihat ve Terakki Cemiyeti çatısında toplanan bu kadrolar, özellikle Rumeli’deki genç subaylar arasında yayılarak imparatorluğun kaderini değiştirecek bir güce dönüştü.",
-        connection: "Rumeli'deki genç subaylar arasında güçlenen İttihat ve Terakki, dış politikadaki Reval gelişmesiyle eyleme geçme kararı almıştır."
-      },
-      {
-        id: 6,
-        stepTitle: "6. Olay",
-        title: "Reval Görüşmeleri ve Denge Politikası (1908)",
-        image: "6.görsel.png",
-        video: "videolar/info6.mp4",
-        coords: { left: "67.71%", top: "36.33%", width: "31.12%", height: "25.98%" },
-        narration: "1908 yılında İngiltere ile Rusya’nın Reval’de buluşması, Makedonya ve Osmanlı topraklarının paylaşılacağı endişesini doğurdu. Vatanın elden gideceğini düşünen İttihat ve Terakki mensubu subaylar, yabancı müdahalesini engellemenin tek yolunun meşrutiyeti derhal yeniden ilan etmek olduğuna inandı.",
-        connection: "Toprakların paylaşılacağı endişesi, subayların Rumeli'de ayaklanarak II. Meşrutiyet'in ilanını zorlamasına yol açmıştır."
-      },
-      {
-        id: 7,
-        stepTitle: "7. Olay",
-        title: "23 Temmuz 1908 – II. Meşrutiyet'in İlanı",
-        image: "7.görsel.png",
-        video: "videolar/info7.mp4",
-        coords: { left: "1.04%", top: "62.89%", width: "31.64%", height: "26.17%" },
-        narration: "Rumeli’de askerî birliklerin dağa çıkması ve halkın yoğun baskısı karşısında Sultan II. Abdülhamid, 23 Temmuz 1908’de meşrutiyeti yeniden ilan etti. Meydanlarda büyük bir hürriyet coşkusu yaşanırken meclis kapılarını otuz yıl sonra yeniden açtı.",
-        connection: "Meşrutiyetin ilanı, hareketi yönlendiren İttihat ve Terakki Cemiyeti'nin ordu ve siyasette en etkin güç haline gelmesini sağlamıştır."
-      },
-      {
-        id: 8,
-        stepTitle: "8. Olay",
-        title: "İttihat ve Terakki'nin Güçlenmesi (1908-1909)",
-        image: "8.görsel.png",
-        video: "videolar/info8.mp4",
-        coords: { left: "35.16%", top: "62.89%", width: "30.47%", height: "26.17%" },
-        narration: "Meşrutiyetin ilanıyla birlikte İttihat ve Terakki Cemiyeti, ordudaki subayların desteğiyle yönetimde belirleyici güç oldu. Çok partili siyasi hayata geçilse de Bâbıâli ile cemiyet arasındaki rekabet ve basındaki sert tartışmalar, başkentte yeni bir çatışma ortamı doğurdu.",
-        connection: "Cemiyetin siyasetteki ağırlığı ve basındaki kutuplaşma, meşrutiyet karşıtı 31 Mart ayaklanmasını tetiklemiştir."
-      },
-      {
-        id: 9,
-        stepTitle: "9. Olay",
-        title: "13 Nisan 1909 – 31 Mart Olayı",
-        image: "9.görsel.png",
-        video: "videolar/info9.mp4",
-        coords: { left: "67.71%", top: "62.89%", width: "31.12%", height: "26.17%" },
-        narration: "Meşrutiyet yönetimine son vermek isteyen gruplar 1909’da 31 Mart İsyanı’nı başlattı. Selanik’ten gelen Hareket Ordusu ayaklanmayı bastırarak anayasal düzeni korudu. Olayın ardından II. Abdülhamid tahttan indirildi, yapılan anayasa değişiklikleriyle yönetim yetkisi tamamen halkın temsilcisi olan meclise geçti.",
-        connection: "İsyanın bastırılması ve 1909 Anayasa değişiklikleri, halk iradesini ve meclis üstünlüğünü devlette kalıcı kılmıştır."
-      }
-    ];
-
-    // Durum Değişkenleri
-    let currentEventIndex = null;
-    let watchedEvents = new Set();
-
-    // DOM Elemanları
-    const hotspotContainer = document.getElementById('hotspotContainer');
-    const cardsContainer = document.getElementById('cardsContainer');
-    const videoModal = document.getElementById('videoModal');
-    const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-    const modalVideoSource = document.getElementById('modalVideoSource');
-    const modalStepBadge = document.getElementById('modalStepBadge');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalNarrationText = document.getElementById('modalNarrationText');
-    const modalConnectionText = document.getElementById('modalConnectionText');
-    const modalPrevBtn = document.getElementById('modalPrevBtn');
-    const modalNextBtn = document.getElementById('modalNextBtn');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalStepIndicators = document.getElementById('modalStepIndicators');
-    const btnResetProgress = document.getElementById('btnResetProgress');
-    const viewTabInfographic = document.getElementById('viewTabInfographic');
-    const viewTabCards = document.getElementById('viewTabCards');
-    const sectionInfographic = document.getElementById('sectionInfographic');
-    const sectionCards = document.getElementById('sectionCards');
-    const completionModal = document.getElementById('completionModal');
-    const btnFinishComplete = document.getElementById('btnFinishComplete');
-    const btnRestartComplete = document.getElementById('btnRestartComplete');
-
-    // Değişim Takım Yıldızı DOM Elemanları
-    const constellationModal = document.getElementById('constellationModal');
-    const btnOpenConstellationFerman = document.getElementById('btnOpenConstellationFerman');
-    const btnOpenConstellationModal = document.getElementById('btnOpenConstellationModal');
-    const btnCloseConstellation = document.getElementById('btnCloseConstellation');
-    const btnResetConstellation = document.getElementById('btnResetConstellation');
-    const constellationSvgSky = document.getElementById('constellationSvgSky');
-    const constellationLinesGroup = document.getElementById('constellationLinesGroup');
-    const constellationNodesContainer = document.getElementById('constellationNodesContainer');
-    const constellationStepBadge = document.getElementById('constellationStepBadge');
-    const constellationPromptText = document.getElementById('constellationPromptText');
-    const constellationFeedbackText = document.getElementById('constellationFeedbackText');
-    const constellationVictoryModal = document.getElementById('constellationVictoryModal');
-    const btnConstellationReviewSky = document.getElementById('btnConstellationReviewSky');
-    const btnConstellationRestart = document.getElementById('btnConstellationRestart');
-
-    // Değişim Takım Yıldızı Dağınık Koordinatları ve Başlıkları (Konum Tahminini Engelleyici Geometrik Yapı)
-    const CONSTELLATION_COORDS = [
-      { x: 18, y: 28, labelPos: 'below', title: "Kanun-ı Esasi", solvedTitle: "1876 – Kanun-ı Esasi" },
-      { x: 74, y: 72, labelPos: 'above', title: "93 Harbi", solvedTitle: "1877-1878 – 93 Harbi" },
-      { x: 48, y: 16, labelPos: 'below', title: "Meclisin Kapatılması", solvedTitle: "1878 – Meclisin Kapatılması" },
-      { x: 15, y: 74, labelPos: 'above', title: "II. Abdülhamid Dönemi", solvedTitle: "1878-1909 – II. Abdülhamid Dönemi" },
-      { x: 84, y: 26, labelPos: 'below', title: "Jön Türklerin Yükselişi", solvedTitle: "1902-1907 – Jön Türkler" },
-      { x: 34, y: 52, labelPos: 'below', title: "Reval Görüşmeleri", solvedTitle: "1908 – Reval Görüşmeleri" },
-      { x: 64, y: 22, labelPos: 'below', title: "II. Meşrutiyet'in İlanı", solvedTitle: "1908 – II. Meşrutiyet" },
-      { x: 44, y: 80, labelPos: 'above', title: "İttihat ve Terakki", solvedTitle: "1908-1909 – İttihat ve Terakki" },
-      { x: 88, y: 58, labelPos: 'above', title: "31 Mart Olayı", solvedTitle: "1909 – 31 Mart Olayı" }
-    ];
-
-    // Düğümlerin eklenme sırasını karıştırarak odak tahminini engelleyen sıra
-    const CONSTELLATION_RENDER_ORDER = [3, 7, 1, 5, 0, 8, 2, 6, 4];
-
-    // Değişim Takım Yıldızı 8 Neden ve Sonuç Adımı
-    const CONSTELLATION_STEPS = [
-      {
-        fromId: 1,
-        targetId: 2,
-        prompt: "Kanun-ı Esasi'nin ilanından hemen sonra patlak veren, meclisin geleceğini tartışmalı hale getiren ve devleti derin bir bunalıma sürükleyen gelişmeyi seçiniz.",
-        feedback: "93 Harbi'nin getirdiği ağır askeri ve mali buhran, meclisin süresiz tatil edilmesine gerekçe oluşturmuştur."
-      },
-      {
-        fromId: 2,
-        targetId: 3,
-        prompt: "93 Harbi'nin yol açtığı olağanüstü şartlar gerekçe gösterilerek meşruti idareye ara veren hangi karar alınmıştır?",
-        feedback: "Meclisin kapatılması ve anayasanın askıya alınmasıyla padişahın mutlak otoritesine dayanan yeni bir evreye geçilmiştir."
-      },
-      {
-        fromId: 3,
-        targetId: 4,
-        prompt: "Meclisin kapatılmasıyla başlayan, devletin parçalanmasını önlemek adına merkeziyetçi politikanın ve sıkı denetimin uygulandığı dönemi seçiniz.",
-        feedback: "Bu otuz yıllık dönemde uygulanan sıkı yönetim ve sansür politikası, muhalif fikirlerin yer altına inmesine zemin hazırlamıştır."
-      },
-      {
-        fromId: 4,
-        targetId: 5,
-        prompt: "Uygulanan sıkı denetime tepki gösteren aydın ve subayların anayasal düzeni yeniden kurmak amacıyla birleştiği hareketi seçiniz.",
-        feedback: "İttihat ve Terakki çatısında birleşen bu kadrolar, özellikle Rumeli'deki genç subaylar arasında güç kazanmıştır."
-      },
-      {
-        fromId: 5,
-        targetId: 6,
-        prompt: "Rumeli'deki subayların vatan topraklarının paylaşılacağı endişesiyle harekete geçmesine yol açan dış politika gelişmesini seçiniz.",
-        feedback: "İngiltere ve Rusya'nın Reval'de buluşması, meşrutiyetin derhal yeniden ilan edilmesi gerektiği kanaatini güçlendirmiştir."
-      },
-      {
-        fromId: 6,
-        targetId: 7,
-        prompt: "Reval endişesiyle subayların Rumeli'de başlattığı hareket ve halk baskısı sonucu otuz yıl sonra meclisin yeniden açılmasını sağlayan olayı seçiniz.",
-        feedback: "23 Temmuz 1908'de meşrutiyet yeniden ilan edilmiş, anayasa yürürlüğe girerek çok partili hayata adım atılmıştır."
-      },
-      {
-        fromId: 7,
-        targetId: 8,
-        prompt: "II. Meşrutiyet'in ilanından sonra ordu desteğiyle yönetimde belirleyici güç haline gelen siyasi yapıyı seçiniz.",
-        feedback: "Cemiyetin güç kazanması ve basındaki sert kutuplaşma, meşrutiyet karşıtı yeni bir kriz ortamını tetiklemiştir."
-      },
-      {
-        fromId: 8,
-        targetId: 9,
-        prompt: "Meşrutiyet rejimine karşı patlak veren, ancak bastırılarak anayasa değişiklikleriyle meclis üstünlüğünü kalıcı kılan son dönüm noktasını seçiniz.",
-        feedback: "31 Mart Olayı'nın bastırılmasıyla II. Abdülhamid tahttan indirilmiş, yönetim yetkisi tamamen halkın temsilcisi olan meclise geçmiştir."
-      }
-    ];
-
-    let currentConstellationStep = 0;
-    let isConstellationFinished = false;
-    let isProcessingClick = false;
-
-    // SCORM Tamamlama Desteği
-    function notifyScormCompleted() {
-      if (typeof pipwerks !== 'undefined' && pipwerks.scorm) {
-        pipwerks.scorm.set("cmi.core.lesson_status", "completed");
-        pipwerks.scorm.save();
-      }
-    }
-
-    // Yerel Hafızadan Yükleme
-    function loadProgress() {
-      try {
-        const saved = localStorage.getItem('osmanli_11_3_1_watched');
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          watchedEvents = new Set(parsed);
-        }
-      } catch (e) {}
-    }
-
-    // Yerel Hafızaya Kaydetme
-    function saveProgress() {
-      try {
-        localStorage.setItem('osmanli_11_3_1_watched', JSON.stringify(Array.from(watchedEvents)));
-      } catch (e) {}
-    }
-
-    // 1. Bilgi Görseli Hotspot Alanlarını İnşa Et
-    function renderHotspots() {
-      hotspotContainer.innerHTML = '';
-      EVENTS.forEach((item, index) => {
-        const isWatched = watchedEvents.has(item.id);
-        const btn = document.createElement('button');
-        btn.className = 'absolute group rounded-xl transition-all duration-300 cursor-pointer flex items-center justify-center p-2 focus:outline-none focus:ring-2 focus:ring-[#caa55d] hover:bg-stone-950/30 border border-transparent hover:border-[#caa55d]/50 hover:shadow-[inset_0_0_20px_rgba(202,165,93,0.2)] backdrop-blur-[0.5px]';
-        btn.style.left = item.coords.left;
-        btn.style.top = item.coords.top;
-        btn.style.width = item.coords.width;
-        btn.style.height = item.coords.height;
-        btn.setAttribute('aria-label', `${item.stepTitle}: ${item.title}`);
-
-        if (isWatched) {
-          // İzlendikten sonra merkezde sabit kalan Osmanlı Zümrüt Onay Tiki
-          btn.innerHTML = `
-            <div class="pointer-events-none transition-all duration-300 transform scale-100 flex items-center justify-center">
-              <div class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-[#1a5d2a] via-[#236837] to-[#13431f] border-2 border-[#caa55d] outline outline-1 outline-[#caa55d]/40 outline-offset-1 flex items-center justify-center shadow-[0_3px_12px_rgba(20,60,30,0.55),0_0_10px_rgba(202,165,93,0.35)] group-hover:scale-110 transition-transform duration-200">
-                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#fff9ea] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-            </div>
-          `;
-        } else {
-          // Henüz izlenmediğinde üzerine gelince merkezde beliren Oynat Butonu
-          btn.innerHTML = `
-            <div class="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-all duration-300 transform scale-90 group-hover:scale-100 pointer-events-none flex items-center justify-center">
-              <div class="px-4 sm:px-5 py-1.5 sm:py-2 rounded-xl bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] border border-[#e2be68] text-[#fff7e6] outline outline-1 outline-[#caa55d]/40 outline-offset-1 flex items-center gap-2 shadow-[0_0_20px_rgba(216,176,88,0.4),0_6px_16px_rgba(60,10,10,0.55)] backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
-                <span class="font-serif font-bold text-xs sm:text-sm tracking-widest uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-                  Oynat
-                </span>
-                <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
-              </div>
-            </div>
-          `;
-        }
-
-        btn.addEventListener('click', () => {
-          openEventVideo(index);
-        });
-
-        hotspotContainer.appendChild(btn);
-      });
-    }
-
-    // 2. Kart Akışı Görünümünü İnşa Et
-    function renderCards() {
-      if (!cardsContainer) return;
-      cardsContainer.innerHTML = '';
-      EVENTS.forEach((item, index) => {
-        const isWatched = watchedEvents.has(item.id);
-        const card = document.createElement('div');
-        card.className = `bg-white rounded-xl overflow-hidden shadow-sm border transition-all flex flex-col ${
-          isWatched ? 'border-emerald-300 ring-1 ring-emerald-300' : 'border-stone-200 hover:border-stone-400'
-        }`;
-
-        card.innerHTML = `
-          <div class="relative aspect-video bg-stone-900 overflow-hidden group cursor-pointer" onclick="openEventVideo(${index})">
-            <img 
-              src="${encodeURI(item.image)}" 
-              alt="${item.title}" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-            <div class="absolute top-2.5 left-2.5">
-              <span class="px-2.5 py-1 rounded-md bg-stone-950/80 backdrop-blur-sm text-amber-300 text-xs font-bold border border-amber-500/30">
-                ${item.stepTitle}
-              </span>
-            </div>
-            <!-- Merkez Katman: İzlendiyse sabit onay tiki, izlenmediyse hover ile Oynat -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              ${
-                isWatched
-                  ? `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#1a5d2a] via-[#236837] to-[#13431f] border-2 border-[#caa55d] outline outline-1 outline-[#caa55d]/40 outline-offset-1 flex items-center justify-center shadow-[0_3px_12px_rgba(20,60,30,0.55),0_0_10px_rgba(202,165,93,0.35)] group-hover:scale-110 transition-transform duration-200 pointer-events-none">
-                       <svg class="w-4.5 h-4.5 text-[#fff9ea] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                         <polyline points="20 6 9 17 4 12"></polyline>
-                       </svg>
-                     </div>`
-                  : `<div class="opacity-0 group-hover:opacity-100 transition-opacity">
-                       <div class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] border border-[#e2be68] text-[#fff7e6] outline outline-1 outline-[#caa55d]/40 outline-offset-1 flex items-center gap-2 shadow-lg backdrop-blur-sm">
-                         <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
-                         <span class="font-serif font-bold text-xs uppercase tracking-widest drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-                           Oynat
-                         </span>
-                         <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
-                       </div>
-                     </div>`
-              }
-            </div>
-          </div>
-          <div class="p-4 flex-1 flex flex-col justify-between gap-3 bg-gradient-to-b from-[#fffdf9] to-[#fcf6e8]">
-            <div>
-              <h3 class="font-serif font-bold text-[#221206] text-base mb-1.5">${item.title}</h3>
-              <p class="font-serif text-[#4a3522] text-xs sm:text-sm line-clamp-3 leading-relaxed">${item.narration}</p>
-            </div>
-            <button 
-              class="w-full py-2 px-3 rounded-lg text-xs sm:text-sm font-serif font-semibold tracking-wider transition-all cursor-pointer ${
-                isWatched 
-                  ? 'bg-gradient-to-r from-[#184d28] via-[#236837] to-[#184d28] text-[#fff9ea] border border-[#caa55d] shadow-sm' 
-                  : 'bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] text-[#fff7e6] border border-[#d8b058] shadow-sm'
-              }"
-              onclick="openEventVideo(${index})"
-            >
-              ${isWatched ? 'Tekrar Oynat' : 'Oynat'}
-            </button>
-          </div>
-        `;
-
-        cardsContainer.appendChild(card);
-      });
-    }
-
-    // Modal Adım Göstergeleri (Varsa)
-    function renderStepIndicators() {
-      if (!modalStepIndicators) return;
-      modalStepIndicators.innerHTML = '';
-      EVENTS.forEach((ev, idx) => {
-        const dot = document.createElement('button');
-        const isCurrent = idx === currentEventIndex;
-        const isWatched = watchedEvents.has(ev.id);
-
-        dot.className = `h-7 px-2.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
-          isCurrent 
-            ? 'bg-amber-600 text-white shadow-sm ring-2 ring-amber-400' 
-            : isWatched 
-              ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200 border border-emerald-300' 
-              : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
-        }`;
-        dot.textContent = `${idx + 1}. Olay`;
-        dot.title = ev.title;
-        dot.addEventListener('click', () => {
-          openEventVideo(idx);
-        });
-        modalStepIndicators.appendChild(dot);
-      });
-    }
-
-    // Videoyu Aç ve Bilgileri Doldur
-    function openEventVideo(index) {
-      if (index < 0 || index >= EVENTS.length) return;
-      currentEventIndex = index;
-      const ev = EVENTS[index];
-
-      if (modalStepBadge) modalStepBadge.textContent = ev.stepTitle;
-      modalTitle.textContent = ev.title;
-      if (modalNarrationText) modalNarrationText.textContent = ev.narration;
-      modalConnectionText.textContent = ev.connection;
-
-      // Video kaynağını güncelle ve başlat
-      modalVideoPlayer.pause();
-      modalVideoSource.src = ev.video;
-      modalVideoPlayer.load();
-      
-      const playPromise = modalVideoPlayer.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Tarayıcı otomatik oynatmaya izin vermezse kullanıcı kontrollerden başlatabilir
-        });
-      }
-
-      // Buton Durumları (Varsa)
-      if (modalPrevBtn) modalPrevBtn.disabled = index === 0;
-      if (modalNextBtn) modalNextBtn.disabled = index === EVENTS.length - 1;
-
-      // İzlenme durumunu kaydet
-      markAsWatched(ev.id);
-
-      renderStepIndicators();
-      videoModal.classList.remove('hidden');
-    }
-
-    // İzlendi Olarak İşaretle
-    function markAsWatched(id) {
-      if (!watchedEvents.has(id)) {
-        watchedEvents.add(id);
-        saveProgress();
-        renderHotspots();
-        renderCards();
-
-        // 9 adımın tamamı izlendiyse tamamlandı modalını hazırla ve SCORM bildirimi yap
-        if (watchedEvents.size === EVENTS.length) {
-          notifyScormCompleted();
-        }
-      }
-    }
-
-    // Modalı Kapat
-    function closeEventVideo() {
-      modalVideoPlayer.pause();
-      videoModal.classList.add('hidden');
-      renderHotspots();
-      renderCards();
-
-      // Eğer hepsi izlendiyse ve tamamlanma modalı henüz açılmadıysa göster
-      if (watchedEvents.size === EVENTS.length && !sessionStorage.getItem('congratsShown')) {
-        sessionStorage.setItem('congratsShown', 'true');
-        setTimeout(() => {
-          completionModal.classList.remove('hidden');
-        }, 350);
-      }
-    }
-
-    // Olay Dinleyicileri
-    modalCloseBtn.addEventListener('click', closeEventVideo);
-    
-    if (modalPrevBtn) {
-      modalPrevBtn.addEventListener('click', () => {
-        if (currentEventIndex > 0) {
-          openEventVideo(currentEventIndex - 1);
-        }
-      });
-    }
-
-    if (modalNextBtn) {
-      modalNextBtn.addEventListener('click', () => {
-        if (currentEventIndex < EVENTS.length - 1) {
-          openEventVideo(currentEventIndex + 1);
-        }
-      });
-    }
-
-    // Video bitince otomatik sonraki adıma geçme seçeneği ve tam izlenme
-    modalVideoPlayer.addEventListener('ended', () => {
-      if (currentEventIndex !== null) {
-        markAsWatched(EVENTS[currentEventIndex].id);
-      }
-    });
-
-    // Modal dışına tıklayınca kapatma
-    videoModal.addEventListener('click', (e) => {
-      if (e.target === videoModal) {
-        closeEventVideo();
-      }
-    });
-
-    // Klavye Kısayolları (ESC, Sol, Sağ Ok, Boşluk)
-    window.addEventListener('keydown', (e) => {
-      if (!videoModal.classList.contains('hidden')) {
-        if (e.key === 'Escape') {
-          closeEventVideo();
-        } else if (e.key === 'ArrowLeft' && currentEventIndex > 0) {
-          openEventVideo(currentEventIndex - 1);
-        } else if (e.key === 'ArrowRight' && currentEventIndex < EVENTS.length - 1) {
-          openEventVideo(currentEventIndex + 1);
-        }
-      } else if (!constellationModal.classList.contains('hidden')) {
-        if (e.key === 'Escape') {
-          closeConstellation();
-        }
-      }
-    });
-
-    // Görünüm Sekmeleri (Varsa)
-    if (viewTabInfographic && viewTabCards) {
-      viewTabInfographic.addEventListener('click', () => {
-        if (sectionInfographic) sectionInfographic.classList.remove('hidden');
-        if (sectionCards) sectionCards.classList.add('hidden');
-      });
-
-      viewTabCards.addEventListener('click', () => {
-        if (sectionCards) sectionCards.classList.remove('hidden');
-        if (sectionInfographic) sectionInfographic.classList.add('hidden');
-      });
-    }
-
-    // Sıfırlama Butonu
-    btnResetProgress.addEventListener('click', () => {
-      if (confirm('İzleme durumunu sıfırlayarak etkinliği baştan başlatmak istediğinize emin misiniz?')) {
-        watchedEvents.clear();
-        saveProgress();
-        sessionStorage.removeItem('congratsShown');
-        renderHotspots();
-        renderCards();
-        resetConstellation();
-        notifyScormCompleted();
-      }
-    });
-
-    // Tebrik Modalı Butonları
-    btnFinishComplete.addEventListener('click', () => {
-      completionModal.classList.add('hidden');
-      notifyScormCompleted();
-    });
-
-    btnRestartComplete.addEventListener('click', () => {
-      completionModal.classList.add('hidden');
-      watchedEvents.clear();
-      saveProgress();
-      sessionStorage.removeItem('congratsShown');
-      renderHotspots();
-      renderCards();
-      resetConstellation();
-      notifyScormCompleted();
-    });
-
-    // ==========================================
-    // DEĞİŞİM TAKIM YILDIZI (1876 - 1909) MANTIĞI
-    // ==========================================
-
-    // Takım Yıldızı Çizgilerini Çiz
-    function renderConstellationLines() {
-      if (!constellationLinesGroup) return;
-      let linesHtml = '';
-      for (let i = 0; i < currentConstellationStep; i++) {
-        const c1 = CONSTELLATION_COORDS[i];
-        const c2 = CONSTELLATION_COORDS[i + 1];
-        linesHtml += `
-          <line x1="${c1.x}%" y1="${c1.y}%" x2="${c2.x}%" y2="${c2.y}%" stroke="#caa55d" stroke-width="3" stroke-linecap="round" filter="url(#goldGlow)" opacity="0.85" />
-          <line x1="${c1.x}%" y1="${c1.y}%" x2="${c2.x}%" y2="${c2.y}%" stroke="#fff1cb" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="6 4" class="beam-animated" />
-        `;
-      }
-      constellationLinesGroup.innerHTML = linesHtml;
-    }
-
-    // Takım Yıldızı Düğümlerini Oluştur
-    function renderConstellationNodes() {
-      if (!constellationNodesContainer) return;
-      constellationNodesContainer.innerHTML = '';
-
-      CONSTELLATION_RENDER_ORDER.forEach((idx) => {
-        const eventId = idx + 1;
-        const ev = EVENTS[idx];
-        const coord = CONSTELLATION_COORDS[idx];
-        const isCompleted = idx <= currentConstellationStep;
-        const isCurrentHead = idx === currentConstellationStep && !isConstellationFinished;
-
-        const nodeBtn = document.createElement('button');
-        nodeBtn.setAttribute('type', 'button');
-        nodeBtn.setAttribute('aria-label', isCompleted ? ev.title : coord.title);
-        nodeBtn.className = `absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer focus:outline-none transition-all duration-300 z-20 ${
-          isCurrentHead ? 'constellation-active-node' : ''
-        }`;
-        nodeBtn.style.left = `${coord.x}%`;
-        nodeBtn.style.top = `${coord.y}%`;
-
-        let starPinHtml = '';
-        let labelClasses = '';
-
-        if (isCompleted) {
-          starPinHtml = `
-            <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#1b5e20] via-[#2e7d32] to-[#124117] border-2 border-[#fef5d8] flex items-center justify-center shadow-[0_0_16px_rgba(46,125,50,0.8),0_0_8px_rgba(254,245,216,0.6)] group-hover:scale-110 transition-transform">
-              <svg class="w-4 h-4 text-[#fef5d8]" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
-              </svg>
-            </div>
-          `;
-          labelClasses = 'bg-[#062014]/90 border-emerald-400/60 text-emerald-100 shadow-[0_2px_8px_rgba(0,0,0,0.5)]';
-        } else if (isCurrentHead) {
-          starPinHtml = `
-            <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#caa55d] via-[#f5df9e] to-[#8c6729] border-2 border-[#fffdf5] flex items-center justify-center shadow-[0_0_20px_rgba(202,165,93,0.95)]">
-              <div class="w-2.5 h-2.5 rounded-full bg-[#1a1105]"></div>
-            </div>
-          `;
-          labelClasses = 'bg-[#1b1509]/95 border-[#caa55d] text-[#fffdf5] ring-1 ring-[#f5df9e]/60 shadow-lg';
-        } else {
-          starPinHtml = `
-            <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0c1628]/90 border border-[#caa55d]/40 flex items-center justify-center shadow-[0_0_10px_rgba(202,165,93,0.15)] group-hover:border-[#fef5d8] group-hover:bg-[#14233c] group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(202,165,93,0.5)] transition-all">
-              <div class="w-2 h-2 rounded-full bg-[#caa55d]/70 group-hover:bg-[#fef5d8] transition-colors"></div>
-            </div>
-          `;
-          labelClasses = 'bg-[#080e1b]/85 border-[#caa55d]/30 text-[#e4d4b2] group-hover:text-[#fffdf5] group-hover:border-[#caa55d]/75 shadow-md';
-        }
-
-        // Çözülene kadar yalnızca olay başlığı, bağ kurulunca yıl bilgisiyle birlikte aydınlanır
-        const displayTitle = isCompleted ? coord.solvedTitle : coord.title;
-
-        const labelTextHtml = `
-          <div class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border font-serif font-medium text-[11px] sm:text-xs whitespace-nowrap backdrop-blur-sm transition-all ${labelClasses}">
-            ${displayTitle}
-          </div>
-        `;
-
-        if (coord.labelPos === 'above') {
-          nodeBtn.innerHTML = `
-            <div class="flex flex-col items-center gap-1">
-              ${labelTextHtml}
-              ${starPinHtml}
-            </div>
-          `;
-        } else {
-          nodeBtn.innerHTML = `
-            <div class="flex flex-col items-center gap-1">
-              ${starPinHtml}
-              ${labelTextHtml}
-            </div>
-          `;
-        }
-
-        nodeBtn.addEventListener('click', () => {
-          handleConstellationNodeClick(eventId, nodeBtn);
-        });
-
-        constellationNodesContainer.appendChild(nodeBtn);
-      });
-    }
-
-    // Soruyu ve Rehber Metni Güncelle
-    function updateConstellationPrompt() {
-      if (currentConstellationStep < CONSTELLATION_STEPS.length) {
-        const stepData = CONSTELLATION_STEPS[currentConstellationStep];
-        constellationPromptText.textContent = stepData.prompt;
-        constellationFeedbackText.classList.add('hidden');
-        constellationFeedbackText.textContent = '';
-      }
-    }
-
-    // Düğüm Tıklamalarını Yönet
-    function handleConstellationNodeClick(clickedId, nodeBtn) {
-      if (isProcessingClick) return;
-
-      // Tamamlanmış ve inceleme modundaysa olayın detaylarını aktar
-      if (isConstellationFinished) {
-        const ev = EVENTS.find(e => e.id === clickedId);
-        if (ev) {
-          constellationPromptText.textContent = `${ev.title}: ${ev.narration}`;
-          constellationFeedbackText.classList.remove('hidden');
-          constellationFeedbackText.className = "text-xs sm:text-sm text-[#70dc95] font-sans font-medium mt-1 block";
-          constellationFeedbackText.textContent = ev.connection;
-        }
-        return;
-      }
-
-      // Halihazırda bağlanmış bir düğüme tıklandıysa özet bilgisini ver
-      if (clickedId <= currentConstellationStep + 1) {
-        const ev = EVENTS[clickedId - 1];
-        if (ev) {
-          constellationPromptText.textContent = `${ev.title}`;
-          constellationFeedbackText.classList.remove('hidden');
-          constellationFeedbackText.className = "text-xs sm:text-sm text-[#e6c87a] font-sans font-medium mt-1 block";
-          constellationFeedbackText.textContent = ev.connection;
-        }
-        return;
-      }
-
-      const currentStepData = CONSTELLATION_STEPS[currentConstellationStep];
-      if (!currentStepData) return;
-
-      // DOĞRU SEÇİM
-      if (clickedId === currentStepData.targetId) {
-        isProcessingClick = true;
-
-        constellationFeedbackText.textContent = currentStepData.feedback;
-        constellationFeedbackText.classList.remove('hidden');
-        constellationFeedbackText.className = "text-xs sm:text-sm text-[#70dc95] font-sans font-medium mt-1 block";
-
-        currentConstellationStep++;
-        renderConstellationLines();
-        renderConstellationNodes();
-
-        if (currentConstellationStep >= CONSTELLATION_STEPS.length) {
-          isConstellationFinished = true;
-          constellationPromptText.textContent = "Tebrikler! 1876'dan 1909'a uzanan tüm neden ve sonuç bağlarını başarıyla kurdunuz.";
-          notifyScormCompleted();
-          setTimeout(() => {
-            constellationVictoryModal.classList.remove('hidden');
-            isProcessingClick = false;
-          }, 1100);
-        } else {
-          setTimeout(() => {
-            updateConstellationPrompt();
-            renderConstellationNodes();
-            isProcessingClick = false;
-          }, 1000);
-        }
-      } else {
-        // YANLIŞ SEÇİM
-        nodeBtn.classList.add('shake-node');
-        const innerCircle = nodeBtn.querySelector('div');
-        if (innerCircle) {
-          innerCircle.classList.add('ring-2', 'ring-rose-500');
-        }
-        setTimeout(() => {
-          nodeBtn.classList.remove('shake-node');
-          if (innerCircle) {
-            innerCircle.classList.remove('ring-2', 'ring-rose-500');
-          }
-        }, 550);
-
-        constellationFeedbackText.textContent = "Bu gelişme belirtilen durumun doğrudan sonucu değildir; olayların neden ve sonuç bağlarını tekrar değerlendiriniz.";
-        constellationFeedbackText.classList.remove('hidden');
-        constellationFeedbackText.className = "text-xs sm:text-sm text-[#fca5a5] font-sans font-medium mt-1 block";
-      }
-    }
-
-    // Takım Yıldızını Sıfırla
-    function resetConstellation() {
-      currentConstellationStep = 0;
-      isConstellationFinished = false;
-      isProcessingClick = false;
-      constellationVictoryModal.classList.add('hidden');
-      renderConstellationLines();
-      renderConstellationNodes();
-      updateConstellationPrompt();
-    }
-
-    // Takım Yıldızı Modalı Aç
-    function openConstellation() {
-      if (modalVideoPlayer) modalVideoPlayer.pause();
-      videoModal.classList.add('hidden');
-      completionModal.classList.add('hidden');
-      constellationModal.classList.remove('hidden');
-      renderConstellationLines();
-      renderConstellationNodes();
-      updateConstellationPrompt();
-    }
-
-    // Takım Yıldızı Modalı Kapat
-    function closeConstellation() {
-      constellationModal.classList.add('hidden');
-    }
-
-    // Takım Yıldızı Olay Dinleyicileri
-    if (btnOpenConstellationFerman) {
-      btnOpenConstellationFerman.addEventListener('click', openConstellation);
-    }
-    if (btnOpenConstellationModal) {
-      btnOpenConstellationModal.addEventListener('click', openConstellation);
-    }
-    if (btnCloseConstellation) {
-      btnCloseConstellation.addEventListener('click', closeConstellation);
-    }
-    if (btnResetConstellation) {
-      btnResetConstellation.addEventListener('click', resetConstellation);
-    }
-    if (btnConstellationReviewSky) {
-      btnConstellationReviewSky.addEventListener('click', () => {
-        constellationVictoryModal.classList.add('hidden');
-      });
-    }
-    if (btnConstellationRestart) {
-      btnConstellationRestart.addEventListener('click', resetConstellation);
-    }
-
-    // Başlangıç Yüklemesi
-    loadProgress();
-    renderHotspots();
-    renderCards();
-  </script>
+  <!-- Uygulama Scriptleri -->
+  <script src="js/data.js"></script>
+  <script src="js/astrolabe.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

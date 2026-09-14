@@ -1,0 +1,40 @@
+/* ==========================================================================
+   MEBİ 11.3.1 - Etkileşimli Tarih Uygulaması Özel Stilleri
+   ========================================================================== */
+
+/* Dokunmatik cihazlar için seçim engelleme */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Dokunmatik tıklama vurgusu engelleme */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Parşömen ve Ahşap Dokulu İnce Kaydırma Çubukları */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4e8cf;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c49a45;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9a752b;
+}
+
+/* Karartma ve Arka Plan Geçişleri */
+.modal-backdrop-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
