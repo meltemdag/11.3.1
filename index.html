@@ -603,18 +603,21 @@
     const btnConstellationReviewSky = document.getElementById('btnConstellationReviewSky');
     const btnConstellationRestart = document.getElementById('btnConstellationRestart');
 
-    // Değişim Takım Yıldızı Koordinatları ve Kısa Başlıkları
+    // Değişim Takım Yıldızı Dağınık Koordinatları ve Başlıkları (Konum Tahminini Engelleyici Geometrik Yapı)
     const CONSTELLATION_COORDS = [
-      { x: 9, y: 38, labelPos: 'below', shortTitle: "1876 – Kanun-ı Esasi" },
-      { x: 19, y: 68, labelPos: 'above', shortTitle: "1877-1878 – 93 Harbi" },
-      { x: 30, y: 30, labelPos: 'below', shortTitle: "1878 – Meclisin Kapatılması" },
-      { x: 42, y: 70, labelPos: 'above', shortTitle: "1878-1909 – II. Abdülhamid Dönemi" },
-      { x: 53, y: 26, labelPos: 'below', shortTitle: "1902-1907 – Jön Türkler" },
-      { x: 64, y: 70, labelPos: 'above', shortTitle: "1908 – Reval Görüşmeleri" },
-      { x: 75, y: 30, labelPos: 'below', shortTitle: "1908 – II. Meşrutiyet" },
-      { x: 85, y: 68, labelPos: 'above', shortTitle: "1908-1909 – İttihat ve Terakki" },
-      { x: 93, y: 38, labelPos: 'below', shortTitle: "1909 – 31 Mart Olayı" }
+      { x: 18, y: 28, labelPos: 'below', title: "Kanun-ı Esasi", solvedTitle: "1876 – Kanun-ı Esasi" },
+      { x: 74, y: 72, labelPos: 'above', title: "93 Harbi", solvedTitle: "1877-1878 – 93 Harbi" },
+      { x: 48, y: 16, labelPos: 'below', title: "Meclisin Kapatılması", solvedTitle: "1878 – Meclisin Kapatılması" },
+      { x: 15, y: 74, labelPos: 'above', title: "II. Abdülhamid Dönemi", solvedTitle: "1878-1909 – II. Abdülhamid Dönemi" },
+      { x: 84, y: 26, labelPos: 'below', title: "Jön Türklerin Yükselişi", solvedTitle: "1902-1907 – Jön Türkler" },
+      { x: 34, y: 52, labelPos: 'below', title: "Reval Görüşmeleri", solvedTitle: "1908 – Reval Görüşmeleri" },
+      { x: 64, y: 22, labelPos: 'below', title: "II. Meşrutiyet'in İlanı", solvedTitle: "1908 – II. Meşrutiyet" },
+      { x: 44, y: 80, labelPos: 'above', title: "İttihat ve Terakki", solvedTitle: "1908-1909 – İttihat ve Terakki" },
+      { x: 88, y: 58, labelPos: 'above', title: "31 Mart Olayı", solvedTitle: "1909 – 31 Mart Olayı" }
     ];
+
+    // Düğümlerin eklenme sırasını karıştırarak odak tahminini engelleyen sıra
+    const CONSTELLATION_RENDER_ORDER = [3, 7, 1, 5, 0, 8, 2, 6, 4];
 
     // Değişim Takım Yıldızı 8 Neden ve Sonuç Adımı
     const CONSTELLATION_STEPS = [
@@ -1019,15 +1022,16 @@
       if (!constellationNodesContainer) return;
       constellationNodesContainer.innerHTML = '';
 
-      CONSTELLATION_COORDS.forEach((coord, idx) => {
+      CONSTELLATION_RENDER_ORDER.forEach((idx) => {
         const eventId = idx + 1;
         const ev = EVENTS[idx];
+        const coord = CONSTELLATION_COORDS[idx];
         const isCompleted = idx <= currentConstellationStep;
         const isCurrentHead = idx === currentConstellationStep && !isConstellationFinished;
 
         const nodeBtn = document.createElement('button');
         nodeBtn.setAttribute('type', 'button');
-        nodeBtn.setAttribute('aria-label', `${ev.title}`);
+        nodeBtn.setAttribute('aria-label', isCompleted ? ev.title : coord.title);
         nodeBtn.className = `absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer focus:outline-none transition-all duration-300 z-20 ${
           isCurrentHead ? 'constellation-active-node' : ''
         }`;
@@ -1062,9 +1066,12 @@
           labelClasses = 'bg-[#080e1b]/85 border-[#caa55d]/30 text-[#e4d4b2] group-hover:text-[#fffdf5] group-hover:border-[#caa55d]/75 shadow-md';
         }
 
+        // Çözülene kadar yalnızca olay başlığı, bağ kurulunca yıl bilgisiyle birlikte aydınlanır
+        const displayTitle = isCompleted ? coord.solvedTitle : coord.title;
+
         const labelTextHtml = `
           <div class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border font-serif font-medium text-[11px] sm:text-xs whitespace-nowrap backdrop-blur-sm transition-all ${labelClasses}">
-            ${coord.shortTitle}
+            ${displayTitle}
           </div>
         `;
 
