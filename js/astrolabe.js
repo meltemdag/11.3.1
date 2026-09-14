@@ -229,7 +229,7 @@ window.rotateRingManual = rotateRingManual;
 function updateAstrolabeVisuals() {
   const stage = ASTROLABE_STAGES[currentAstrolabeStageIndex];
   const dial = document.getElementById('astrolabeDialContainer');
-  const dialD = dial && dial.offsetWidth > 0 ? dial.offsetWidth : 480;
+  const dialD = dial && dial.offsetWidth > 0 ? dial.offsetWidth : 400;
 
   // Radyal yarıçaplar (Kusursuz dairesel yörüngeler)
   const r1 = dialD * 0.415;
