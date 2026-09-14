@@ -265,14 +265,14 @@ function updateAstrolabeVisuals() {
       if (lbl) {
         const isSelected = (i === selectedSlot);
         const counterAngle = -currentAngle - (i * 120);
-        lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSelected ? 1.08 : 0.88})`;
+        lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSelected ? 1.0 : 0.88})`;
         lbl.style.transformOrigin = 'center center';
-        lbl.style.opacity = isSelected ? '1' : '0.65';
+        lbl.style.opacity = isSelected ? '1' : '0.62';
 
         if (isSelected) {
-          lbl.className = 'inline-block font-serif font-bold text-xs sm:text-[13px] text-[#241407] tracking-wider px-3 py-1.5 rounded-lg bg-gradient-to-b from-[#fffef9] via-[#f9f1de] to-[#eedab4] border-2 border-[#caa55d] ring-2 ring-[#ffd978] shadow-[0_3px_12px_rgba(255,217,120,0.65),0_1px_4px_rgba(0,0,0,0.4)] whitespace-nowrap text-center transition-all duration-300 pointer-events-auto';
+          lbl.className = 'inline-block font-serif font-bold text-[11px] sm:text-xs text-[#241407] tracking-wider px-2.5 py-1 rounded-md bg-gradient-to-b from-[#fffef9] via-[#f9f1de] to-[#eedab4] border border-[#caa55d] ring-1 ring-[#ffd978]/90 shadow-[0_2px_8px_rgba(255,217,120,0.5),0_1px_3px_rgba(0,0,0,0.35)] whitespace-nowrap text-center transition-all duration-300 pointer-events-auto leading-tight';
         } else {
-          lbl.className = 'inline-block font-serif font-semibold text-[10px] sm:text-[11px] text-[#eedab4] hover:text-[#fffef9] tracking-wider px-2 py-1 rounded bg-[#2b180a]/85 hover:bg-[#3d230e]/95 border border-[#caa55d]/50 hover:border-[#caa55d] shadow-[0_2px_6px_rgba(0,0,0,0.4)] whitespace-nowrap text-center transition-all duration-300 pointer-events-auto';
+          lbl.className = 'inline-block font-serif font-semibold text-[10px] sm:text-[10.5px] text-[#eedab4] hover:text-[#fffef9] tracking-wider px-2 py-0.5 rounded bg-[#2b180a]/85 hover:bg-[#3d230e]/95 border border-[#caa55d]/40 hover:border-[#caa55d] shadow-[0_1px_4px_rgba(0,0,0,0.4)] whitespace-nowrap text-center transition-all duration-300 pointer-events-auto leading-tight';
         }
       }
     }
@@ -381,7 +381,8 @@ function initAstrolabeDragAndDrop() {
       if (lbl) {
         lbl.style.transition = 'none';
         const counterAngle = -currentDragAngle - (i * 120);
-        lbl.style.transform = `rotate(${counterAngle}deg)`;
+        const isSelected = (i === ringState[`ring${activeDragRingNumber}`]);
+        lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSelected ? 1.0 : 0.88})`;
       }
     }
 
