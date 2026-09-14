@@ -341,14 +341,14 @@
             </div>
 
             <!-- Ana Usturlap Çarkı (Dengelenmiş Ebat, Doğrudan Dokunarak / Sürükleyerek Döndürülebilir) -->
-            <div id="astrolabeDialContainer" class="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[350px] md:h-[350px] lg:w-[370px] lg:h-[370px] xl:w-[400px] xl:h-[400px] 2xl:w-[420px] 2xl:h-[420px] rounded-full flex items-center justify-center shadow-[0_18px_50px_rgba(20,10,5,0.75),inset_0_0_35px_rgba(0,0,0,0.85)] border-[5px] sm:border-[6px] border-[#9c752c] ring-2 ring-[#ffd978]/60 bg-gradient-to-br from-[#241508] via-[#140b04] to-[#241508] select-none cursor-grab active:cursor-grabbing" style="touch-action: none;">
-              
+            <div id="astrolabeDialContainer" class="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[350px] md:h-[350px] lg:w-[370px] lg:h-[370px] xl:w-[400px] xl:h-[400px] 2xl:w-[420px] 2xl:h-[420px] rounded-full flex items-center justify-center shadow-[0_20px_60px_rgba(15,23,42,0.55),inset_0_0_40px_rgba(0,0,0,0.85)] border-[5px] sm:border-[6px] border-[#caa55d] ring-2 ring-[#ffd978]/80 bg-gradient-to-br from-[#0c1527] via-[#162540] to-[#0a101d] select-none cursor-grab active:cursor-grabbing" style="touch-action: none;">
+
               <!-- Dış Derece Çizgileri Çerçevesi -->
-              <div class="absolute inset-0 rounded-full border border-[#caa55d]/40 pointer-events-none"></div>
-              <div class="absolute inset-1.5 rounded-full border border-dashed border-[#ffd978]/25 pointer-events-none"></div>
+              <div class="absolute inset-0 rounded-full border border-[#caa55d]/50 pointer-events-none"></div>
+              <div class="absolute inset-1.5 rounded-full border border-dashed border-[#ffd978]/30 pointer-events-none"></div>
 
               <!-- 1. Dış Kadran (Olay / Dönüm Noktası Halkası) -->
-              <div id="ringElement1" class="absolute w-[94%] h-[94%] left-[3%] top-[3%] rounded-full border-2 border-[#caa55d]/80 bg-gradient-to-br from-[#3d250e] via-[#593917] to-[#3d250e] shadow-inner transition-transform duration-500 ease-out">
+              <div id="ringElement1" class="absolute w-[94%] h-[94%] left-[3%] top-[3%] rounded-full border-2 border-[#caa55d]/90 bg-gradient-to-br from-[#121f35] via-[#1a2c4b] to-[#101b2e] shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out">
                 <div id="ringSlot1_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 0, true)">
                   <span id="ringLabel1_0"></span>
                 </div>
@@ -361,7 +361,7 @@
               </div>
 
               <!-- 2. Orta Kadran (Tetikleyici Neden Halkası) -->
-              <div id="ringElement2" class="absolute w-[72%] h-[72%] left-[14%] top-[14%] rounded-full border-2 border-[#dfb76c]/80 bg-gradient-to-br from-[#4d3014] via-[#6e461e] to-[#4d3014] shadow-md transition-transform duration-500 ease-out z-10">
+              <div id="ringElement2" class="absolute w-[72%] h-[72%] left-[14%] top-[14%] rounded-full border-2 border-[#dfb76c] bg-gradient-to-br from-[#182a47] via-[#223a63] to-[#15233c] shadow-md transition-transform duration-500 ease-out z-10">
                 <div id="ringSlot2_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 0, true)">
                   <span id="ringLabel2_0"></span>
                 </div>
@@ -374,7 +374,7 @@
               </div>
 
               <!-- 3. İç Kadran (Ortaya Çıkan Sonuç Halkası) -->
-              <div id="ringElement3" class="absolute w-[50%] h-[50%] left-[25%] top-[25%] rounded-full border-2 border-[#f3d07e] bg-gradient-to-br from-[#5e3b18] via-[#835525] to-[#5e3b18] shadow-md transition-transform duration-500 ease-out z-20">
+              <div id="ringElement3" class="absolute w-[50%] h-[50%] left-[25%] top-[25%] rounded-full border-2 border-[#ffd978] bg-gradient-to-br from-[#1e3458] via-[#294676] to-[#182a46] shadow-md transition-transform duration-500 ease-out z-20">
                 <div id="ringSlot3_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 0, true)">
                   <span id="ringLabel3_0"></span>
                 </div>
@@ -398,14 +398,14 @@
           <div class="w-full max-w-[420px] grid grid-cols-3 gap-2 mt-2 text-center shrink-0">
             <!-- 1. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-serif font-bold text-[11px] sm:text-xs text-[#543b18] mb-1">Dış Kadran</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#543b18] mb-1">Dış Kadran</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
-                <button id="btnRotateRing1Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#6b451d] to-[#4a2e10] hover:from-[#543313] hover:to-[#381f08] text-[#ffd978] border border-[#caa55d]/70 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <button id="btnRotateRing1Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                   </svg>
                 </button>
-                <button id="btnRotateRing1Next" aria-label="İleri" title="İleri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#6b451d] to-[#4a2e10] hover:from-[#543313] hover:to-[#381f08] text-[#ffd978] border border-[#caa55d]/70 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <button id="btnRotateRing1Next" aria-label="İleri" title="İleri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
@@ -415,14 +415,14 @@
 
             <!-- 2. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-serif font-bold text-[11px] sm:text-xs text-[#68411b] mb-1">Orta Kadran</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#68411b] mb-1">Orta Kadran</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
-                <button id="btnRotateRing2Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#7a4817] to-[#59320e] hover:from-[#61360d] hover:to-[#422206] text-[#ffd978] border border-[#caa55d]/70 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <button id="btnRotateRing2Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                   </svg>
                 </button>
-                <button id="btnRotateRing2Next" aria-label="İleri" title="İleri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#7a4817] to-[#59320e] hover:from-[#61360d] hover:to-[#422206] text-[#ffd978] border border-[#caa55d]/70 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <button id="btnRotateRing2Next" aria-label="İleri" title="İleri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
@@ -432,14 +432,14 @@
 
             <!-- 3. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-serif font-bold text-[11px] sm:text-xs text-[#7d5220] mb-1">İç Kadran</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#7d5220] mb-1">İç Kadran</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
-                <button id="btnRotateRing3Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#8c5a20] to-[#6a4012] hover:from-[#734714] hover:to-[#502e08] text-[#ffd978] border border-[#caa55d]/70 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <button id="btnRotateRing3Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                   </svg>
                 </button>
-                <button id="btnRotateRing3Next" aria-label="İleri" title="İleri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#8c5a20] to-[#6a4012] hover:from-[#734714] hover:to-[#502e08] text-[#ffd978] border border-[#caa55d]/70 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <button id="btnRotateRing3Next" aria-label="İleri" title="İleri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
