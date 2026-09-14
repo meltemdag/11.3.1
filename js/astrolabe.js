@@ -29,6 +29,9 @@ let lastDisliSoundTime = 0;
 // Doğru Eşleşme ve Kilit Açılma (Başarı) Sesi - dogru.mp3
 let dogruAudio = null;
 
+// Yanlış Eşleşme / Kilit Hatası Sesi - yanlis.mp3
+let yanlisAudio = null;
+
 function initAstrolabeSounds() {
   if (!kadranAudio) {
     kadranAudio = new Audio('kadran.mp3');
@@ -41,6 +44,10 @@ function initAstrolabeSounds() {
   if (!dogruAudio) {
     dogruAudio = new Audio('dogru.mp3');
     dogruAudio.preload = 'auto';
+  }
+  if (!yanlisAudio) {
+    yanlisAudio = new Audio('yanlis.mp3');
+    yanlisAudio.preload = 'auto';
   }
 }
 const initKadranAudio = initAstrolabeSounds;
@@ -143,7 +150,29 @@ function playAstrolabeLockFallback() {
   } catch (e) {}
 }
 
-function playAstrolabeMismatchSound() {
+function playYanlisErrorSound(volume = 0.85) {
+  try {
+    initAstrolabeSounds();
+    if (yanlisAudio) {
+      yanlisAudio.volume = volume;
+      yanlisAudio.currentTime = 0;
+      const playPromise = yanlisAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          playAstrolabeMismatchFallback();
+        });
+      }
+    } else {
+      playAstrolabeMismatchFallback();
+    }
+  } catch (e) {
+    playAstrolabeMismatchFallback();
+  }
+}
+
+const playAstrolabeMismatchSound = playYanlisErrorSound;
+
+function playAstrolabeMismatchFallback() {
   try {
     const ctx = getAstrolabeAudioContext();
     if (!ctx) return;
