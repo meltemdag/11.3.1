@@ -26,6 +26,9 @@ let lastKadranSoundTime = 0;
 let disliAudio = null;
 let lastDisliSoundTime = 0;
 
+// Doğru Eşleşme ve Kilit Açılma (Başarı) Sesi - dogru.mp3
+let dogruAudio = null;
+
 function initAstrolabeSounds() {
   if (!kadranAudio) {
     kadranAudio = new Audio('kadran.mp3');
@@ -34,6 +37,10 @@ function initAstrolabeSounds() {
   if (!disliAudio) {
     disliAudio = new Audio('2.disli_ses.mp3');
     disliAudio.preload = 'auto';
+  }
+  if (!dogruAudio) {
+    dogruAudio = new Audio('dogru.mp3');
+    dogruAudio.preload = 'auto';
   }
 }
 const initKadranAudio = initAstrolabeSounds;
@@ -80,6 +87,24 @@ function playDisliSnapSound(volume = 0.85) {
   }
 }
 
+function playDogruSuccessSound(volume = 0.85) {
+  try {
+    initAstrolabeSounds();
+    dogruAudio.volume = volume;
+    dogruAudio.currentTime = 0;
+    const playPromise = dogruAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        playAstrolabeLockFallback();
+      });
+    }
+  } catch (e) {
+    playAstrolabeLockFallback();
+  }
+}
+
+const playAstrolabeLockSound = playDogruSuccessSound;
+
 function playAstrolabeTickFallback() {
   try {
     const ctx = getAstrolabeAudioContext();
@@ -98,7 +123,7 @@ function playAstrolabeTickFallback() {
   } catch (e) {}
 }
 
-function playAstrolabeLockSound() {
+function playAstrolabeLockFallback() {
   try {
     const ctx = getAstrolabeAudioContext();
     if (!ctx) return;
