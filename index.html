@@ -43,6 +43,37 @@
       -webkit-user-select: none;
       user-select: none;
     }
+    @keyframes constellationPulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 10px rgba(202, 165, 93, 0.4);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        box-shadow: 0 0 25px rgba(245, 223, 158, 0.85);
+      }
+    }
+    .constellation-active-node {
+      animation: constellationPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes beamFlowAnim {
+      to {
+        stroke-dashoffset: -36;
+      }
+    }
+    .beam-animated {
+      animation: beamFlowAnim 1.4s linear infinite;
+    }
+    @keyframes nodeShake {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+      20% { transform: translate(calc(-50% - 4px), -50%) rotate(-2deg); }
+      40% { transform: translate(calc(-50% + 4px), -50%) rotate(2deg); }
+      60% { transform: translate(calc(-50% - 3px), -50%) rotate(-1deg); }
+      80% { transform: translate(calc(-50% + 3px), -50%) rotate(1deg); }
+    }
+    .shake-node {
+      animation: nodeShake 0.5s ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-stone-100 text-stone-800 font-sans h-full min-h-screen flex flex-col antialiased overflow-y-auto lg:overflow-hidden">
@@ -138,6 +169,13 @@
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e]"></span>
           <span>Yeniden Başlat</span>
           <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e]"></span>
+        </button>
+
+        <!-- Değişim Takım Yıldızı Butonu -->
+        <button id="btnOpenConstellationFerman" class="w-full mt-2 py-2 px-2.5 rounded-lg bg-gradient-to-r from-[#111e33] via-[#1d2f4d] to-[#111e33] hover:from-[#0a1424] hover:to-[#0a1424] text-[#fef5d8] border border-[#caa55d] shadow-[0_3px_10px_rgba(15,25,45,0.4)] hover:shadow-[0_4px_14px_rgba(202,165,93,0.35)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] shrink-0 font-serif tracking-wide font-semibold text-xs flex items-center justify-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
+          <span>Değişim Takım Yıldızı</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
         </button>
       </div>
 
@@ -282,15 +320,148 @@
       <p class="font-serif text-[#3a220f] text-sm sm:text-base font-medium leading-relaxed">
         1876 Kanun-ı Esasi'den 1909 31 Mart Olayı'na uzanan tüm gelişmeleri ve aralarındaki neden ve sonuç zincirini başarıyla tamamladınız.
       </p>
-      <div class="flex items-center gap-3 mt-2">
-        <button id="btnFinishComplete" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2e7d32] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
+      <div class="flex flex-col sm:flex-row items-center gap-2.5 mt-2 w-full justify-center">
+        <button id="btnOpenConstellationModal" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#18263e] via-[#283f63] to-[#18263e] hover:from-[#0f1a2e] hover:to-[#0f1a2e] text-[#fff6e0] border-2 border-[#caa55d] font-serif font-bold text-xs sm:text-sm tracking-wider shadow-[0_4px_16px_rgba(25,40,65,0.5)] transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
+          <span>Değişim Takım Yıldızı'nı Başlat</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#e4c272] shadow-[0_0_4px_#f5df9e]"></span>
+        </button>
+        <button id="btnFinishComplete" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2e7d32] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
           Etkinliği Bitir
         </button>
-        <button id="btnRestartComplete" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] hover:from-[#661010] hover:to-[#661010] text-[#fff6e0] border border-[#d8b058] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
+        <button id="btnRestartComplete" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] hover:from-[#661010] hover:to-[#661010] text-[#fff6e0] border border-[#d8b058] font-serif font-semibold text-xs sm:text-sm tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
           Yeniden Başlat
         </button>
       </div>
     </div>
+  </div>
+
+  <!-- DEĞİŞİM TAKIM YILDIZI (1876 - 1909) ÖLÇME VE PEKİŞTİRME MODALI -->
+  <div id="constellationModal" class="fixed inset-0 z-50 hidden flex flex-col bg-gradient-to-b from-[#060a14] via-[#0d1629] to-[#04070e] text-white select-none overflow-hidden">
+    
+    <!-- Takım Yıldızı Üst Barı -->
+    <div class="px-4 sm:px-6 py-2.5 sm:py-3 bg-[#080e1b]/90 backdrop-blur-md border-b border-[#caa55d]/40 flex items-center justify-between shrink-0 shadow-xl z-30">
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#caa55d] via-[#f5df9e] to-[#8c6729] flex items-center justify-center text-[#1a1105] shadow-[0_0_12px_rgba(202,165,93,0.6)] shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
+          </svg>
+        </div>
+        <div class="truncate">
+          <h2 class="font-serif text-sm sm:text-base md:text-lg font-bold text-[#fef7e6] tracking-wide drop-shadow truncate">
+            Değişim Takım Yıldızı (1876 – 1909)
+          </h2>
+          <p class="text-[11px] sm:text-xs text-[#d8c397] font-sans truncate">
+            Gelişmeler arasındaki neden ve sonuç bağlarını sırasıyla oluşturarak gök kubbeyi tamamlayınız.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="btnResetConstellation" class="px-3 py-1.5 rounded-lg text-xs font-serif font-semibold bg-[#142036] hover:bg-[#1b2c4a] text-[#fef7e6] border border-[#caa55d]/60 shadow-sm transition-all cursor-pointer active:scale-95">
+          Sıfırla
+        </button>
+        <button id="btnCloseConstellation" aria-label="Kapat" class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#500f0f] hover:bg-[#3d0b0b] text-[#fff4db] border border-[#d8b058] shadow transition-all cursor-pointer active:scale-95 group">
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Takım Yıldızı Gökyüzü Tuvali (Sky Canvas) -->
+    <div class="relative flex-1 min-h-0 w-full overflow-hidden flex items-center justify-center p-2 sm:p-4">
+      
+      <!-- Responsive Kaydırılabilir Konteynır (Mobilde panlanabilir, büyük ekranlarda tam oturur) -->
+      <div id="constellationSkyArea" class="relative w-full h-full max-w-6xl min-w-[760px] sm:min-w-full max-h-[640px] mx-auto overflow-hidden rounded-2xl border border-[#caa55d]/20 bg-[#060a14]/60 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)]">
+        
+        <!-- SVG Gökyüzü Çizgileri ve Usturlap Katmanı -->
+        <svg id="constellationSvgSky" class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Arka Plan Usturlap Koordinat Çemberleri -->
+          <circle cx="50%" cy="50%" r="42%" fill="none" stroke="#caa55d" stroke-width="1" stroke-dasharray="3 6" opacity="0.12" />
+          <circle cx="50%" cy="50%" r="28%" fill="none" stroke="#caa55d" stroke-width="0.8" opacity="0.1" />
+          <ellipse cx="50%" cy="50%" rx="48%" ry="36%" fill="none" stroke="#caa55d" stroke-width="1" stroke-dasharray="4 8" opacity="0.1" />
+
+          <!-- Arka Plan Minik Samanyolu Yıldızları -->
+          <circle cx="6%" cy="14%" r="1.2" fill="#ffffff" opacity="0.45" />
+          <circle cx="14%" cy="84%" r="0.9" fill="#f5df9e" opacity="0.35" />
+          <circle cx="24%" cy="18%" r="1.1" fill="#ffffff" opacity="0.3" />
+          <circle cx="36%" cy="88%" r="1.3" fill="#caa55d" opacity="0.4" />
+          <circle cx="48%" cy="12%" r="1" fill="#ffffff" opacity="0.45" />
+          <circle cx="58%" cy="84%" r="1.2" fill="#f5df9e" opacity="0.35" />
+          <circle cx="69%" cy="14%" r="0.9" fill="#ffffff" opacity="0.4" />
+          <circle cx="82%" cy="86%" r="1.3" fill="#caa55d" opacity="0.35" />
+          <circle cx="91%" cy="16%" r="1.1" fill="#ffffff" opacity="0.5" />
+          <circle cx="97%" cy="72%" r="0.8" fill="#f5df9e" opacity="0.3" />
+
+          <!-- Bağlantı Çizgileri Grubu -->
+          <g id="constellationLinesGroup"></g>
+        </svg>
+
+        <!-- 9 Yıldız Düğümü Katmanı -->
+        <div id="constellationNodesContainer" class="absolute inset-0 w-full h-full">
+          <!-- JS tarafından 9 düğüm yerleştirilir -->
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Alt Rehberlik ve Soru Paneli (Ferman Bant Stili) -->
+    <div class="px-4 py-3 sm:py-3.5 bg-gradient-to-r from-[#0d1627]/95 via-[#080e1b]/95 to-[#0d1627]/95 backdrop-blur-md border-t-2 border-[#caa55d]/50 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl z-30">
+      <div class="flex items-center gap-3 min-w-0 flex-1 w-full">
+        <div id="constellationStepBadge" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#caa55d] to-[#8c6729] border border-[#fef5d8] text-[#1a1105] flex items-center justify-center shadow-[0_0_10px_rgba(202,165,93,0.5)] shrink-0">
+          <svg class="w-4 h-4 text-[#1a1105]" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
+          </svg>
+        </div>
+        <div class="min-w-0 flex-1">
+          <p id="constellationPromptText" class="font-serif text-xs sm:text-sm md:text-base text-[#fef5d8] font-semibold leading-relaxed">
+            <!-- JS ile doldurulur -->
+          </p>
+          <p id="constellationFeedbackText" class="text-xs sm:text-sm text-[#70dc95] font-sans font-medium mt-0.5 hidden">
+            <!-- Doğru eşleşmede çıkan özet -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tamamlanma Kutlama Katmanı (Takım Yıldızı Bittiğinde Açılır) -->
+    <div id="constellationVictoryModal" class="fixed inset-0 z-40 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+      <div class="bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] text-[#221206] rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 flex flex-col items-center text-center gap-4 border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-2 relative">
+        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#caa55d] via-[#f5df9e] to-[#8c6729] border-2 border-[#fef5d8] flex items-center justify-center text-[#1a1105] shadow-[0_0_20px_rgba(202,165,93,0.6)]">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
+          </svg>
+        </div>
+        <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1f1207]">
+          Değişim Takım Yıldızı Tamamlandı!
+        </h3>
+        <p class="font-serif text-[#3a220f] text-xs sm:text-sm md:text-base font-medium leading-relaxed">
+          1876 Kanun-ı Esasi'den 1909 Meclis Üstünlüğü'ne uzanan 33 yıllık dönemin neden ve sonuç bağlarını başarıyla ördünüz.
+        </p>
+        <div class="flex items-center gap-3 mt-2">
+          <button id="btnConstellationReviewSky" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#18263e] to-[#253c61] text-[#fff7e6] border border-[#caa55d] font-serif font-bold text-xs sm:text-sm tracking-wider shadow transition-all cursor-pointer active:scale-95">
+            Gökyüzünü İncele
+          </button>
+          <button id="btnConstellationRestart" class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#7a1414] to-[#941c1c] text-[#fff7e6] border border-[#d8b058] font-serif font-bold text-xs sm:text-sm tracking-wider shadow transition-all cursor-pointer active:scale-95">
+            Yeniden Başlat
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Uygulama Mantığı ve Veriler -->
@@ -415,6 +586,91 @@
     const completionModal = document.getElementById('completionModal');
     const btnFinishComplete = document.getElementById('btnFinishComplete');
     const btnRestartComplete = document.getElementById('btnRestartComplete');
+
+    // Değişim Takım Yıldızı DOM Elemanları
+    const constellationModal = document.getElementById('constellationModal');
+    const btnOpenConstellationFerman = document.getElementById('btnOpenConstellationFerman');
+    const btnOpenConstellationModal = document.getElementById('btnOpenConstellationModal');
+    const btnCloseConstellation = document.getElementById('btnCloseConstellation');
+    const btnResetConstellation = document.getElementById('btnResetConstellation');
+    const constellationSvgSky = document.getElementById('constellationSvgSky');
+    const constellationLinesGroup = document.getElementById('constellationLinesGroup');
+    const constellationNodesContainer = document.getElementById('constellationNodesContainer');
+    const constellationStepBadge = document.getElementById('constellationStepBadge');
+    const constellationPromptText = document.getElementById('constellationPromptText');
+    const constellationFeedbackText = document.getElementById('constellationFeedbackText');
+    const constellationVictoryModal = document.getElementById('constellationVictoryModal');
+    const btnConstellationReviewSky = document.getElementById('btnConstellationReviewSky');
+    const btnConstellationRestart = document.getElementById('btnConstellationRestart');
+
+    // Değişim Takım Yıldızı Koordinatları ve Kısa Başlıkları
+    const CONSTELLATION_COORDS = [
+      { x: 9, y: 38, labelPos: 'below', shortTitle: "1876 – Kanun-ı Esasi" },
+      { x: 19, y: 68, labelPos: 'above', shortTitle: "1877-1878 – 93 Harbi" },
+      { x: 30, y: 30, labelPos: 'below', shortTitle: "1878 – Meclisin Kapatılması" },
+      { x: 42, y: 70, labelPos: 'above', shortTitle: "1878-1909 – II. Abdülhamid Dönemi" },
+      { x: 53, y: 26, labelPos: 'below', shortTitle: "1902-1907 – Jön Türkler" },
+      { x: 64, y: 70, labelPos: 'above', shortTitle: "1908 – Reval Görüşmeleri" },
+      { x: 75, y: 30, labelPos: 'below', shortTitle: "1908 – II. Meşrutiyet" },
+      { x: 85, y: 68, labelPos: 'above', shortTitle: "1908-1909 – İttihat ve Terakki" },
+      { x: 93, y: 38, labelPos: 'below', shortTitle: "1909 – 31 Mart Olayı" }
+    ];
+
+    // Değişim Takım Yıldızı 8 Neden ve Sonuç Adımı
+    const CONSTELLATION_STEPS = [
+      {
+        fromId: 1,
+        targetId: 2,
+        prompt: "Kanun-ı Esasi'nin ilanından hemen sonra patlak veren, meclisin geleceğini tartışmalı hale getiren ve devleti derin bir bunalıma sürükleyen gelişmeyi seçiniz.",
+        feedback: "93 Harbi'nin getirdiği ağır askeri ve mali buhran, meclisin süresiz tatil edilmesine gerekçe oluşturmuştur."
+      },
+      {
+        fromId: 2,
+        targetId: 3,
+        prompt: "93 Harbi'nin yol açtığı olağanüstü şartlar gerekçe gösterilerek meşruti idareye ara veren hangi karar alınmıştır?",
+        feedback: "Meclisin kapatılması ve anayasanın askıya alınmasıyla padişahın mutlak otoritesine dayanan yeni bir evreye geçilmiştir."
+      },
+      {
+        fromId: 3,
+        targetId: 4,
+        prompt: "Meclisin kapatılmasıyla başlayan, devletin parçalanmasını önlemek adına merkeziyetçi politikanın ve sıkı denetimin uygulandığı dönemi seçiniz.",
+        feedback: "Bu otuz yıllık dönemde uygulanan sıkı yönetim ve sansür politikası, muhalif fikirlerin yer altına inmesine zemin hazırlamıştır."
+      },
+      {
+        fromId: 4,
+        targetId: 5,
+        prompt: "Uygulanan sıkı denetime tepki gösteren aydın ve subayların anayasal düzeni yeniden kurmak amacıyla birleştiği hareketi seçiniz.",
+        feedback: "İttihat ve Terakki çatısında birleşen bu kadrolar, özellikle Rumeli'deki genç subaylar arasında güç kazanmıştır."
+      },
+      {
+        fromId: 5,
+        targetId: 6,
+        prompt: "Rumeli'deki subayların vatan topraklarının paylaşılacağı endişesiyle harekete geçmesine yol açan dış politika gelişmesini seçiniz.",
+        feedback: "İngiltere ve Rusya'nın Reval'de buluşması, meşrutiyetin derhal yeniden ilan edilmesi gerektiği kanaatini güçlendirmiştir."
+      },
+      {
+        fromId: 6,
+        targetId: 7,
+        prompt: "Reval endişesiyle subayların Rumeli'de başlattığı hareket ve halk baskısı sonucu otuz yıl sonra meclisin yeniden açılmasını sağlayan olayı seçiniz.",
+        feedback: "23 Temmuz 1908'de meşrutiyet yeniden ilan edilmiş, anayasa yürürlüğe girerek çok partili hayata adım atılmıştır."
+      },
+      {
+        fromId: 7,
+        targetId: 8,
+        prompt: "II. Meşrutiyet'in ilanından sonra ordu desteğiyle yönetimde belirleyici güç haline gelen siyasi yapıyı seçiniz.",
+        feedback: "Cemiyetin güç kazanması ve basındaki sert kutuplaşma, meşrutiyet karşıtı yeni bir kriz ortamını tetiklemiştir."
+      },
+      {
+        fromId: 8,
+        targetId: 9,
+        prompt: "Meşrutiyet rejimine karşı patlak veren, ancak bastırılarak anayasa değişiklikleriyle meclis üstünlüğünü kalıcı kılan son dönüm noktasını seçiniz.",
+        feedback: "31 Mart Olayı'nın bastırılmasıyla II. Abdülhamid tahttan indirilmiş, yönetim yetkisi tamamen halkın temsilcisi olan meclise geçmiştir."
+      }
+    ];
+
+    let currentConstellationStep = 0;
+    let isConstellationFinished = false;
+    let isProcessingClick = false;
 
     // SCORM Tamamlama Desteği
     function notifyScormCompleted() {
@@ -689,6 +945,10 @@
         } else if (e.key === 'ArrowRight' && currentEventIndex < EVENTS.length - 1) {
           openEventVideo(currentEventIndex + 1);
         }
+      } else if (!constellationModal.classList.contains('hidden')) {
+        if (e.key === 'Escape') {
+          closeConstellation();
+        }
       }
     });
 
@@ -713,6 +973,7 @@
         sessionStorage.removeItem('congratsShown');
         renderHotspots();
         renderCards();
+        resetConstellation();
         notifyScormCompleted();
       }
     });
@@ -730,8 +991,243 @@
       sessionStorage.removeItem('congratsShown');
       renderHotspots();
       renderCards();
+      resetConstellation();
       notifyScormCompleted();
     });
+
+    // ==========================================
+    // DEĞİŞİM TAKIM YILDIZI (1876 - 1909) MANTIĞI
+    // ==========================================
+
+    // Takım Yıldızı Çizgilerini Çiz
+    function renderConstellationLines() {
+      if (!constellationLinesGroup) return;
+      let linesHtml = '';
+      for (let i = 0; i < currentConstellationStep; i++) {
+        const c1 = CONSTELLATION_COORDS[i];
+        const c2 = CONSTELLATION_COORDS[i + 1];
+        linesHtml += `
+          <line x1="${c1.x}%" y1="${c1.y}%" x2="${c2.x}%" y2="${c2.y}%" stroke="#caa55d" stroke-width="3" stroke-linecap="round" filter="url(#goldGlow)" opacity="0.85" />
+          <line x1="${c1.x}%" y1="${c1.y}%" x2="${c2.x}%" y2="${c2.y}%" stroke="#fff1cb" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="6 4" class="beam-animated" />
+        `;
+      }
+      constellationLinesGroup.innerHTML = linesHtml;
+    }
+
+    // Takım Yıldızı Düğümlerini Oluştur
+    function renderConstellationNodes() {
+      if (!constellationNodesContainer) return;
+      constellationNodesContainer.innerHTML = '';
+
+      CONSTELLATION_COORDS.forEach((coord, idx) => {
+        const eventId = idx + 1;
+        const ev = EVENTS[idx];
+        const isCompleted = idx <= currentConstellationStep;
+        const isCurrentHead = idx === currentConstellationStep && !isConstellationFinished;
+
+        const nodeBtn = document.createElement('button');
+        nodeBtn.setAttribute('type', 'button');
+        nodeBtn.setAttribute('aria-label', `${ev.title}`);
+        nodeBtn.className = `absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer focus:outline-none transition-all duration-300 z-20 ${
+          isCurrentHead ? 'constellation-active-node' : ''
+        }`;
+        nodeBtn.style.left = `${coord.x}%`;
+        nodeBtn.style.top = `${coord.y}%`;
+
+        let starPinHtml = '';
+        let labelClasses = '';
+
+        if (isCompleted) {
+          starPinHtml = `
+            <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#1b5e20] via-[#2e7d32] to-[#124117] border-2 border-[#fef5d8] flex items-center justify-center shadow-[0_0_16px_rgba(46,125,50,0.8),0_0_8px_rgba(254,245,216,0.6)] group-hover:scale-110 transition-transform">
+              <svg class="w-4 h-4 text-[#fef5d8]" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
+              </svg>
+            </div>
+          `;
+          labelClasses = 'bg-[#062014]/90 border-emerald-400/60 text-emerald-100 shadow-[0_2px_8px_rgba(0,0,0,0.5)]';
+        } else if (isCurrentHead) {
+          starPinHtml = `
+            <div class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#caa55d] via-[#f5df9e] to-[#8c6729] border-2 border-[#fffdf5] flex items-center justify-center shadow-[0_0_20px_rgba(202,165,93,0.95)]">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#1a1105]"></div>
+            </div>
+          `;
+          labelClasses = 'bg-[#1b1509]/95 border-[#caa55d] text-[#fffdf5] ring-1 ring-[#f5df9e]/60 shadow-lg';
+        } else {
+          starPinHtml = `
+            <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0c1628]/90 border border-[#caa55d]/40 flex items-center justify-center shadow-[0_0_10px_rgba(202,165,93,0.15)] group-hover:border-[#fef5d8] group-hover:bg-[#14233c] group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(202,165,93,0.5)] transition-all">
+              <div class="w-2 h-2 rounded-full bg-[#caa55d]/70 group-hover:bg-[#fef5d8] transition-colors"></div>
+            </div>
+          `;
+          labelClasses = 'bg-[#080e1b]/85 border-[#caa55d]/30 text-[#e4d4b2] group-hover:text-[#fffdf5] group-hover:border-[#caa55d]/75 shadow-md';
+        }
+
+        const labelTextHtml = `
+          <div class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border font-serif font-medium text-[11px] sm:text-xs whitespace-nowrap backdrop-blur-sm transition-all ${labelClasses}">
+            ${coord.shortTitle}
+          </div>
+        `;
+
+        if (coord.labelPos === 'above') {
+          nodeBtn.innerHTML = `
+            <div class="flex flex-col items-center gap-1">
+              ${labelTextHtml}
+              ${starPinHtml}
+            </div>
+          `;
+        } else {
+          nodeBtn.innerHTML = `
+            <div class="flex flex-col items-center gap-1">
+              ${starPinHtml}
+              ${labelTextHtml}
+            </div>
+          `;
+        }
+
+        nodeBtn.addEventListener('click', () => {
+          handleConstellationNodeClick(eventId, nodeBtn);
+        });
+
+        constellationNodesContainer.appendChild(nodeBtn);
+      });
+    }
+
+    // Soruyu ve Rehber Metni Güncelle
+    function updateConstellationPrompt() {
+      if (currentConstellationStep < CONSTELLATION_STEPS.length) {
+        const stepData = CONSTELLATION_STEPS[currentConstellationStep];
+        constellationPromptText.textContent = stepData.prompt;
+        constellationFeedbackText.classList.add('hidden');
+        constellationFeedbackText.textContent = '';
+      }
+    }
+
+    // Düğüm Tıklamalarını Yönet
+    function handleConstellationNodeClick(clickedId, nodeBtn) {
+      if (isProcessingClick) return;
+
+      // Tamamlanmış ve inceleme modundaysa olayın detaylarını aktar
+      if (isConstellationFinished) {
+        const ev = EVENTS.find(e => e.id === clickedId);
+        if (ev) {
+          constellationPromptText.textContent = `${ev.title}: ${ev.narration}`;
+          constellationFeedbackText.classList.remove('hidden');
+          constellationFeedbackText.className = "text-xs sm:text-sm text-[#70dc95] font-sans font-medium mt-1 block";
+          constellationFeedbackText.textContent = ev.connection;
+        }
+        return;
+      }
+
+      // Halihazırda bağlanmış bir düğüme tıklandıysa özet bilgisini ver
+      if (clickedId <= currentConstellationStep + 1) {
+        const ev = EVENTS[clickedId - 1];
+        if (ev) {
+          constellationPromptText.textContent = `${ev.title}`;
+          constellationFeedbackText.classList.remove('hidden');
+          constellationFeedbackText.className = "text-xs sm:text-sm text-[#e6c87a] font-sans font-medium mt-1 block";
+          constellationFeedbackText.textContent = ev.connection;
+        }
+        return;
+      }
+
+      const currentStepData = CONSTELLATION_STEPS[currentConstellationStep];
+      if (!currentStepData) return;
+
+      // DOĞRU SEÇİM
+      if (clickedId === currentStepData.targetId) {
+        isProcessingClick = true;
+
+        constellationFeedbackText.textContent = currentStepData.feedback;
+        constellationFeedbackText.classList.remove('hidden');
+        constellationFeedbackText.className = "text-xs sm:text-sm text-[#70dc95] font-sans font-medium mt-1 block";
+
+        currentConstellationStep++;
+        renderConstellationLines();
+        renderConstellationNodes();
+
+        if (currentConstellationStep >= CONSTELLATION_STEPS.length) {
+          isConstellationFinished = true;
+          constellationPromptText.textContent = "Tebrikler! 1876'dan 1909'a uzanan tüm neden ve sonuç bağlarını başarıyla kurdunuz.";
+          notifyScormCompleted();
+          setTimeout(() => {
+            constellationVictoryModal.classList.remove('hidden');
+            isProcessingClick = false;
+          }, 1100);
+        } else {
+          setTimeout(() => {
+            updateConstellationPrompt();
+            renderConstellationNodes();
+            isProcessingClick = false;
+          }, 1000);
+        }
+      } else {
+        // YANLIŞ SEÇİM
+        nodeBtn.classList.add('shake-node');
+        const innerCircle = nodeBtn.querySelector('div');
+        if (innerCircle) {
+          innerCircle.classList.add('ring-2', 'ring-rose-500');
+        }
+        setTimeout(() => {
+          nodeBtn.classList.remove('shake-node');
+          if (innerCircle) {
+            innerCircle.classList.remove('ring-2', 'ring-rose-500');
+          }
+        }, 550);
+
+        constellationFeedbackText.textContent = "Bu gelişme belirtilen durumun doğrudan sonucu değildir; olayların neden ve sonuç bağlarını tekrar değerlendiriniz.";
+        constellationFeedbackText.classList.remove('hidden');
+        constellationFeedbackText.className = "text-xs sm:text-sm text-[#fca5a5] font-sans font-medium mt-1 block";
+      }
+    }
+
+    // Takım Yıldızını Sıfırla
+    function resetConstellation() {
+      currentConstellationStep = 0;
+      isConstellationFinished = false;
+      isProcessingClick = false;
+      constellationVictoryModal.classList.add('hidden');
+      renderConstellationLines();
+      renderConstellationNodes();
+      updateConstellationPrompt();
+    }
+
+    // Takım Yıldızı Modalı Aç
+    function openConstellation() {
+      if (modalVideoPlayer) modalVideoPlayer.pause();
+      videoModal.classList.add('hidden');
+      completionModal.classList.add('hidden');
+      constellationModal.classList.remove('hidden');
+      renderConstellationLines();
+      renderConstellationNodes();
+      updateConstellationPrompt();
+    }
+
+    // Takım Yıldızı Modalı Kapat
+    function closeConstellation() {
+      constellationModal.classList.add('hidden');
+    }
+
+    // Takım Yıldızı Olay Dinleyicileri
+    if (btnOpenConstellationFerman) {
+      btnOpenConstellationFerman.addEventListener('click', openConstellation);
+    }
+    if (btnOpenConstellationModal) {
+      btnOpenConstellationModal.addEventListener('click', openConstellation);
+    }
+    if (btnCloseConstellation) {
+      btnCloseConstellation.addEventListener('click', closeConstellation);
+    }
+    if (btnResetConstellation) {
+      btnResetConstellation.addEventListener('click', resetConstellation);
+    }
+    if (btnConstellationReviewSky) {
+      btnConstellationReviewSky.addEventListener('click', () => {
+        constellationVictoryModal.classList.add('hidden');
+      });
+    }
+    if (btnConstellationRestart) {
+      btnConstellationRestart.addEventListener('click', resetConstellation);
+    }
 
     // Başlangıç Yüklemesi
     loadProgress();
