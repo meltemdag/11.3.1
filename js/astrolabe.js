@@ -18,7 +18,69 @@ function getAstrolabeAudioContext() {
   return astrolabeAudioCtx;
 }
 
-function playAstrolabeTickSound() {
+// Kadran Çevirme (Dönüş ve Çark Mekanizması) Sesi - kadran.mp3
+let kadranAudio = null;
+let lastKadranSoundTime = 0;
+
+// Dişli / Tıkırtı (Ratchet & Snap) Sesi - 2.disli_ses.mp3
+let disliAudio = null;
+let lastDisliSoundTime = 0;
+
+function initAstrolabeSounds() {
+  if (!kadranAudio) {
+    kadranAudio = new Audio('kadran.mp3');
+    kadranAudio.preload = 'auto';
+  }
+  if (!disliAudio) {
+    disliAudio = new Audio('2.disli_ses.mp3');
+    disliAudio.preload = 'auto';
+  }
+}
+const initKadranAudio = initAstrolabeSounds;
+
+function playKadranRotateSound(volume = 0.75) {
+  try {
+    const now = Date.now();
+    if (now - lastKadranSoundTime < 110) return;
+    lastKadranSoundTime = now;
+
+    initAstrolabeSounds();
+    kadranAudio.volume = volume;
+    kadranAudio.currentTime = 0;
+    const playPromise = kadranAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        playAstrolabeTickFallback();
+      });
+    }
+  } catch (e) {
+    playAstrolabeTickFallback();
+  }
+}
+
+const playAstrolabeTickSound = playDisliSnapSound;
+
+function playDisliSnapSound(volume = 0.85) {
+  try {
+    const now = Date.now();
+    if (now - lastDisliSoundTime < 80) return;
+    lastDisliSoundTime = now;
+
+    initAstrolabeSounds();
+    disliAudio.volume = volume;
+    disliAudio.currentTime = 0;
+    const playPromise = disliAudio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        playAstrolabeTickFallback();
+      });
+    }
+  } catch (e) {
+    playAstrolabeTickFallback();
+  }
+}
+
+function playAstrolabeTickFallback() {
   try {
     const ctx = getAstrolabeAudioContext();
     if (!ctx) return;
@@ -194,14 +256,17 @@ function renderAstrolabePills() {
 // Halka Çevirme Fonksiyonu (Düğmeyle Adımlama veya Doğrudan Slot Seçimi)
 function rotateRingManual(ringNumber, directionOrSlot, isDirectSlot = false) {
   if (isCurrentStageLocked) return;
-  playAstrolabeTickSound();
   
   const key = `ring${ringNumber}`;
   if (isDirectSlot) {
+    if (ringState[key] === directionOrSlot) return;
     ringState[key] = directionOrSlot;
   } else {
     ringState[key] = (ringState[key] + directionOrSlot + 3) % 3;
   }
+
+  // Dilime geçiş ve oturma (2.disli_ses.mp3)
+  playDisliSnapSound();
 
   const ringElem = document.getElementById(`ringElement${ringNumber}`);
   if (ringElem) {
@@ -310,6 +375,7 @@ function getPointerAngleFromCenter(e, centerX, centerY) {
 function initAstrolabeDragAndDrop() {
   const dial = document.getElementById('astrolabeDialContainer');
   if (!dial) return;
+  let lastDragSoundAngle = 0;
 
   function onPointerStart(e) {
     if (isCurrentStageLocked) return;
@@ -339,6 +405,8 @@ function initAstrolabeDragAndDrop() {
     const currentSlot = ringState[`ring${activeDragRingNumber}`];
     dragStartRingAngle = -currentSlot * 120;
     currentDragAngle = dragStartRingAngle;
+    lastDragSoundAngle = currentDragAngle;
+    playKadranRotateSound();
 
     const ringElem = document.getElementById(`ringElement${activeDragRingNumber}`);
     if (ringElem) {
@@ -375,6 +443,12 @@ function initAstrolabeDragAndDrop() {
       ringElem.style.transform = `rotate(${currentDragAngle}deg)`;
     }
 
+    // Belirli açı değişiminde mekanik çark dönüş sesini tetikle
+    if (Math.abs(currentDragAngle - lastDragSoundAngle) >= 30) {
+      playKadranRotateSound();
+      lastDragSoundAngle = currentDragAngle;
+    }
+
     // Çevirme anında madalyonları anlık olarak yatay tut
     for (let i = 0; i < 3; i++) {
       const lbl = document.getElementById(`ringLabel${activeDragRingNumber}_${i}`);
@@ -401,7 +475,8 @@ function initAstrolabeDragAndDrop() {
     let norm = ((-currentDragAngle % 360) + 360) % 360;
     let slot = Math.round(norm / 120) % 3;
 
-    playAstrolabeTickSound();
+    // Dilime oturma / mandal tıkırtısı sesi (2.disli_ses.mp3)
+    playDisliSnapSound();
     ringState[`ring${ringNum}`] = slot;
 
     // Akıcı yaylanma fiziğini geri yükle
@@ -527,6 +602,7 @@ function nextAstrolabeStage() {
 // Zaman Kadranı Modalı Aç / Kapat
 function openZamanKadrani() {
   if (astrolabeModal) astrolabeModal.classList.remove('hidden');
+  initKadranAudio();
   loadAstrolabeStage(currentAstrolabeStageIndex);
   requestAnimationFrame(() => {
     updateAstrolabeVisuals();
@@ -541,6 +617,7 @@ window.closeZamanKadrani = closeZamanKadrani;
 
 // Zaman Kadranı Başlatıcı
 function initAstrolabe() {
+  initKadranAudio();
   astrolabeModal = document.getElementById('astrolabeModal');
   btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
   btnStartAstrolabeFromComplete = document.getElementById('btnStartAstrolabeFromComplete');
