@@ -1,0 +1,15 @@
+# Buyuk boyutlu dosyalar
+*.pdf
+videolar/*.mp4
+
+# Bagimliliklar ve Derleme ciktilari
+node_modules/
+dist/
+build/
+*.zip
+
+# IDE ve Sistem Dosyalari
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
