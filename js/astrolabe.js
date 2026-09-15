@@ -320,10 +320,10 @@ function rotateRingManual(ringNumber, directionOrSlot, isDirectSlot = false) {
 
   updateAstrolabeVisuals();
 
-  // Durum metnini sıfırla
-  if (astrolabeStatusText) {
-    astrolabeStatusText.textContent = 'Kadranları çevirerek gelişme, tetikleyici neden ve ortaya çıkan sonucu altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.';
-    astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-stone-900 leading-relaxed font-bold';
+  // Durum metnini sıfırla (Kilit kontrol edilene kadar gizli tut)
+  if (astrolabeStatusText && !isCurrentStageLocked) {
+    astrolabeStatusText.className = 'hidden';
+    astrolabeStatusText.textContent = '';
   }
 }
 window.rotateRingManual = rotateRingManual;
