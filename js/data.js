@@ -116,9 +116,9 @@ const ASTROLABE_STAGES = [
         { text: "Rus ordusunun Edirne sınırını geçerek barış antlaşması imzalamayı dayatması", label: "Rus İlerlemesi" }
       ],
       ring2: [
-        { text: "1876 – Tersane Konferansı'nın Kararlar Alması", label: "Tersane Zirvesi" },
-        { text: "23 Aralık 1876 – İlk Anayasa Kanun-ı Esasi'nin İlanı ve I. Meşrutiyet", label: "Kanun-ı Esasi" },
-        { text: "1876 – Sultan Abdülaziz'in Tahttan İndirilmesi", label: "Taht Değişimi" }
+        { text: "1876 – Tersane Konferansı'nın toplanması", label: "Tersane Zirvesi" },
+        { text: "23 Aralık 1876 – Kanun-ı Esasi'nin ilanı ve I. Meşrutiyet", label: "Kanun-ı Esasi" },
+        { text: "1876 – Sultan Abdülaziz'in tahttan indirilmesi", label: "Taht Değişimi" }
       ],
       ring3: [
         { text: "Padişahın mutlak otoritesine dayanan sıkı denetim evresinin başlaması", label: "Mutlak İdare" },
@@ -143,9 +143,9 @@ const ASTROLABE_STAGES = [
         { text: "İstanbul'daki Avcı Taburlarının anayasa talebiyle Yıldız Sarayı'nı kuşatması", label: "Saray Kuşatması" }
       ],
       ring2: [
-        { text: "13 Şubat 1878 – Meclis-i Umumi'nin Tatil Edilmesi (Kapatılması)", label: "Meclisin Tatili" },
-        { text: "1877 – Rusya'ya Karşı Kutsal Cihat İlan Edilmesi", label: "Cihat İlanı" },
-        { text: "1878 – Ayastefanos Antlaşması'nın İmzalanması", label: "Ayastefanos" }
+        { text: "13 Şubat 1878 – Meclis-i Umumi'nin tatil edilmesi (kapatılması)", label: "Meclisin Tatili" },
+        { text: "1877 – Rusya'ya karşı kutsal cihat ilan edilmesi", label: "Cihat İlanı" },
+        { text: "1878 – Ayastefanos Antlaşması'nın imzalanması", label: "Ayastefanos" }
       ],
       ring3: [
         { text: "Rus ordusunun İstanbul Boğazı'na girerek Osmanlı yönetimine doğrudan el koyması", label: "Rus İşgali" },
@@ -171,9 +171,9 @@ const ASTROLABE_STAGES = [
         { text: "Bulgaristan'ın bağımsızlık ilanına karşı Osmanlı ordusunun hudutlara asker yığması", label: "Sınır Yığınağı" }
       ],
       ring2: [
-        { text: "Haziran 1908 – Baltık Kıyısında Reval Diplomatik Zirvesi", label: "Reval Zirvesi" },
-        { text: "Temmuz 1908 – İttihatçı Subayların Rumeli'de Meşrutiyet İçin Dağa Çıkması", label: "Rumeli Ayaklanması" },
-        { text: "1908 – Paris'te II. Jön Türk Kongresi'nin Toplanması", label: "Paris Kongresi" }
+        { text: "Haziran 1908 – Baltık kıyısında Reval diplomatik zirvesi", label: "Reval Zirvesi" },
+        { text: "Temmuz 1908 – İttihatçı subayların Rumeli'de meşrutiyet için dağa çıkması", label: "Rumeli Ayaklanması" },
+        { text: "1908 – Paris'te II. Jön Türk Kongresi'nin toplanması", label: "Paris Kongresi" }
       ],
       ring3: [
         { text: "Osmanlı Devleti'nin Balkan devletleriyle tek taraflı sınır antlaşması yapması", label: "Sınır Antlaşması" },
@@ -198,9 +198,9 @@ const ASTROLABE_STAGES = [
         { text: "Sadrazam Hüseyin Hilmi Paşa'nın meclisi feshetmek için saraya baskı yapması", label: "Sadrazam Baskısı" }
       ],
       ring2: [
-        { text: "1908 – Osmanlı Hürriyet Cemiyeti'nin Kurulması", label: "Cemiyet Kuruluşu" },
-        { text: "23 Temmuz 1908 – II. Meşrutiyet'in Resmen İlan Edilmesi", label: "II. Meşrutiyet" },
-        { text: "1908 – Selanik Hürriyet Meydanı Gösterileri", label: "Selanik Gösterisi" }
+        { text: "1908 – Osmanlı Hürriyet Cemiyeti'nin kurulması", label: "Cemiyet Kuruluşu" },
+        { text: "23 Temmuz 1908 – II. Meşrutiyet'in resmen ilan edilmesi", label: "II. Meşrutiyet" },
+        { text: "1908 – Selanik Hürriyet Meydanı gösterileri", label: "Selanik Gösterisi" }
       ],
       ring3: [
         { text: "Meclis-i Mebusan'ın otuz yıl sonra yeniden açılması, seçimlerin yapılması ve çok partili hayata geçilmesi", label: "Çok Partili Düzen" },
@@ -226,9 +226,9 @@ const ASTROLABE_STAGES = [
         { text: "Girit Meclisi'nin Yunanistan'a katılma kararının başkentte infial yaratması", label: "Girit Tepkisi" }
       ],
       ring2: [
-        { text: "1909 – Serbestî Gazetesi Başyazarı Hasan Fehmi Bey Suikastı", label: "Gazeteci Suikastı" },
-        { text: "13 Nisan 1909 – 31 Mart Olayı (Meşrutiyet Karşıtı Ayaklanma)", label: "31 Mart Olayı" },
-        { text: "1909 – Mahmud Şevket Paşa'nın Harbiye Nazırlığına Gelmesi", label: "Nazır Ataması" }
+        { text: "1909 – Serbestî gazetesi başyazarı Hasan Fehmi Bey suikastı", label: "Gazeteci Suikastı" },
+        { text: "13 Nisan 1909 – 31 Mart Olayı (Meşrutiyet karşıtı ayaklanma)", label: "31 Mart Olayı" },
+        { text: "1909 – Mahmud Şevket Paşa'nın Harbiye Nazırlığına getirilmesi", label: "Nazır Ataması" }
       ],
       ring3: [
         { text: "İsyancıların baskısıyla Sadrazam Hüseyin Hilmi Paşa kabinesinin istifa etmesi ve başkentin denetiminin kaybedilmesi", label: "Hükümet İstifası" },
@@ -253,9 +253,9 @@ const ASTROLABE_STAGES = [
         { text: "Trablusgarp bölgesindeki İtalyan işgaline karşı ordu birliklerinin teyakkuzda olması", label: "Trablusgarp İstilası" }
       ],
       ring2: [
-        { text: "1909 – Kolağası Mustafa Kemal'in Yeşilköy'e Ulaşması", label: "Yeşilköy İntikali" },
-        { text: "Nisan 1909 – Hareket Ordusu'nun İstanbul'a Girerek İsyanı Bastırması", label: "Hareket Ordusu" },
-        { text: "1909 – Sıkıyönetim Komutanlığı Divan-ı Harbi'nin Kurulması", label: "Divan-ı Harp" }
+        { text: "1909 – Kolağası Mustafa Kemal'in Yeşilköy'e ulaşması", label: "Yeşilköy İntikali" },
+        { text: "Nisan 1909 – Hareket Ordusu'nun İstanbul'a girerek isyanı bastırması", label: "Hareket Ordusu" },
+        { text: "1909 – Sıkıyönetim Komutanlığı Divan-ı Harbi'nin kurulması", label: "Divan-ı Harp" }
       ],
       ring3: [
         { text: "Sultan II. Abdülhamid'in tahttan indirilmesi ve Kanun-ı Esasi değişiklikleriyle meclis üstünlüğünün pekişmesi", label: "Meclis Üstünlüğü" },
