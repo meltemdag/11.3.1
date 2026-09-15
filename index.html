@@ -86,7 +86,7 @@
 
           <!-- Yönlendirme Metni (İs Mürekkebi ve Vakur Yazı Karakteri) -->
           <p class="font-serif text-base sm:text-lg lg:text-xl text-[#221206] font-bold leading-relaxed text-center px-1 my-auto">
-            Kronolojik akışı takip etmek için bilgi görselindeki olayları sırasıyla seçiniz; video anlatımlarını izleyerek gelişmeler arasındaki neden ve sonuç ilişkilerini inceleyiniz.
+            Etkileşimli bilgi görselindeki olayları sırasıyla seçerek videoları izleyiniz ve aralarındaki neden-sonuç ilişkilerini inceleyiniz.
           </p>
 
           <!-- Klasik Alt Şemse Ayracı -->
@@ -304,13 +304,13 @@
         <!-- Sol Alan: Dönen Osmanlı Usturlap Aygıtı -->
         <div class="w-full lg:w-[470px] xl:w-[500px] 2xl:w-[530px] shrink-0 flex flex-col items-center justify-between h-full py-0.5">
           
-          <!-- Kadran Dönem Başlığı -->
+          <!-- Kadran Tarih Başlığı -->
           <div class="text-center shrink-0 mb-1">
             <h3 id="astrolabeStageTitle" class="font-lora font-bold text-lg sm:text-xl text-[#6b1414] tracking-wide">
-              I. Dönem: 1876 – 1878 (Meclis-i Umumi'nin Tatili)
+              1876 – 1878
             </h3>
             <p class="font-lora font-semibold text-sm sm:text-base text-stone-800 mt-0.5">
-              Halkaları çevirerek neden ve sonuç zincirini altın ibre hizasında birleştiriniz.
+              Halkaları çevirerek olay, neden ve sonuç zincirini altın ibre hizasında birleştiriniz.
             </p>
           </div>
 
@@ -398,7 +398,7 @@
           <div class="w-full max-w-[420px] grid grid-cols-3 gap-2 mt-2 text-center shrink-0">
             <!-- 1. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#543b18] mb-1">Dış Kadran</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#543b18] mb-1">1. Kadran (Olay)</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
                 <button id="btnRotateRing1Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -415,7 +415,7 @@
 
             <!-- 2. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#68411b] mb-1">Orta Kadran</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#68411b] mb-1">2. Kadran (Neden)</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
                 <button id="btnRotateRing2Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -432,7 +432,7 @@
 
             <!-- 3. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#7d5220] mb-1">İç Kadran</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#7d5220] mb-1">3. Kadran (Sonuç)</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
                 <button id="btnRotateRing3Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -456,33 +456,33 @@
           <!-- Üçlü Hizalama Kartları (Tüm Yüksekliği Eşit Dolduran Kartlar) -->
           <div class="flex-1 flex flex-col justify-between gap-3 min-h-0">
             
-            <!-- 1. Kart: Olay / Gelişme -->
+            <!-- 1. Kart: Olay -->
             <div id="cardAligned1" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
               <div class="flex items-center gap-2 mb-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#caa55d]"></span>
-                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#7c531d] tracking-wider">Tarihî Gelişme</h4>
+                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#7c531d] tracking-wider">Olay</h4>
               </div>
               <p id="textAligned1" class="font-lora font-bold text-lg sm:text-xl text-stone-950 leading-snug">
                 <!-- JS ile güncellenir -->
               </p>
             </div>
 
-            <!-- 2. Kart: Tetikleyici Neden -->
+            <!-- 2. Kart: Neden -->
             <div id="cardAligned2" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
               <div class="flex items-center gap-2 mb-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#dfb76c]"></span>
-                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#8c4d16] tracking-wider">Tetikleyici Neden</h4>
+                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#8c4d16] tracking-wider">Neden</h4>
               </div>
               <p id="textAligned2" class="font-lora font-bold text-base sm:text-lg text-stone-950 leading-relaxed">
                 <!-- JS ile güncellenir -->
               </p>
             </div>
 
-            <!-- 3. Kart: Ortaya Çıkan Sonuç -->
+            <!-- 3. Kart: Sonuç -->
             <div id="cardAligned3" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
               <div class="flex items-center gap-2 mb-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#f3d07e]"></span>
-                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#8c6729] tracking-wider">Ortaya Çıkan Sonuç</h4>
+                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#8c6729] tracking-wider">Sonuç</h4>
               </div>
               <p id="textAligned3" class="font-lora font-bold text-base sm:text-lg text-stone-950 leading-relaxed">
                 <!-- JS ile güncellenir -->
@@ -494,7 +494,7 @@
           <!-- Canlı Geri Bildirim ve Eylem Paneli -->
           <div id="astrolabeFeedbackPanel" class="p-3.5 sm:p-4 rounded-xl border border-[#caa55d]/70 bg-[#fffbf2] shadow-inner shrink-0 flex flex-col items-center text-center gap-3">
             <p id="astrolabeStatusText" class="font-lora font-bold text-sm sm:text-base text-stone-900 leading-relaxed max-w-xl">
-              Kadranları çevirerek gelişme, tetikleyici neden ve ortaya çıkan sonucu altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.
+              Kadranları çevirerek olay, neden ve sonuç bağlantısını altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.
             </p>
             
             <div class="flex items-center gap-3 w-full justify-center">
@@ -505,7 +505,7 @@
               </button>
 
               <button id="btnNextKadran" class="hidden px-8 py-3 rounded-xl bg-gradient-to-r from-[#caa55d] via-[#e2be68] to-[#caa55d] hover:from-[#b99041] hover:to-[#b99041] text-[#261508] border border-[#8c6520] font-serif font-bold text-sm sm:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
-                Sonraki Döneme Geç
+                Sonraki Aşamaya Geç
               </button>
             </div>
           </div>

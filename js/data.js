@@ -97,12 +97,12 @@ const EVENTS = [
   }
 ];
 
-// 3 Kritik Tarihsel Dönüm Noktası Kadran Dönemleri
+// 3 Kritik Tarihsel Dönüm Noktası Kadran Kademeleri
 const ASTROLABE_STAGES = [
   {
     id: 1,
-    title: "I. Dönem: 1876 – 1878 (Meclis-i Umumi'nin Tatili)",
-    pillName: "I. Dönem",
+    title: "1876 – 1878",
+    pillName: "1876 – 1878",
     correct: { ring1: 1, ring2: 0, ring3: 2 },
     initial: { ring1: 0, ring2: 2, ring3: 1 },
     explanation: "1877-1878 93 Harbi'nin yol açtığı buhran gerekçe gösterilerek Meclis-i Umumi kapatılmış, Kanun-ı Esasi askıya alınarak otuz yıllık mutlak otorite devri başlamıştır.",
@@ -126,8 +126,8 @@ const ASTROLABE_STAGES = [
   },
   {
     id: 2,
-    title: "II. Dönem: 1908 (Reval'den Meşrutiyet'in İlanına)",
-    pillName: "II. Dönem",
+    title: "1908",
+    pillName: "1908",
     correct: { ring1: 0, ring2: 2, ring3: 1 },
     initial: { ring1: 2, ring2: 0, ring3: 0 },
     explanation: "Reval Görüşmeleri'nde Osmanlı topraklarının paylaşılacağı endişesiyle Rumeli'de subaylar ayaklanmış; baskı karşısında II. Meşrutiyet ilan edilerek meclis otuz yıl sonra yeniden açılmıştır.",
@@ -151,8 +151,8 @@ const ASTROLABE_STAGES = [
   },
   {
     id: 3,
-    title: "III. Dönem: 1909 (31 Mart ve Meclis Üstünlüğü)",
-    pillName: "III. Dönem",
+    title: "1909",
+    pillName: "1909",
     correct: { ring1: 1, ring2: 0, ring3: 2 },
     initial: { ring1: 0, ring2: 2, ring3: 1 },
     explanation: "Meşrutiyet karşıtı 31 Mart Ayaklanması Selanik'ten gelen Hareket Ordusu tarafından bastırılmış; II. Abdülhamid tahttan indirilmiş ve yapılan anayasa değişiklikleriyle yönetim yetkisi kalıcı olarak halk meclisine geçmiştir.",

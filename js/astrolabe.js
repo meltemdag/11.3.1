@@ -262,13 +262,13 @@ function loadAstrolabeStage(index) {
     setAstrolabeSealState(true);
     if (astrolabeStatusText) {
       astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-emerald-950 leading-relaxed font-bold';
-      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Bu dönem başarıyla kilitlendi.</span> ${stage.explanation}`;
+      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Bu aşama başarıyla kilitlendi.</span> ${stage.explanation}`;
     }
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
     if (btnNextKadran) {
       btnNextKadran.classList.remove('hidden');
       if (currentAstrolabeStageIndex < ASTROLABE_STAGES.length - 1) {
-        btnNextKadran.textContent = 'Sonraki Döneme Geç';
+        btnNextKadran.textContent = 'Sonraki Aşamaya Geç';
       } else {
         btnNextKadran.textContent = 'Etkinliği Tamamla';
       }
@@ -277,7 +277,7 @@ function loadAstrolabeStage(index) {
     setAstrolabeSealState(false);
     if (astrolabeStatusText) {
       astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-stone-900 leading-relaxed font-bold';
-      astrolabeStatusText.textContent = 'Kadranları çevirerek gelişme, tetikleyici neden ve ortaya çıkan sonucu altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.';
+      astrolabeStatusText.textContent = 'Kadranları çevirerek olay, neden ve sonuç bağlantısını altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.';
     }
     if (btnCheckLock) btnCheckLock.classList.remove('hidden');
     if (btnNextKadran) btnNextKadran.classList.add('hidden');
@@ -608,7 +608,7 @@ function checkAstrolabeLock() {
     if (btnNextKadran) {
       btnNextKadran.classList.remove('hidden');
       if (currentAstrolabeStageIndex < ASTROLABE_STAGES.length - 1) {
-        btnNextKadran.textContent = 'Sonraki Döneme Geç';
+        btnNextKadran.textContent = 'Sonraki Aşamaya Geç';
       } else {
         btnNextKadran.textContent = 'Etkinliği Tamamla';
         if (typeof notifyScormCompleted === 'function') {
