@@ -197,11 +197,12 @@ let ringState = { ring1: 0, ring2: 0, ring3: 0 };
 let completedAstrolabeStages = new Set();
 let isCurrentStageLocked = false;
 
-// DOM Öğeleri (Zaman Kadranı)
-let astrolabeModal;
+// DOM Öğeleri (Zaman Kadranı Sayfası)
+let viewInfographicPage;
+let viewAstrolabePage;
 let btnOpenAstrolabe;
+let btnBackToInfographic;
 let btnStartAstrolabeFromComplete;
-let btnAstrolabeClose;
 let astrolabeStageTitle;
 let astrolabeStagePills;
 let ringElement1;
@@ -659,7 +660,7 @@ function nextAstrolabeStage() {
     loadAstrolabeStage(currentAstrolabeStageIndex + 1);
   } else {
     // Tüm 3 Dönem Tamamlandı
-    if (astrolabeModal) astrolabeModal.classList.add('hidden');
+    closeZamanKadrani();
     if (typeof notifyScormCompleted === 'function') {
       notifyScormCompleted();
     }
@@ -670,9 +671,17 @@ function nextAstrolabeStage() {
   }
 }
 
-// Zaman Kadranı Modalı Aç / Kapat
+// Zaman Kadranı Tam Ekran Sayfası Aç / Kapat
 function openZamanKadrani() {
-  if (astrolabeModal) astrolabeModal.classList.remove('hidden');
+  viewInfographicPage = document.getElementById('viewInfographicPage');
+  viewAstrolabePage = document.getElementById('viewAstrolabePage');
+
+  if (viewInfographicPage) viewInfographicPage.classList.add('hidden');
+  if (viewAstrolabePage) {
+    viewAstrolabePage.classList.remove('hidden');
+    viewAstrolabePage.scrollTop = 0;
+  }
+
   initKadranAudio();
   loadAstrolabeStage(currentAstrolabeStageIndex);
   requestAnimationFrame(() => {
@@ -682,18 +691,23 @@ function openZamanKadrani() {
 window.openZamanKadrani = openZamanKadrani;
 
 function closeZamanKadrani() {
-  if (astrolabeModal) astrolabeModal.classList.add('hidden');
+  viewInfographicPage = document.getElementById('viewInfographicPage');
+  viewAstrolabePage = document.getElementById('viewAstrolabePage');
+
+  if (viewAstrolabePage) viewAstrolabePage.classList.add('hidden');
+  if (viewInfographicPage) viewInfographicPage.classList.remove('hidden');
 }
 window.closeZamanKadrani = closeZamanKadrani;
 
 // Zaman Kadranı Başlatıcı
 function initAstrolabe() {
   initKadranAudio();
-  astrolabeModal = document.getElementById('astrolabeModal');
+  viewInfographicPage = document.getElementById('viewInfographicPage');
+  viewAstrolabePage = document.getElementById('viewAstrolabePage');
   btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
   const btnOpenAstrolabeMobile = document.getElementById('btnOpenAstrolabeMobile');
   btnStartAstrolabeFromComplete = document.getElementById('btnStartAstrolabeFromComplete');
-  btnAstrolabeClose = document.getElementById('btnAstrolabeClose');
+  btnBackToInfographic = document.getElementById('btnBackToInfographic');
   astrolabeStageTitle = document.getElementById('astrolabeStageTitle');
   astrolabeStagePills = document.getElementById('astrolabeStagePills');
   ringElement1 = document.getElementById('ringElement1');
@@ -727,8 +741,8 @@ function initAstrolabe() {
     });
   }
 
-  if (btnAstrolabeClose) {
-    btnAstrolabeClose.addEventListener('click', closeZamanKadrani);
+  if (btnBackToInfographic) {
+    btnBackToInfographic.addEventListener('click', closeZamanKadrani);
   }
 
   if (btnCheckLock) {
@@ -754,9 +768,9 @@ function initAstrolabe() {
   if (btnR3P) btnR3P.addEventListener('click', () => rotateRingManual(3, -1));
   if (btnR3N) btnR3N.addEventListener('click', () => rotateRingManual(3, 1));
 
-  // ESC Tuşu ile Kadranı Kapatma
+  // ESC Tuşu ile Kadran Sayfasından Ana Sayfaya Dönüş
   window.addEventListener('keydown', (e) => {
-    if (astrolabeModal && !astrolabeModal.classList.contains('hidden')) {
+    if (viewAstrolabePage && !viewAstrolabePage.classList.contains('hidden')) {
       if (e.key === 'Escape') {
         closeZamanKadrani();
       }
@@ -765,7 +779,7 @@ function initAstrolabe() {
 
   // Pencere Boyutu Değiştiğinde Kadranı Anında Yeniden Hesapla
   window.addEventListener('resize', () => {
-    if (astrolabeModal && !astrolabeModal.classList.contains('hidden')) {
+    if (viewAstrolabePage && !viewAstrolabePage.classList.contains('hidden')) {
       updateAstrolabeVisuals();
     }
   });

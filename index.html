@@ -13,8 +13,8 @@
 </head>
 <body class="bg-stone-100 text-stone-800 font-sans h-full min-h-screen flex flex-col antialiased overflow-y-auto lg:overflow-hidden">
 
-  <!-- Ana İçerik Alanı -->
-  <main class="flex-1 w-full mx-auto p-2 sm:p-3 md:p-4 flex flex-col lg:flex-row items-center justify-start lg:justify-center gap-2 sm:gap-2.5 lg:gap-4 min-h-0 h-full">
+  <!-- 1. SAYFA GÖRÜNÜMÜ: BİLGİ GÖRSELİ VE FERMAN (ANA SAYFA) -->
+  <main id="viewInfographicPage" class="flex-1 w-full mx-auto p-2 sm:p-3 md:p-4 flex flex-col lg:flex-row items-center justify-start lg:justify-center gap-2 sm:gap-2.5 lg:gap-4 min-h-0 h-full">
 
     <!-- Sol Ferman Bilgilendirme Paneli -->
     <aside class="w-full lg:w-56 xl:w-64 shrink-0 flex flex-col justify-start lg:justify-between lg:self-stretch select-none">
@@ -276,309 +276,302 @@
     </div>
   </div>
 
-  <!-- ZAMAN KADRANI / OSMANLI USTURLABI ÖLÇME VE DEĞERLENDİRME MODALI -->
-  <div id="astrolabeModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-1 sm:p-3 md:p-4 lg:p-5 bg-stone-950/85 backdrop-blur-md select-none overflow-hidden">
-    <div class="bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] rounded-xl sm:rounded-2xl shadow-[0_25px_80px_rgba(20,10,5,0.65)] w-full max-w-[98vw] xl:max-w-[1320px] 2xl:max-w-[1440px] h-[98vh] sm:h-[92vh] max-h-[98vh] flex flex-col overflow-hidden border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-1 sm:outline-offset-2 relative">
+  <!-- 2. SAYFA GÖRÜNÜMÜ: ZAMAN KADRANI / OSMANLI USTURLABI (AYRI SAYFA) -->
+  <section id="viewAstrolabePage" class="hidden w-full h-full min-h-screen flex flex-col bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] select-none">
 
-      <!-- Modal Üst Yönlendirme Barı (Klasik Bordo ve Altın Serlevha) -->
-      <div class="flex items-center justify-between px-2.5 sm:px-6 py-1.5 sm:py-3 bg-gradient-to-r from-[#6b1414] via-[#8c1e1e] to-[#6b1414] text-white border-b-2 border-[#caa55d] shadow-md shrink-0 gap-2 sm:gap-3">
-        <div class="flex-1 flex items-center min-w-0 pr-1 sm:pr-2">
-          <p class="font-serif text-[10px] sm:text-xs md:text-sm lg:text-base text-[#fff7e6] font-medium leading-snug sm:leading-relaxed drop-shadow">
-            Kadranları çevirerek nedeni, olayı ve ortaya çıkan sonucu üst ibre hizasında bir araya getiriniz. Doğru zinciri oluşturduktan sonra "Kilidi Kontrol Et" butonuna tıklayınız.
-          </p>
+    <!-- Yönerge Kılavuz Bandı ve Geri Butonu -->
+    <div class="w-full bg-[#3d0b0b]/90 border-b border-[#caa55d]/40 px-3 sm:px-6 py-2 flex items-center justify-between gap-3 shrink-0">
+      <!-- Geri Dön Butonu -->
+      <button id="btnBackToInfographic" class="px-3 sm:px-4 py-1 sm:py-1.5 rounded-lg bg-gradient-to-r from-[#3d0b0b] to-[#500f0f] hover:from-[#2a0606] hover:to-[#3d0b0b] text-[#ffd978] hover:text-[#fff4db] border border-[#d8b058] shadow-[0_2px_6px_rgba(40,10,10,0.4)] flex items-center gap-1.5 text-xs sm:text-sm font-serif font-bold tracking-wide transition-all active:scale-95 cursor-pointer shrink-0">
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Geri</span>
+      </button>
+
+      <p class="flex-1 font-serif text-[11px] sm:text-xs md:text-sm text-[#fcf6e8] font-medium leading-tight text-center px-1">
+        Kadranları çevirerek nedeni, olayı ve ortaya çıkan sonucu üst ibre hizasında bir araya getiriniz. Doğru zinciri oluşturduktan sonra "Kilidi Kontrol Et" butonuna tıklayınız.
+      </p>
+
+      <div class="w-12 sm:w-16 shrink-0 hidden xs:block"></div>
+    </div>
+
+    <!-- Sayfa Ana Gövdesi (Ferah İki Kolonlu Yerleşim) -->
+    <div class="flex-1 overflow-y-auto smooth-scroll p-3 sm:p-4 md:p-6 lg:p-8 flex flex-col lg:flex-row items-center lg:items-stretch justify-center lg:justify-between gap-4 sm:gap-6 lg:gap-10 max-w-7xl mx-auto w-full min-h-0">
+
+      <!-- Sol Alan: Dönen Osmanlı Usturlap Aygıtı -->
+      <div class="w-full lg:w-[460px] xl:w-[500px] 2xl:w-[530px] shrink-0 flex flex-col items-center justify-start lg:justify-between py-1 gap-2 sm:gap-3">
+
+        <!-- Dairesel Usturlap Mekanizması Kaidesi -->
+        <div class="relative flex items-center justify-center my-auto pt-3 sm:pt-6 pb-1 shrink-0">
+
+          <!-- Osmanlı Usturlap Kürsüsü ve Asma Halkası (Halqa ve Kursi) -->
+          <div class="absolute -top-2.5 sm:-top-4 z-30 flex flex-col items-center pointer-events-none">
+            <!-- Asma Halkası (Halqa) -->
+            <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full border-2 sm:border-[3px] border-[#caa55d] bg-gradient-to-b from-[#8c6225] via-[#e2be68] to-[#6a4214] shadow-md flex items-center justify-center -mb-1 sm:-mb-2">
+              <div class="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full bg-[#1c1208]/90 border border-[#8c6225]"></div>
+            </div>
+            <!-- Kürsü Gövdesi (Rûmî Kemer) -->
+            <svg class="w-16 sm:w-28 lg:w-32 h-3.5 sm:h-6 text-[#caa55d] filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" viewBox="0 0 120 28" fill="none" aria-hidden="true">
+              <path d="M10 26 C28 22 42 12 60 4 C78 12 92 22 110 26 Z" fill="url(#kursiGrad2)" stroke="#e4c272" stroke-width="1.2"/>
+              <path d="M30 26 C42 20 50 14 60 9 C70 14 78 20 90 26" stroke="#5a3814" stroke-width="0.8"/>
+              <circle cx="60" cy="8" r="2" fill="#8c1e1e"/>
+              <defs>
+                <linearGradient id="kursiGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#7d5320"/>
+                  <stop offset="50%" stop-color="#e8ca7b"/>
+                  <stop offset="100%" stop-color="#5a3814"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <!-- Altın Hizalama İbresi (El-Mîrî Üçgen Gösterge Dişi) -->
+            <svg class="w-3.5 h-3.5 sm:w-5 sm:h-5 filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)] -mt-0.5 pointer-events-none" viewBox="0 0 20 18" fill="none" aria-hidden="true">
+              <polygon points="2,1 18,1 10,16" fill="#ffd978" stroke="#b58d3d" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Ana Usturlap Çarkı -->
+          <div id="astrolabeDialContainer" class="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] lg:w-[370px] lg:h-[370px] xl:w-[400px] xl:h-[400px] 2xl:w-[420px] 2xl:h-[420px] rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(15,23,42,0.55),inset_0_0_30px_rgba(0,0,0,0.85)] border-[4px] sm:border-[5px] lg:border-[6px] border-[#caa55d] ring-2 ring-[#ffd978]/80 bg-gradient-to-br from-[#0c1527] via-[#162540] to-[#0a101d] select-none cursor-grab active:cursor-grabbing" style="touch-action: none;">
+
+            <!-- Dış Derece Çizgileri Çerçevesi -->
+            <div class="absolute inset-0 rounded-full border border-[#caa55d]/50 pointer-events-none"></div>
+            <div class="absolute inset-1 sm:inset-1.5 rounded-full border border-dashed border-[#ffd978]/30 pointer-events-none"></div>
+
+            <!-- 1. Dış Kadran (Olay / Dönüm Noktası Halkası) -->
+            <div id="ringElement1" class="absolute w-[94%] h-[94%] left-[3%] top-[3%] rounded-full border-2 border-[#caa55d]/90 bg-gradient-to-br from-[#121f35] via-[#1a2c4b] to-[#101b2e] shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out">
+              <!-- Kavisli Halka Yazıları (SVG TextPath) -->
+              <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="-200 -200 400 400">
+                <defs>
+                  <path id="arcR1_0" d="M -134.82 -113.13 A 176 176 0 0 1 134.82 -113.13" fill="none" stroke="none" />
+                  <path id="arcR1_1" d="M 165.39 -60.19 A 176 176 0 0 1 30.55 173.32" fill="none" stroke="none" />
+                  <path id="arcR1_2" d="M -30.55 173.32 A 176 176 0 0 1 -165.39 -60.19" fill="none" stroke="none" />
+                </defs>
+                <g id="curvedGroup1_0" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(1, 0, true)">
+                  <text id="curvedLabel1_0" fill="#fcf6e8" font-size="14.5" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR1_0" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+                <g id="curvedGroup1_1" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(1, 1, true)">
+                  <text id="curvedLabel1_1" fill="#fcf6e8" font-size="14.5" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR1_1" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+                <g id="curvedGroup1_2" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(1, 2, true)">
+                  <text id="curvedLabel1_2" fill="#fcf6e8" font-size="14.5" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR1_2" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+              </svg>
+
+              <div id="ringSlot1_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 0, true)">
+                <span id="ringLabel1_0"></span>
+              </div>
+              <div id="ringSlot1_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 1, true)">
+                <span id="ringLabel1_1"></span>
+              </div>
+              <div id="ringSlot1_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 2, true)">
+                <span id="ringLabel1_2"></span>
+              </div>
+            </div>
+
+            <!-- 2. Orta Kadran (Tetikleyici Neden Halkası) -->
+            <div id="ringElement2" class="absolute w-[72%] h-[72%] left-[14%] top-[14%] rounded-full border-2 border-[#dfb76c] bg-gradient-to-br from-[#182a47] via-[#223a63] to-[#15233c] shadow-md transition-transform duration-500 ease-out z-10">
+              <!-- Kavisli Halka Yazıları (SVG TextPath) -->
+              <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="-200 -200 400 400">
+                <defs>
+                  <path id="arcR2_0" d="M -128.69 -107.99 A 168 168 0 0 1 128.69 -107.99" fill="none" stroke="none" />
+                  <path id="arcR2_1" d="M 157.87 -57.46 A 168 168 0 0 1 29.16 165.45" fill="none" stroke="none" />
+                  <path id="arcR2_2" d="M -29.16 165.45 A 168 168 0 0 1 -157.87 -57.46" fill="none" stroke="none" />
+                </defs>
+                <g id="curvedGroup2_0" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(2, 0, true)">
+                  <text id="curvedLabel2_0" fill="#fcf6e8" font-size="19" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR2_0" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+                <g id="curvedGroup2_1" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(2, 1, true)">
+                  <text id="curvedLabel2_1" fill="#fcf6e8" font-size="19" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR2_1" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+                <g id="curvedGroup2_2" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(2, 2, true)">
+                  <text id="curvedLabel2_2" fill="#fcf6e8" font-size="19" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR2_2" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+              </svg>
+
+              <div id="ringSlot2_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 0, true)">
+                <span id="ringLabel2_0"></span>
+              </div>
+              <div id="ringSlot2_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 1, true)">
+                <span id="ringLabel2_1"></span>
+              </div>
+              <div id="ringSlot2_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 2, true)">
+                <span id="ringLabel2_2"></span>
+              </div>
+            </div>
+
+            <!-- 3. İç Kadran (Ortaya Çıkan Sonuç Halkası) -->
+            <div id="ringElement3" class="absolute w-[50%] h-[50%] left-[25%] top-[25%] rounded-full border-2 border-[#ffd978] bg-gradient-to-br from-[#1e3458] via-[#294676] to-[#182a46] shadow-md transition-transform duration-500 ease-out z-20">
+              <!-- Kavisli Halka Yazıları (SVG TextPath) -->
+              <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="-200 -200 400 400">
+                <defs>
+                  <path id="arcR3_0" d="M -111.07 -93.21 A 145 145 0 0 1 111.07 -93.21" fill="none" stroke="none" />
+                  <path id="arcR3_1" d="M 136.26 -49.59 A 145 145 0 0 1 25.17 142.80" fill="none" stroke="none" />
+                  <path id="arcR3_2" d="M -25.17 142.80 A 145 145 0 0 1 -136.26 -49.59" fill="none" stroke="none" />
+                </defs>
+                <g id="curvedGroup3_0" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(3, 0, true)">
+                  <text id="curvedLabel3_0" fill="#fcf6e8" font-size="26" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR3_0" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+                <g id="curvedGroup3_1" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(3, 1, true)">
+                  <text id="curvedLabel3_1" fill="#fcf6e8" font-size="26" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR3_1" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+                <g id="curvedGroup3_2" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(3, 2, true)">
+                  <text id="curvedLabel3_2" fill="#fcf6e8" font-size="26" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
+                    <textPath href="#arcR3_2" startOffset="50%" text-anchor="middle"></textPath>
+                  </text>
+                </g>
+              </svg>
+
+              <div id="ringSlot3_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 0, true)">
+                <span id="ringLabel3_0"></span>
+              </div>
+              <div id="ringSlot3_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 1, true)">
+                <span id="ringLabel3_1"></span>
+              </div>
+              <div id="ringSlot3_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 2, true)">
+                <span id="ringLabel3_2"></span>
+              </div>
+            </div>
+
+            <!-- Merkez Kilit Osmanlı Mührü -->
+            <div id="astrolabeCenterSeal" class="absolute z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-14 lg:h-14 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_15px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none">
+              <span id="centerSealIcon" class="font-serif font-bold text-[9px] sm:text-[11px] md:text-xs lg:text-sm text-[#fff7e6] tracking-wider drop-shadow text-center">Kilit</span>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Kapat Butonu (Sadece İkon) -->
-        <button id="btnAstrolabeClose" aria-label="Kapat" title="Kapat" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center bg-gradient-to-r from-[#500f0f] to-[#681414] hover:from-[#3d0b0b] hover:to-[#500f0f] text-[#fff4db] border border-[#d8b058] shadow-[0_2px_6px_rgba(60,10,10,0.35)] hover:shadow-[0_3px_10px_rgba(216,176,88,0.35)] transition-all cursor-pointer active:scale-95 shrink-0 group">
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        <!-- Çevirme Kumandaları (İleri - Geri Ok Butonları) -->
+        <div class="w-full max-w-[340px] sm:max-w-[420px] grid grid-cols-3 gap-1.5 sm:gap-2 mt-1 sm:mt-2 text-center shrink-0">
+          <!-- 1. Halka Kumandası -->
+          <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-lg sm:rounded-xl px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm">
+            <span class="font-lora font-bold text-[10px] sm:text-[11px] md:text-xs text-[#543b18] mb-0.5 sm:mb-1">1. Kadran</span>
+            <div class="flex items-center gap-1 sm:gap-1.5 w-full justify-center">
+              <button id="btnRotateRing1Prev" aria-label="Geri" title="Geri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button id="btnRotateRing1Next" aria-label="İleri" title="İleri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Halka Kumandası -->
+          <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-lg sm:rounded-xl px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm">
+            <span class="font-lora font-bold text-[10px] sm:text-[11px] md:text-xs text-[#68411b] mb-0.5 sm:mb-1">2. Kadran</span>
+            <div class="flex items-center gap-1 sm:gap-1.5 w-full justify-center">
+              <button id="btnRotateRing2Prev" aria-label="Geri" title="Geri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button id="btnRotateRing2Next" aria-label="İleri" title="İleri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Halka Kumandası -->
+          <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-lg sm:rounded-xl px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm">
+            <span class="font-lora font-bold text-[10px] sm:text-[11px] md:text-xs text-[#7d5220] mb-0.5 sm:mb-1">3. Kadran</span>
+            <div class="flex items-center gap-1 sm:gap-1.5 w-full justify-center">
+              <button id="btnRotateRing3Prev" aria-label="Geri" title="Geri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button id="btnRotateRing3Next" aria-label="İleri" title="İleri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Modal Ana Gövdesi (Genişletilmiş ve Dengelenmiş İki Kolonlu Yerleşim) -->
-      <div class="flex-1 overflow-y-auto smooth-scroll p-2 sm:p-4 md:p-5 flex flex-col lg:flex-row items-stretch justify-between gap-2 sm:gap-4 lg:gap-6 min-h-0">
+      <!-- Sağ Alan: Hizalanan Zincir Kartları ve Kilit Kontrolü -->
+      <div class="flex-1 w-full flex flex-col justify-center gap-2.5 sm:gap-3 lg:gap-3.5 min-w-0 my-auto">
 
-        <!-- Sol Alan: Dönen Osmanlı Usturlap Aygıtı -->
-        <div class="w-full lg:w-[460px] xl:w-[500px] 2xl:w-[530px] shrink-0 flex flex-col items-center justify-start lg:justify-between py-0.5 gap-1 sm:gap-2">
+        <!-- Üçlü Hizalama Kartları -->
+        <div class="flex flex-col gap-2 sm:gap-2.5 min-h-0">
 
-          <!-- Kadran Tarih Başlığı -->
-          <div class="text-center shrink-0">
-            <h3 id="astrolabeStageTitle" class="font-lora font-bold text-sm sm:text-lg md:text-xl text-[#6b1414] tracking-wide">
-              1876 – 1878
-            </h3>
+          <!-- 1. Kart: Neden -->
+          <div id="cardAligned1" class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
+            <div class="mb-0.5">
+              <h4 class="font-lora font-bold text-[10px] sm:text-xs md:text-sm uppercase text-[#7c531d] tracking-wider">Neden</h4>
+            </div>
+            <p id="textAligned1" class="font-lora font-bold text-xs sm:text-sm md:text-base text-stone-950 leading-snug">
+              <!-- JS ile güncellenir -->
+            </p>
           </div>
 
-          <!-- Dairesel Usturlap Mekanizması Kaidesi (Kusursuz Kutupsal Yörüngeler) -->
-          <div class="relative flex items-center justify-center my-auto pt-3 sm:pt-6 pb-0.5 shrink-0">
-
-            <!-- Osmanlı Usturlap Kürsüsü ve Asma Halkası (Halqa ve Kursi) -->
-            <div class="absolute -top-2.5 sm:-top-4 z-30 flex flex-col items-center pointer-events-none">
-              <!-- Asma Halkası (Halqa) -->
-              <div class="w-5 h-5 sm:w-8 sm:h-8 rounded-full border-2 sm:border-[3px] border-[#caa55d] bg-gradient-to-b from-[#8c6225] via-[#e2be68] to-[#6a4214] shadow-md flex items-center justify-center -mb-1 sm:-mb-2">
-                <div class="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full bg-[#1c1208]/90 border border-[#8c6225]"></div>
-              </div>
-              <!-- Kürsü Gövdesi (Rûmî Kemer) -->
-              <svg class="w-16 sm:w-28 lg:w-32 h-3.5 sm:h-6 text-[#caa55d] filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]" viewBox="0 0 120 28" fill="none" aria-hidden="true">
-                <path d="M10 26 C28 22 42 12 60 4 C78 12 92 22 110 26 Z" fill="url(#kursiGrad2)" stroke="#e4c272" stroke-width="1.2"/>
-                <path d="M30 26 C42 20 50 14 60 9 C70 14 78 20 90 26" stroke="#5a3814" stroke-width="0.8"/>
-                <circle cx="60" cy="8" r="2" fill="#8c1e1e"/>
-                <defs>
-                  <linearGradient id="kursiGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#7d5320"/>
-                    <stop offset="50%" stop-color="#e8ca7b"/>
-                    <stop offset="100%" stop-color="#5a3814"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <!-- Altın Hizalama İbresi (El-Mîrî Üçgen Gösterge Dişi) -->
-              <div class="w-0 h-0 border-l-[5px] sm:border-l-[8px] border-r-[5px] sm:border-r-[8px] border-t-[8px] sm:border-t-[14px] border-t-[#ffd978] filter drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)] -mt-0.5"></div>
+          <!-- 2. Kart: Olay -->
+          <div id="cardAligned2" class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
+            <div class="mb-0.5">
+              <h4 class="font-lora font-bold text-[10px] sm:text-xs md:text-sm uppercase text-[#8c4d16] tracking-wider">Olay</h4>
             </div>
-
-            <!-- Ana Usturlap Çarkı (Dengelenmiş Ebat, Doğrudan Dokunarak / Sürükleyerek Döndürülebilir) -->
-            <div id="astrolabeDialContainer" class="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] lg:w-[370px] lg:h-[370px] xl:w-[400px] xl:h-[400px] 2xl:w-[420px] 2xl:h-[420px] rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(15,23,42,0.55),inset_0_0_30px_rgba(0,0,0,0.85)] border-[4px] sm:border-[5px] lg:border-[6px] border-[#caa55d] ring-2 ring-[#ffd978]/80 bg-gradient-to-br from-[#0c1527] via-[#162540] to-[#0a101d] select-none cursor-grab active:cursor-grabbing" style="touch-action: none;">
-
-              <!-- Dış Derece Çizgileri Çerçevesi -->
-              <div class="absolute inset-0 rounded-full border border-[#caa55d]/50 pointer-events-none"></div>
-              <div class="absolute inset-1 sm:inset-1.5 rounded-full border border-dashed border-[#ffd978]/30 pointer-events-none"></div>
-
-              <!-- 1. Dış Kadran (Olay / Dönüm Noktası Halkası) -->
-              <div id="ringElement1" class="absolute w-[94%] h-[94%] left-[3%] top-[3%] rounded-full border-2 border-[#caa55d]/90 bg-gradient-to-br from-[#121f35] via-[#1a2c4b] to-[#101b2e] shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out">
-                <!-- Kavisli Halka Yazıları (SVG TextPath) -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="-200 -200 400 400">
-                  <defs>
-                    <path id="arcR1_0" d="M -134.82 -113.13 A 176 176 0 0 1 134.82 -113.13" fill="none" stroke="none" />
-                    <path id="arcR1_1" d="M 165.39 -60.19 A 176 176 0 0 1 30.55 173.32" fill="none" stroke="none" />
-                    <path id="arcR1_2" d="M -30.55 173.32 A 176 176 0 0 1 -165.39 -60.19" fill="none" stroke="none" />
-                  </defs>
-                  <g id="curvedGroup1_0" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(1, 0, true)">
-                    <text id="curvedLabel1_0" fill="#fcf6e8" font-size="14.5" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR1_0" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                  <g id="curvedGroup1_1" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(1, 1, true)">
-                    <text id="curvedLabel1_1" fill="#fcf6e8" font-size="14.5" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR1_1" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                  <g id="curvedGroup1_2" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(1, 2, true)">
-                    <text id="curvedLabel1_2" fill="#fcf6e8" font-size="14.5" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR1_2" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                </svg>
-
-                <div id="ringSlot1_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 0, true)">
-                  <span id="ringLabel1_0"></span>
-                </div>
-                <div id="ringSlot1_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 1, true)">
-                  <span id="ringLabel1_1"></span>
-                </div>
-                <div id="ringSlot1_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(1, 2, true)">
-                  <span id="ringLabel1_2"></span>
-                </div>
-              </div>
-
-              <!-- 2. Orta Kadran (Tetikleyici Neden Halkası) -->
-              <div id="ringElement2" class="absolute w-[72%] h-[72%] left-[14%] top-[14%] rounded-full border-2 border-[#dfb76c] bg-gradient-to-br from-[#182a47] via-[#223a63] to-[#15233c] shadow-md transition-transform duration-500 ease-out z-10">
-                <!-- Kavisli Halka Yazıları (SVG TextPath) -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="-200 -200 400 400">
-                  <defs>
-                    <path id="arcR2_0" d="M -128.69 -107.99 A 168 168 0 0 1 128.69 -107.99" fill="none" stroke="none" />
-                    <path id="arcR2_1" d="M 157.87 -57.46 A 168 168 0 0 1 29.16 165.45" fill="none" stroke="none" />
-                    <path id="arcR2_2" d="M -29.16 165.45 A 168 168 0 0 1 -157.87 -57.46" fill="none" stroke="none" />
-                  </defs>
-                  <g id="curvedGroup2_0" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(2, 0, true)">
-                    <text id="curvedLabel2_0" fill="#fcf6e8" font-size="19" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR2_0" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                  <g id="curvedGroup2_1" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(2, 1, true)">
-                    <text id="curvedLabel2_1" fill="#fcf6e8" font-size="19" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR2_1" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                  <g id="curvedGroup2_2" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(2, 2, true)">
-                    <text id="curvedLabel2_2" fill="#fcf6e8" font-size="19" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR2_2" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                </svg>
-
-                <div id="ringSlot2_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 0, true)">
-                  <span id="ringLabel2_0"></span>
-                </div>
-                <div id="ringSlot2_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 1, true)">
-                  <span id="ringLabel2_1"></span>
-                </div>
-                <div id="ringSlot2_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(2, 2, true)">
-                  <span id="ringLabel2_2"></span>
-                </div>
-              </div>
-
-              <!-- 3. İç Kadran (Ortaya Çıkan Sonuç Halkası) -->
-              <div id="ringElement3" class="absolute w-[50%] h-[50%] left-[25%] top-[25%] rounded-full border-2 border-[#ffd978] bg-gradient-to-br from-[#1e3458] via-[#294676] to-[#182a46] shadow-md transition-transform duration-500 ease-out z-20">
-                <!-- Kavisli Halka Yazıları (SVG TextPath) -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="-200 -200 400 400">
-                  <defs>
-                    <path id="arcR3_0" d="M -111.07 -93.21 A 145 145 0 0 1 111.07 -93.21" fill="none" stroke="none" />
-                    <path id="arcR3_1" d="M 136.26 -49.59 A 145 145 0 0 1 25.17 142.80" fill="none" stroke="none" />
-                    <path id="arcR3_2" d="M -25.17 142.80 A 145 145 0 0 1 -136.26 -49.59" fill="none" stroke="none" />
-                  </defs>
-                  <g id="curvedGroup3_0" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(3, 0, true)">
-                    <text id="curvedLabel3_0" fill="#fcf6e8" font-size="26" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR3_0" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                  <g id="curvedGroup3_1" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(3, 1, true)">
-                    <text id="curvedLabel3_1" fill="#fcf6e8" font-size="26" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR3_1" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                  <g id="curvedGroup3_2" class="cursor-pointer pointer-events-auto" onclick="rotateRingManual(3, 2, true)">
-                    <text id="curvedLabel3_2" fill="#fcf6e8" font-size="26" font-family="'Lora', serif" font-weight="700" letter-spacing="0.5px" filter="drop-shadow(0 1px 3px rgba(0,0,0,0.95))">
-                      <textPath href="#arcR3_2" startOffset="50%" text-anchor="middle"></textPath>
-                    </text>
-                  </g>
-                </svg>
-
-                <div id="ringSlot3_0" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 0, true)">
-                  <span id="ringLabel3_0"></span>
-                </div>
-                <div id="ringSlot3_1" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 1, true)">
-                  <span id="ringLabel3_1"></span>
-                </div>
-                <div id="ringSlot3_2" class="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-auto cursor-pointer" onclick="rotateRingManual(3, 2, true)">
-                  <span id="ringLabel3_2"></span>
-                </div>
-              </div>
-
-              <!-- Merkez Kilit Osmanlı Mührü -->
-              <div id="astrolabeCenterSeal" class="absolute z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-14 lg:h-14 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_15px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none">
-                <span id="centerSealIcon" class="font-serif font-bold text-[9px] sm:text-[11px] md:text-xs lg:text-sm text-[#fff7e6] tracking-wider drop-shadow text-center">Kilit</span>
-              </div>
-
-            </div>
+            <p id="textAligned2" class="font-lora font-bold text-xs sm:text-sm md:text-base text-stone-950 leading-snug">
+              <!-- JS ile güncellenir -->
+            </p>
           </div>
 
-          <!-- Çevirme Kumandaları (İleri - Geri Ok Butonları) -->
-          <div class="w-full max-w-[340px] sm:max-w-[420px] grid grid-cols-3 gap-1.5 sm:gap-2 mt-1 sm:mt-2 text-center shrink-0">
-            <!-- 1. Halka Kumandası -->
-            <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-lg sm:rounded-xl px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[10px] sm:text-[11px] md:text-xs text-[#543b18] mb-0.5 sm:mb-1">1. Kadran</span>
-              <div class="flex items-center gap-1 sm:gap-1.5 w-full justify-center">
-                <button id="btnRotateRing1Prev" aria-label="Geri" title="Geri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <button id="btnRotateRing1Next" aria-label="İleri" title="İleri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
+          <!-- 3. Kart: Sonuç -->
+          <div id="cardAligned3" class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
+            <div class="mb-0.5">
+              <h4 class="font-lora font-bold text-[10px] sm:text-xs md:text-sm uppercase text-[#8c6729] tracking-wider">Sonuç</h4>
             </div>
-
-            <!-- 2. Halka Kumandası -->
-            <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-lg sm:rounded-xl px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[10px] sm:text-[11px] md:text-xs text-[#68411b] mb-0.5 sm:mb-1">2. Kadran</span>
-              <div class="flex items-center gap-1 sm:gap-1.5 w-full justify-center">
-                <button id="btnRotateRing2Prev" aria-label="Geri" title="Geri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <button id="btnRotateRing2Next" aria-label="İleri" title="İleri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- 3. Halka Kumandası -->
-            <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-lg sm:rounded-xl px-1.5 py-1 sm:px-2 sm:py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[10px] sm:text-[11px] md:text-xs text-[#7d5220] mb-0.5 sm:mb-1">3. Kadran</span>
-              <div class="flex items-center gap-1 sm:gap-1.5 w-full justify-center">
-                <button id="btnRotateRing3Prev" aria-label="Geri" title="Geri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <button id="btnRotateRing3Next" aria-label="İleri" title="İleri" class="flex-1 h-6 sm:h-7 md:h-8 rounded-md sm:rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
-            </div>
+            <p id="textAligned3" class="font-lora font-bold text-xs sm:text-sm md:text-base text-stone-950 leading-snug">
+              <!-- JS ile güncellenir -->
+            </p>
           </div>
 
         </div>
 
-        <!-- Sağ Alan: Hizalanan Zincir Kartları ve Kilit Kontrolü -->
-        <div class="flex-1 w-full flex flex-col justify-center gap-2.5 sm:gap-3 lg:gap-3.5 min-w-0 my-auto">
+        <!-- Canlı Geri Bildirim ve Eylem Paneli -->
+        <div id="astrolabeFeedbackPanel" class="shrink-0 flex flex-col items-center text-center gap-1.5 sm:gap-2 w-full pt-1">
+          <p id="astrolabeStatusText" class="hidden font-lora font-bold text-[11px] sm:text-xs md:text-sm lg:text-base leading-snug sm:leading-relaxed max-w-xl"></p>
 
-          <!-- Üçlü Hizalama Kartları -->
-          <div class="flex flex-col gap-2 sm:gap-2.5 min-h-0">
+          <div class="flex items-center gap-2 sm:gap-3 w-full justify-center">
+            <button id="btnCheckLock" class="px-4 sm:px-8 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-xs sm:text-sm md:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
+              <span>Kilidi Kontrol Et</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
+            </button>
 
-            <!-- 1. Kart: Neden -->
-            <div id="cardAligned1" class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
-              <div class="mb-0.5">
-                <h4 class="font-lora font-bold text-[10px] sm:text-xs md:text-sm uppercase text-[#7c531d] tracking-wider">Neden</h4>
-              </div>
-              <p id="textAligned1" class="font-lora font-bold text-xs sm:text-sm md:text-base text-stone-950 leading-snug">
-                <!-- JS ile güncellenir -->
-              </p>
-            </div>
-
-            <!-- 2. Kart: Olay -->
-            <div id="cardAligned2" class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
-              <div class="mb-0.5">
-                <h4 class="font-lora font-bold text-[10px] sm:text-xs md:text-sm uppercase text-[#8c4d16] tracking-wider">Olay</h4>
-              </div>
-              <p id="textAligned2" class="font-lora font-bold text-xs sm:text-sm md:text-base text-stone-950 leading-snug">
-                <!-- JS ile güncellenir -->
-              </p>
-            </div>
-
-            <!-- 3. Kart: Sonuç -->
-            <div id="cardAligned3" class="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
-              <div class="mb-0.5">
-                <h4 class="font-lora font-bold text-[10px] sm:text-xs md:text-sm uppercase text-[#8c6729] tracking-wider">Sonuç</h4>
-              </div>
-              <p id="textAligned3" class="font-lora font-bold text-xs sm:text-sm md:text-base text-stone-950 leading-snug">
-                <!-- JS ile güncellenir -->
-              </p>
-            </div>
-
+            <button id="btnNextKadran" class="hidden px-4 sm:px-8 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-[#caa55d] via-[#e2be68] to-[#caa55d] hover:from-[#b99041] hover:to-[#b99041] text-[#261508] border border-[#8c6520] font-serif font-bold text-xs sm:text-sm md:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
+              Sonraki Aşamaya Geç
+            </button>
           </div>
-
-          <!-- Canlı Geri Bildirim ve Eylem Paneli -->
-          <div id="astrolabeFeedbackPanel" class="shrink-0 flex flex-col items-center text-center gap-1.5 sm:gap-2 w-full pt-1">
-            <p id="astrolabeStatusText" class="hidden font-lora font-bold text-[11px] sm:text-xs md:text-sm lg:text-base leading-snug sm:leading-relaxed max-w-xl"></p>
-
-            <div class="flex items-center gap-2 sm:gap-3 w-full justify-center">
-              <button id="btnCheckLock" class="px-4 sm:px-8 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-xs sm:text-sm md:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
-                <span>Kilidi Kontrol Et</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e]"></span>
-              </button>
-
-              <button id="btnNextKadran" class="hidden px-4 sm:px-8 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-[#caa55d] via-[#e2be68] to-[#caa55d] hover:from-[#b99041] hover:to-[#b99041] text-[#261508] border border-[#8c6520] font-serif font-bold text-xs sm:text-sm md:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95">
-                Sonraki Aşamaya Geç
-              </button>
-            </div>
-          </div>
-
         </div>
 
       </div>
 
     </div>
-  </div>
+  </section>
 
   <!-- Uygulama Scriptleri -->
   <script src="js/data.js?v=2.2"></script>
