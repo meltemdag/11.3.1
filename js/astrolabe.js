@@ -355,25 +355,31 @@ function updateAstrolabeVisuals() {
   const isSmall = dialD < 290;
   const isMed = dialD >= 290 && dialD < 360;
 
-  // Her halkanın 3 slotunu ve madalyonunu kutupsal koordinatlara yerleştir
+  // Her halkanın 3 slotunu, kavisli yazılarını ve üst düz madalyonunu kutupsal koordinatlara yerleştir
   for (let r = 1; r <= 3; r++) {
     const radius = ringRadii[r];
     const currentAngle = angles[r];
     const selectedSlot = ringState[`ring${r}`];
+    const ringData = stage.rings[`ring${r}`];
 
     for (let i = 0; i < 3; i++) {
       const slot = document.getElementById(`ringSlot${r}_${i}`);
       const lbl = document.getElementById(`ringLabel${r}_${i}`);
+      const curvedLbl = document.getElementById(`curvedLabel${r}_${i}`);
+      const curvedTextPath = curvedLbl ? curvedLbl.querySelector('textPath') : null;
 
       if (slot) {
         slot.style.transform = `rotate(${i * 120}deg) translateY(-${radius}px)`;
       }
 
-      if (lbl) {
-        const isSelected = (i === selectedSlot);
+      const isSelected = (i === selectedSlot);
+      const labelText = ringData && ringData[i] ? ringData[i].label : '';
 
+      if (lbl) {
+        lbl.textContent = labelText;
         if (isSelected) {
           // Üstteki seçili madalyon: Daima yatay (0°), gösterge hizasında, altın ve beyaz varaklı
+          lbl.style.display = 'inline-block';
           const counterAngle = -currentAngle - (i * 120);
           lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSmall ? 1.0 : 1.05})`;
           lbl.style.transformOrigin = 'center center';
@@ -387,22 +393,22 @@ function updateAstrolabeVisuals() {
             lbl.className = 'inline-block font-lora font-bold text-xs sm:text-[12.5px] text-[#140b03] tracking-wide px-3 py-1 rounded-md bg-gradient-to-b from-[#ffffff] via-[#fffef7] to-[#f7e8c6] border-2 border-[#caa55d] ring-2 ring-[#ffd978] shadow-[0_4px_16px_rgba(255,217,120,0.65),0_1px_4px_rgba(0,0,0,0.4)] whitespace-nowrap text-center pointer-events-auto leading-tight';
           }
         } else {
-          // Yan ve alttaki seçilmemiş dilimler: Çember yayına teğet (tangent) yerleşim ile sıfır çakışma
-          // Slotun kendi açısı i * 120. Halkanın açısı currentAngle. Slotun anlık dünyadaki açısı = currentAngle + i * 120
-          const slotWorldAngle = ((currentAngle + i * 120) % 360 + 360) % 360;
-          // Teğet açısı: yayın yönüne göre 90° dik
-          const tangentAngle = (slotWorldAngle > 0 && slotWorldAngle < 180) ? -90 : 90;
-          lbl.style.transform = `rotate(${tangentAngle}deg) scale(${isSmall ? 0.72 : 0.82})`;
-          lbl.style.transformOrigin = 'center center';
-          lbl.style.opacity = '0.85';
+          // Seçili olmayan slotlar için düz madalyon gizlenir (kavisli SVG yazısı gösterilir)
+          lbl.style.display = 'none';
+          lbl.style.opacity = '0';
+        }
+      }
 
-          const fontClass = isSmall
-            ? 'text-[7.5px] px-1.5 py-0.5'
-            : isMed
-            ? 'text-[9px] px-2 py-0.5'
-            : 'text-[10.5px] px-2.5 py-0.5';
-
-          lbl.className = `inline-block font-lora font-bold ${fontClass} text-[#fff6e0] hover:text-[#ffffff] tracking-tight rounded bg-[#132238]/95 hover:bg-[#1c3252] border border-[#caa55d]/70 shadow-[0_1px_4px_rgba(0,0,0,0.5)] whitespace-nowrap text-center pointer-events-auto leading-none transition-all duration-300`;
+      // Kavisli Halka Yazısı (SVG textPath)
+      if (curvedLbl) {
+        if (isSelected) {
+          // Üstte düz madalyon olduğu için kavisli yazı gizlenir
+          curvedLbl.setAttribute('display', 'none');
+          if (curvedTextPath) curvedTextPath.textContent = '';
+        } else {
+          // Yanlarda ve altta çember yayına uygun kavisli yazı gösterilir
+          curvedLbl.removeAttribute('display');
+          if (curvedTextPath) curvedTextPath.textContent = labelText;
         }
       }
     }
@@ -514,14 +520,14 @@ function initAstrolabeDragAndDrop() {
       lastDragSoundAngle = currentDragAngle;
     }
 
-    // Çevirme anında madalyonları anlık olarak yatay tut
+    // Çevirme anında seçili üst madalyonu anlık olarak yatay tut
     for (let i = 0; i < 3; i++) {
+      const isSelected = (i === ringState[`ring${activeDragRingNumber}`]);
       const lbl = document.getElementById(`ringLabel${activeDragRingNumber}_${i}`);
-      if (lbl) {
+      if (lbl && isSelected) {
         lbl.style.transition = 'none';
         const counterAngle = -currentDragAngle - (i * 120);
-        const isSelected = (i === ringState[`ring${activeDragRingNumber}`]);
-        lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSelected ? 1.05 : 0.92})`;
+        lbl.style.transform = `rotate(${counterAngle}deg) scale(1.05)`;
       }
     }
 
