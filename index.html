@@ -283,7 +283,7 @@
       <div class="flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#6b1414] via-[#8c1e1e] to-[#6b1414] text-white border-b-2 border-[#caa55d] shadow-md shrink-0 gap-3">
         <div class="flex-1 flex items-center min-w-0 pr-2">
           <p class="font-serif text-xs sm:text-sm md:text-base text-[#fff7e6] font-medium leading-relaxed drop-shadow">
-            Sol taraftaki kadranları çevirerek olayı, tetikleyen nedeni ve ortaya çıkan sonucu üst ibre hizasında bir araya getiriniz. Sağ taraftaki kartlarda birbiriyle bağlantılı doğru neden-sonuç zincirini oluşturduğunuzdan emin olduktan sonra "Kilidi Kontrol Et" butonuna tıklayınız.
+            Sol taraftaki kadranları çevirerek nedeni, olayı ve ortaya çıkan sonucu üst ibre hizasında bir araya getiriniz. Sağ taraftaki kartlarda birbiriyle bağlantılı doğru neden, olay ve sonuç zincirini oluşturduğunuzdan emin olduktan sonra "Kilidi Kontrol Et" butonuna tıklayınız.
           </p>
         </div>
 
@@ -393,7 +393,7 @@
           <div class="w-full max-w-[420px] grid grid-cols-3 gap-2 mt-2 text-center shrink-0">
             <!-- 1. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#543b18] mb-1">1. Kadran (Olay)</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#543b18] mb-1">1. Kadran (Neden)</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
                 <button id="btnRotateRing1Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -410,7 +410,7 @@
 
             <!-- 2. Halka Kumandası -->
             <div class="flex flex-col items-center bg-[#fffdf9]/95 border border-[#caa55d]/80 rounded-xl px-2 py-1.5 shadow-sm">
-              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#68411b] mb-1">2. Kadran (Neden)</span>
+              <span class="font-lora font-bold text-[11px] sm:text-xs text-[#68411b] mb-1">2. Kadran (Olay)</span>
               <div class="flex items-center gap-1.5 w-full justify-center">
                 <button id="btnRotateRing2Prev" aria-label="Geri" title="Geri" class="flex-1 h-7 sm:h-8 rounded-lg bg-gradient-to-b from-[#182944] to-[#0f1a2c] hover:from-[#20365b] hover:to-[#14233c] text-[#ffd978] border border-[#caa55d]/80 flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm">
                   <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -451,24 +451,24 @@
           <!-- Üçlü Hizalama Kartları (Tüm Yüksekliği Eşit Dolduran Kartlar) -->
           <div class="flex-1 flex flex-col justify-between gap-3 min-h-0">
             
-            <!-- 1. Kart: Olay -->
+            <!-- 1. Kart: Neden -->
             <div id="cardAligned1" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
               <div class="flex items-center gap-2 mb-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#caa55d]"></span>
-                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#7c531d] tracking-wider">Olay</h4>
+                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#7c531d] tracking-wider">Neden</h4>
               </div>
-              <p id="textAligned1" class="font-lora font-bold text-lg sm:text-xl text-stone-950 leading-snug">
+              <p id="textAligned1" class="font-lora font-bold text-base sm:text-lg text-stone-950 leading-relaxed">
                 <!-- JS ile güncellenir -->
               </p>
             </div>
 
-            <!-- 2. Kart: Neden -->
+            <!-- 2. Kart: Olay -->
             <div id="cardAligned2" class="flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center">
               <div class="flex items-center gap-2 mb-1.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#dfb76c]"></span>
-                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#8c4d16] tracking-wider">Neden</h4>
+                <h4 class="font-lora font-bold text-xs sm:text-sm uppercase text-[#8c4d16] tracking-wider">Olay</h4>
               </div>
-              <p id="textAligned2" class="font-lora font-bold text-base sm:text-lg text-stone-950 leading-relaxed">
+              <p id="textAligned2" class="font-lora font-bold text-lg sm:text-xl text-stone-950 leading-snug">
                 <!-- JS ile güncellenir -->
               </p>
             </div>

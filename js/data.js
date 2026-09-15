@@ -97,25 +97,25 @@ const EVENTS = [
   }
 ];
 
-// 3 Kritik Tarihsel Dönüm Noktası Kadran Kademeleri
+// 3 Kritik Tarihsel Dönüm Noktası Kadran Kademeleri (1. Halka: Neden, 2. Halka: Olay, 3. Halka: Sonuç)
 const ASTROLABE_STAGES = [
   {
     id: 1,
     title: "1876 – 1878",
     pillName: "1876 – 1878",
-    correct: { ring1: 0, ring2: 1, ring3: 2 },
-    initial: { ring1: 1, ring2: 0, ring3: 1 },
+    correct: { ring1: 1, ring2: 0, ring3: 2 },
+    initial: { ring1: 0, ring2: 1, ring3: 1 },
     explanation: "1877-1878 Osmanlı-Rus Savaşı'nın (93 Harbi) yarattığı askeri ve mali buhran gerekçe gösterilerek Meclis-i Umumi süresiz tatil edilmiş; Kanun-ı Esasi askıya alınarak otuz yıllık mutlak yönetim evresine geçilmiştir.",
     rings: {
       ring1: [
-        { text: "1878 – Meclis-i Umumi'nin Tatil Edilmesi (Kapatılması)", label: "Meclisin Tatili" },
-        { text: "1876 – Kanun-ı Esasi'nin İlanı ve I. Meşrutiyet", label: "Kanun-ı Esasi" },
-        { text: "1876 – Tersane (İstanbul) Konferansı Kararları", label: "Tersane Zirvesi" }
-      ],
-      ring2: [
         { text: "Balkanlarda Hristiyan tebaanın güvenliğini gerekçe gösteren Avrupalı devletlerin baskı kurması", label: "Avrupa Baskısı" },
         { text: "93 Harbi'nde alınan ağır yenilgiler ve başkente yaşanan göç dalgalarının derin bir idari-mali bunalım yaratması", label: "93 Harbi Buhranı" },
         { text: "Genç Osmanlılar aydınlarının meşruti anayasal düzeni halka zorla kabul ettirmek istemesi", label: "Aydın Hareketi" }
+      ],
+      ring2: [
+        { text: "1878 – Meclis-i Umumi'nin Tatil Edilmesi (Kapatılması)", label: "Meclisin Tatili" },
+        { text: "1876 – Kanun-ı Esasi'nin İlanı ve I. Meşrutiyet", label: "Kanun-ı Esasi" },
+        { text: "1876 – Tersane (İstanbul) Konferansı Kararları", label: "Tersane Zirvesi" }
       ],
       ring3: [
         { text: "Rus ordusunun İstanbul Boğazı'na girerek Osmanlı yönetimine doğrudan el koyması", label: "Rus İşgali" },
@@ -128,19 +128,19 @@ const ASTROLABE_STAGES = [
     id: 2,
     title: "1908",
     pillName: "1908",
-    correct: { ring1: 1, ring2: 0, ring3: 2 },
-    initial: { ring1: 2, ring2: 1, ring3: 0 },
+    correct: { ring1: 0, ring2: 1, ring3: 2 },
+    initial: { ring1: 1, ring2: 2, ring3: 0 },
     explanation: "Reval Görüşmeleri'nde Makedonya'nın paylaşılacağı endişesiyle Rumeli'de subayların başlattığı ayaklanma, Sultan II. Abdülhamid'i II. Meşrutiyet'i ilan etmeye zorlamış; böylece meclis otuz yıl sonra yeniden açılmış ve çok partili siyasi hayata geçilmiştir.",
     rings: {
       ring1: [
-        { text: "1908 – İngiltere ve Rusya Arasındaki Reval Görüşmeleri", label: "Reval Görüşmesi" },
-        { text: "23 Temmuz 1908 – II. Meşrutiyet'in İlan Edilmesi", label: "II. Meşrutiyet" },
-        { text: "1908 – Selanik Hürriyet Meydanı Gösterileri", label: "Selanik Gösterisi" }
-      ],
-      ring2: [
         { text: "Reval Görüşmeleri'nde Makedonya'nın paylaşılacağını anlayan İttihatçı subayların Rumeli'de dağa çıkarak ayaklanması", label: "Rumeli Ayaklanması" },
         { text: "Avusturya-Macaristan'ın Bosna-Hersek topraklarını resmen ilhak ettiğini duyurması", label: "Bosna'nın İlhakı" },
         { text: "İstanbul'daki Avcı Taburlarının anayasa talebiyle Yıldız Sarayı'nı kuşatması", label: "Saray Kuşatması" }
+      ],
+      ring2: [
+        { text: "1908 – İngiltere ve Rusya Arasındaki Reval Görüşmeleri", label: "Reval Görüşmesi" },
+        { text: "23 Temmuz 1908 – II. Meşrutiyet'in İlan Edilmesi", label: "II. Meşrutiyet" },
+        { text: "1908 – Selanik Hürriyet Meydanı Gösterileri", label: "Selanik Gösterisi" }
       ],
       ring3: [
         { text: "Osmanlı Devleti'nin Balkanlardaki tüm topraklarını tek taraflı olarak terk etmesi", label: "Toprak Terki" },
@@ -153,19 +153,19 @@ const ASTROLABE_STAGES = [
     id: 3,
     title: "1909",
     pillName: "1909",
-    correct: { ring1: 2, ring2: 1, ring3: 0 },
-    initial: { ring1: 0, ring2: 2, ring3: 1 },
+    correct: { ring1: 1, ring2: 2, ring3: 0 },
+    initial: { ring1: 0, ring2: 1, ring3: 2 },
     explanation: "Siyasi kutuplaşma, mektepli-alaylı subay çatışması ve gazeteci cinayetleriyle tırmanan meşrutiyet karşıtı 31 Mart Ayaklanması, Selanik'ten gelen Hareket Ordusu tarafından bastırılmış; II. Abdülhamid tahttan indirilmiş ve yapılan anayasa değişiklikleriyle meclis üstünlüğü kalıcı hale getirilmiştir.",
     rings: {
       ring1: [
-        { text: "1909 – Kanun-ı Esasi Değişikliklerinin Yürürlüğe Girmesi", label: "1909 Anayasası" },
-        { text: "1909 – Mahmud Şevket Paşa'nın Sadrazamlığa Getirilmesi", label: "Sadrazam Ataması" },
-        { text: "13 Nisan 1909 – 31 Mart Olayı (Meşrutiyet Karşıtı Ayaklanma)", label: "31 Mart Olayı" }
-      ],
-      ring2: [
         { text: "Bulgaristan'ın bağımsızlık ilanına karşı başkentte genel seferberlik ilan edilmesi", label: "Seferberlik Kararı" },
         { text: "İttihat ve Terakki ile muhalifler arasındaki iktidar mücadelesi, ordudaki mektepli-alaylı çatışması ve Hasan Fehmi Bey cinayetiyle gerilimin tırmanması", label: "Siyasi Gerilim" },
         { text: "Girit Meclisi'nin Yunanistan'a katılma kararının İstanbul'da protesto edilmesi", label: "Girit Protestosu" }
+      ],
+      ring2: [
+        { text: "1909 – Kanun-ı Esasi Değişikliklerinin Yürürlüğe Girmesi", label: "1909 Anayasası" },
+        { text: "1909 – Mahmud Şevket Paşa'nın Sadrazamlığa Getirilmesi", label: "Sadrazam Ataması" },
+        { text: "13 Nisan 1909 – 31 Mart Olayı (Meşrutiyet Karşıtı Ayaklanma)", label: "31 Mart Olayı" }
       ],
       ring3: [
         { text: "Hareket Ordusu'nun isyanı bastırması, Sultan II. Abdülhamid'in tahttan indirilmesi ve anayasa değişiklikleriyle meclis üstünlüğünün pekişmesi", label: "Meclis Üstünlüğü" },
