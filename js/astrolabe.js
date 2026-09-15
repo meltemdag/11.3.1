@@ -685,6 +685,7 @@ function initAstrolabe() {
   initKadranAudio();
   astrolabeModal = document.getElementById('astrolabeModal');
   btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
+  const btnOpenAstrolabeMobile = document.getElementById('btnOpenAstrolabeMobile');
   btnStartAstrolabeFromComplete = document.getElementById('btnStartAstrolabeFromComplete');
   btnAstrolabeClose = document.getElementById('btnAstrolabeClose');
   astrolabeStageTitle = document.getElementById('astrolabeStageTitle');
@@ -706,6 +707,10 @@ function initAstrolabe() {
 
   if (btnOpenAstrolabe) {
     btnOpenAstrolabe.addEventListener('click', openZamanKadrani);
+  }
+
+  if (btnOpenAstrolabeMobile) {
+    btnOpenAstrolabeMobile.addEventListener('click', openZamanKadrani);
   }
 
   if (btnStartAstrolabeFromComplete) {

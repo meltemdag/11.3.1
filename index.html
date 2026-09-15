@@ -14,10 +14,10 @@
 <body class="bg-stone-100 text-stone-800 font-sans h-full min-h-screen flex flex-col antialiased overflow-y-auto lg:overflow-hidden">
 
   <!-- Ana İçerik Alanı -->
-  <main class="flex-1 w-full mx-auto p-2 sm:p-3 md:p-4 flex flex-col lg:flex-row items-center justify-center gap-2.5 sm:gap-3 lg:gap-4 min-h-0 h-full">
+  <main class="flex-1 w-full mx-auto p-2 sm:p-3 md:p-4 flex flex-col lg:flex-row items-center justify-start lg:justify-center gap-2 sm:gap-2.5 lg:gap-4 min-h-0 h-full">
 
     <!-- Sol Ferman Bilgilendirme Paneli -->
-    <aside class="w-full lg:w-56 xl:w-64 shrink-0 flex flex-col justify-between lg:self-stretch select-none">
+    <aside class="w-full lg:w-56 xl:w-64 shrink-0 flex flex-col justify-start lg:justify-between lg:self-stretch select-none">
 
       <!-- Ferman Üst Rulo Çubuğu (Lake Ahşap ve Pirinç Boğumlu) -->
       <div class="relative z-10 flex items-center justify-center -mb-1.5 sm:-mb-2 px-0.5">
@@ -36,10 +36,10 @@
       </div>
 
       <!-- Ferman Parşömen Gövdesi (Aharlı Kâğıt ve Zencirek Bordür) -->
-      <div class="flex-1 relative bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] border-x-2 border-[#b8934a] shadow-[0_10px_25px_rgba(50,30,10,0.18),inset_10px_0_18px_-8px_rgba(110,75,25,0.2),inset_-10px_0_18px_-8px_rgba(110,75,25,0.2)] p-2 sm:p-3 lg:p-4 flex flex-col justify-between gap-2 sm:gap-3 overflow-y-auto max-h-full">
+      <div class="flex-initial lg:flex-1 relative bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] border-x-2 border-[#b8934a] shadow-[0_10px_25px_rgba(50,30,10,0.18),inset_10px_0_18px_-8px_rgba(110,75,25,0.2),inset_-10px_0_18px_-8px_rgba(110,75,25,0.2)] p-2 sm:p-2.5 lg:p-4 flex flex-col justify-start lg:justify-between gap-1.5 sm:gap-2 lg:gap-3 overflow-y-auto max-h-full">
 
         <!-- Ferman İç Tezhip Çerçevesi (Çift Tahrir ve Köşebentler) -->
-        <div class="relative flex-1 flex flex-col justify-between items-center p-2 sm:p-3 lg:p-4 border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-[2px] sm:outline-offset-[3px] rounded-[3px] bg-[#fffdf9]/75 shadow-[inset_0_0_15px_rgba(180,140,70,0.1)]">
+        <div class="relative flex-initial lg:flex-1 flex flex-col justify-center lg:justify-between items-center p-2 sm:p-2.5 lg:p-4 border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-[2px] sm:outline-offset-[3px] rounded-[3px] bg-[#fffdf9]/75 shadow-[inset_0_0_15px_rgba(180,140,70,0.1)]">
 
           <!-- Dört Köşe Tezhip Çıkıntıları (Rûmî ve Zencirek Motifleri) -->
           <svg class="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#b99041] pointer-events-none" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -99,20 +99,13 @@
           </div>
         </div>
 
-        <!-- Butonlar Alanı (Mobilde Yan Yana 2 Kolon, Masaüstünde Alt Alta) -->
-        <div class="w-full grid grid-cols-2 lg:flex lg:flex-col gap-2 shrink-0">
+        <!-- Butonlar Alanı (Masaüstünde Zaman Kadranı Butonu) -->
+        <div class="w-full hidden lg:flex flex-col gap-2 shrink-0">
           <!-- Zaman Kadranı Butonu (Osmanlı Zümrüt Mührü / Altın Varaklı) -->
           <button id="btnOpenAstrolabe" class="w-full py-2 sm:py-2.5 px-2 sm:px-3 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] shadow-[0_3px_10px_rgba(20,60,30,0.35),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_5px_15px_rgba(212,175,88,0.4)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] font-serif tracking-wider font-semibold text-[11px] sm:text-xs lg:text-sm flex items-center justify-center gap-1.5 sm:gap-2">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e] shrink-0"></span>
             <span class="truncate">Zaman Kadranı</span>
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e] shrink-0"></span>
-          </button>
-
-          <!-- Yeniden Başlat Butonu (Osmanlı Mührü / Yakut Kırmızı Damga) -->
-          <button id="btnResetProgress" class="w-full py-2 sm:py-2 px-2 sm:px-3 rounded-lg bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] hover:from-[#661010] hover:via-[#821717] hover:to-[#661010] text-[#fff6e0] border border-[#d8b058] shadow-[0_2px_8px_rgba(90,16,16,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] hover:shadow-[0_4px_12px_rgba(196,154,69,0.35)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] font-serif tracking-wider font-semibold text-[11px] sm:text-xs flex items-center justify-center gap-1.5 sm:gap-2">
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e] shrink-0"></span>
-            <span class="truncate">Yeniden Başlat</span>
-            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#e8c878] shadow-[0_0_4px_#f5df9e] shrink-0"></span>
           </button>
         </div>
       </div>
@@ -135,7 +128,7 @@
     </aside>
 
     <!-- 1. GÖRÜNÜM: BİLGİ GÖRSELİ PANOSU (HOTSPOT ALANLARIYLA) -->
-    <section id="sectionInfographic" class="flex-1 min-w-0 min-h-0 w-full h-full flex items-center justify-center">
+    <section id="sectionInfographic" class="flex-initial lg:flex-1 min-w-0 min-h-0 w-full flex flex-col items-center justify-start lg:justify-center gap-2 sm:gap-2.5 lg:gap-3">
       <div class="relative aspect-[3/2] rounded-xl overflow-hidden shadow-sm no-select max-h-full max-w-full"
            style="max-height: min(calc(100dvh - 2rem), 90vh); max-width: min(100%, calc((100dvh - 2rem) * 1.5)); width: 100%;">
         <!-- Bilgi Görseli Ana Görseli -->
@@ -149,6 +142,15 @@
         <div id="hotspotContainer" class="absolute inset-0">
           <!-- JavaScript tarafından 9 kutu tam oranlarıyla buraya yerleştirilecek -->
         </div>
+      </div>
+
+      <!-- Mobilde Görselin Altında Görünen Zaman Kadranı Butonu -->
+      <div class="w-full max-w-[340px] px-2 lg:hidden shrink-0">
+        <button id="btnOpenAstrolabeMobile" class="w-full py-2.5 px-3 rounded-lg bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] shadow-[0_3px_10px_rgba(20,60,30,0.35),inset_0_1px_1px_rgba(255,255,255,0.25)] hover:shadow-[0_5px_15px_rgba(212,175,88,0.4)] transition-all duration-200 cursor-pointer text-center active:scale-[0.98] font-serif tracking-wider font-semibold text-xs sm:text-sm flex items-center justify-center gap-2">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e] shrink-0"></span>
+          <span>Zaman Kadranı</span>
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e] shrink-0"></span>
+        </button>
       </div>
     </section>
   </main>
