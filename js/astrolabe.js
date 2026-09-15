@@ -284,27 +284,11 @@ function loadAstrolabeStage(index) {
   }
 }
 
-// Aşama Rozetlerini Çiz (İkonsuz)
+// Aşama Butonları (Arayüzden kaldırıldı)
 function renderAstrolabePills() {
-  if (!astrolabeStagePills) return;
-  astrolabeStagePills.innerHTML = '';
-  ASTROLABE_STAGES.forEach((st, idx) => {
-    const isCurrent = idx === currentAstrolabeStageIndex;
-    const isDone = completedAstrolabeStages.has(idx);
-    const pill = document.createElement('button');
-    pill.className = `px-2.5 py-1 rounded-md text-xs font-serif font-bold transition-all cursor-pointer ${
-      isCurrent
-        ? 'bg-gradient-to-r from-[#caa55d] to-[#e2be68] text-[#261508] shadow ring-1 ring-[#8c6520]'
-        : isDone
-          ? 'bg-[#1b5e20] text-[#fff9ea] border border-[#caa55d]'
-          : 'bg-stone-800/80 text-stone-300 hover:bg-stone-700'
-    }`;
-    pill.textContent = st.pillName;
-    pill.addEventListener('click', () => {
-      loadAstrolabeStage(idx);
-    });
-    astrolabeStagePills.appendChild(pill);
-  });
+  if (astrolabeStagePills) {
+    astrolabeStagePills.innerHTML = '';
+  }
 }
 
 // Halka Çevirme Fonksiyonu (Düğmeyle Adımlama veya Doğrudan Slot Seçimi)
