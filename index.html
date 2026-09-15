@@ -279,18 +279,18 @@
   <div id="astrolabeModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-2 sm:p-3 md:p-4 lg:p-5 bg-stone-950/85 backdrop-blur-md select-none overflow-hidden">
     <div class="bg-gradient-to-b from-[#f8eed7] via-[#fffdf8] to-[#f4e5c7] rounded-2xl shadow-[0_25px_80px_rgba(20,10,5,0.65)] w-full max-w-[95vw] xl:max-w-[1320px] 2xl:max-w-[1440px] h-[92vh] max-h-[94vh] flex flex-col overflow-hidden border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/40 outline-offset-2 relative">
       
-      <!-- Modal Üst Başlık Barı (Klasik Bordo ve Altın Serlevha) -->
-      <div class="flex items-center justify-between px-5 sm:px-7 py-3 bg-gradient-to-r from-[#6b1414] via-[#8c1e1e] to-[#6b1414] text-white border-b-2 border-[#caa55d] shadow-md shrink-0">
-        <div class="flex items-center gap-2.5 sm:gap-3.5 truncate">
-          <h2 class="font-serif text-base sm:text-lg md:text-xl font-bold text-[#fff7e6] tracking-wide truncate drop-shadow">
-            Neden ve Sonuç Usturlabı
-          </h2>
+      <!-- Modal Üst Yönlendirme Barı (Klasik Bordo ve Altın Serlevha) -->
+      <div class="flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#6b1414] via-[#8c1e1e] to-[#6b1414] text-white border-b-2 border-[#caa55d] shadow-md shrink-0 gap-3">
+        <div class="flex-1 flex items-center gap-2 min-w-0">
+          <p class="font-serif text-xs sm:text-sm md:text-base text-[#fff7e6] font-medium leading-normal drop-shadow">
+            Kadranları çevirerek olay, neden ve sonuç bağlantısını ibre hizasında birleştirip kilidi kontrol ediniz.
+          </p>
         </div>
 
-        <!-- Kadran Dönem Butonları (Sayaçsız ve İkonsuz) -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Kadran Aşama Butonları ve Kapat -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
           <div id="astrolabeStagePills" class="flex items-center gap-1.5 sm:gap-2 text-xs font-serif">
-            <!-- JS ile dinamik doldurulur: I. Dönem, II. Dönem, III. Dönem -->
+            <!-- JS ile dinamik doldurulur: 1876 – 1878, 1908, 1909 -->
           </div>
           <button id="btnAstrolabeClose" aria-label="Kapat" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-serif font-semibold bg-gradient-to-r from-[#500f0f] to-[#681414] hover:from-[#3d0b0b] hover:to-[#500f0f] text-[#fff4db] border border-[#d8b058] shadow transition-all cursor-pointer active:scale-95 shrink-0">
             Kapat
@@ -309,9 +309,6 @@
             <h3 id="astrolabeStageTitle" class="font-lora font-bold text-lg sm:text-xl text-[#6b1414] tracking-wide">
               1876 – 1878
             </h3>
-            <p class="font-lora font-semibold text-sm sm:text-base text-stone-800 mt-0.5">
-              Halkaları çevirerek olay, neden ve sonuç zincirini altın ibre hizasında birleştiriniz.
-            </p>
           </div>
 
           <!-- Dairesel Usturlap Mekanizması Kaidesi (Kusursuz Kutupsal Yörüngeler) -->
@@ -492,10 +489,8 @@
           </div>
 
           <!-- Canlı Geri Bildirim ve Eylem Paneli -->
-          <div id="astrolabeFeedbackPanel" class="p-3.5 sm:p-4 rounded-xl border border-[#caa55d]/70 bg-[#fffbf2] shadow-inner shrink-0 flex flex-col items-center text-center gap-3">
-            <p id="astrolabeStatusText" class="font-lora font-bold text-sm sm:text-base text-stone-900 leading-relaxed max-w-xl">
-              Kadranları çevirerek olay, neden ve sonuç bağlantısını altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.
-            </p>
+          <div id="astrolabeFeedbackPanel" class="p-3 sm:p-3.5 rounded-xl border border-[#caa55d]/70 bg-[#fffbf2] shadow-inner shrink-0 flex flex-col items-center text-center gap-2.5">
+            <p id="astrolabeStatusText" class="hidden font-lora font-bold text-sm sm:text-base leading-relaxed max-w-xl"></p>
             
             <div class="flex items-center gap-3 w-full justify-center">
               <button id="btnCheckLock" class="px-8 py-3 rounded-xl bg-gradient-to-r from-[#1b5e20] via-[#2d7d42] to-[#1b5e20] hover:from-[#144718] hover:to-[#144718] text-[#fff9ea] border border-[#d4af58] font-serif font-semibold text-sm sm:text-base tracking-wider shadow-md transition-all cursor-pointer active:scale-95 flex items-center justify-center gap-2.5">

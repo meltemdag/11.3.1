@@ -276,8 +276,8 @@ function loadAstrolabeStage(index) {
   } else {
     setAstrolabeSealState(false);
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-stone-900 leading-relaxed font-bold';
-      astrolabeStatusText.textContent = 'Kadranları çevirerek olay, neden ve sonuç bağlantısını altın ibre hizasında birleştiriniz; ardından kilidi kontrol ediniz.';
+      astrolabeStatusText.className = 'hidden';
+      astrolabeStatusText.textContent = '';
     }
     if (btnCheckLock) btnCheckLock.classList.remove('hidden');
     if (btnNextKadran) btnNextKadran.classList.add('hidden');
