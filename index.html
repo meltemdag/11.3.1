@@ -281,21 +281,19 @@
       
       <!-- Modal Üst Yönlendirme Barı (Klasik Bordo ve Altın Serlevha) -->
       <div class="flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#6b1414] via-[#8c1e1e] to-[#6b1414] text-white border-b-2 border-[#caa55d] shadow-md shrink-0 gap-3">
-        <div class="flex-1 flex items-center gap-2 min-w-0">
-          <p class="font-serif text-xs sm:text-sm md:text-base text-[#fff7e6] font-medium leading-normal drop-shadow">
-            Kadranları çevirerek olay, neden ve sonuç bağlantısını ibre hizasında birleştirip kilidi kontrol ediniz.
+        <div class="flex-1 flex items-center min-w-0 pr-2">
+          <p class="font-serif text-xs sm:text-sm md:text-base text-[#fff7e6] font-medium leading-relaxed drop-shadow">
+            Kadranları çevirerek olay, tetikleyici neden ve ortaya çıkan sonucu ibre çizgisi üzerinde bir araya getiriniz. Sağ taraftaki kartlarda doğru neden ve sonuç zincirini kurduktan sonra kilidi kontrol ediniz.
           </p>
         </div>
 
-        <!-- Kadran Aşama Butonları ve Kapat -->
-        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-          <div id="astrolabeStagePills" class="flex items-center gap-1.5 sm:gap-2 text-xs font-serif">
-            <!-- JS ile dinamik doldurulur: 1876 – 1878, 1908, 1909 -->
-          </div>
-          <button id="btnAstrolabeClose" aria-label="Kapat" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-serif font-semibold bg-gradient-to-r from-[#500f0f] to-[#681414] hover:from-[#3d0b0b] hover:to-[#500f0f] text-[#fff4db] border border-[#d8b058] shadow transition-all cursor-pointer active:scale-95 shrink-0">
-            Kapat
-          </button>
-        </div>
+        <!-- Kapat Butonu (Sadece İkon) -->
+        <button id="btnAstrolabeClose" aria-label="Kapat" title="Kapat" class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-r from-[#500f0f] to-[#681414] hover:from-[#3d0b0b] hover:to-[#500f0f] text-[#fff4db] border border-[#d8b058] shadow-[0_2px_6px_rgba(60,10,10,0.35)] hover:shadow-[0_3px_10px_rgba(216,176,88,0.35)] transition-all cursor-pointer active:scale-95 shrink-0 group">
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
       <!-- Modal Ana Gövdesi (Genişletilmiş ve Dengelenmiş İki Kolonlu Yerleşim) -->
