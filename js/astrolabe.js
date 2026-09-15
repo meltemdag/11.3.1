@@ -336,8 +336,8 @@ function updateAstrolabeVisuals() {
 
   // Radyal yarıçaplar (Kusursuz dairesel yörüngeler)
   const r1 = dialD * 0.415;
-  const r2 = dialD * 0.305;
-  const r3 = dialD * 0.190;
+  const r2 = dialD * 0.280;
+  const r3 = dialD * 0.150;
   const ringRadii = { 1: r1, 2: r2, 3: r3 };
 
   // Kadran ana dönüş açıları (Her dilim 120°)
@@ -351,7 +351,11 @@ function updateAstrolabeVisuals() {
   if (ringElement2) ringElement2.style.transform = `rotate(${angles[2]}deg)`;
   if (ringElement3) ringElement3.style.transform = `rotate(${angles[3]}deg)`;
 
-  // Her halkanın 3 slotunu ve madalyonunu kutupsal koordinatlara yerleştir ve daima yatay tut
+  // Ekran boyutuna göre etiket boyutlandırma sınıfları
+  const isSmall = dialD < 290;
+  const isMed = dialD >= 290 && dialD < 360;
+
+  // Her halkanın 3 slotunu ve madalyonunu kutupsal koordinatlara yerleştir
   for (let r = 1; r <= 3; r++) {
     const radius = ringRadii[r];
     const currentAngle = angles[r];
@@ -367,15 +371,38 @@ function updateAstrolabeVisuals() {
 
       if (lbl) {
         const isSelected = (i === selectedSlot);
-        const counterAngle = -currentAngle - (i * 120);
-        lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSelected ? 1.05 : 0.92})`;
-        lbl.style.transformOrigin = 'center center';
-        lbl.style.opacity = '1';
 
         if (isSelected) {
-          lbl.className = 'inline-block font-lora font-bold text-xs sm:text-[12.5px] text-[#140b03] tracking-wide px-3 py-1 rounded-md bg-gradient-to-b from-[#ffffff] via-[#fffef7] to-[#f7e8c6] border-2 border-[#caa55d] ring-2 ring-[#ffd978] shadow-[0_4px_16px_rgba(255,217,120,0.65),0_1px_4px_rgba(0,0,0,0.4)] whitespace-nowrap text-center pointer-events-auto leading-tight transition-all duration-300';
+          // Üstteki seçili madalyon: Daima yatay (0°), gösterge hizasında, altın ve beyaz varaklı
+          const counterAngle = -currentAngle - (i * 120);
+          lbl.style.transform = `rotate(${counterAngle}deg) scale(${isSmall ? 1.0 : 1.05})`;
+          lbl.style.transformOrigin = 'center center';
+          lbl.style.opacity = '1';
+
+          if (isSmall) {
+            lbl.className = 'inline-block font-lora font-bold text-[8.5px] text-[#140b03] tracking-tight px-2 py-0.5 rounded bg-gradient-to-b from-[#ffffff] via-[#fffef7] to-[#f7e8c6] border border-[#caa55d] ring-1 ring-[#ffd978] shadow-[0_2px_8px_rgba(255,217,120,0.6)] whitespace-nowrap text-center pointer-events-auto leading-none';
+          } else if (isMed) {
+            lbl.className = 'inline-block font-lora font-bold text-[10.5px] text-[#140b03] tracking-wide px-2.5 py-0.5 rounded-md bg-gradient-to-b from-[#ffffff] via-[#fffef7] to-[#f7e8c6] border-2 border-[#caa55d] ring-2 ring-[#ffd978] shadow-[0_3px_12px_rgba(255,217,120,0.65)] whitespace-nowrap text-center pointer-events-auto leading-tight';
+          } else {
+            lbl.className = 'inline-block font-lora font-bold text-xs sm:text-[12.5px] text-[#140b03] tracking-wide px-3 py-1 rounded-md bg-gradient-to-b from-[#ffffff] via-[#fffef7] to-[#f7e8c6] border-2 border-[#caa55d] ring-2 ring-[#ffd978] shadow-[0_4px_16px_rgba(255,217,120,0.65),0_1px_4px_rgba(0,0,0,0.4)] whitespace-nowrap text-center pointer-events-auto leading-tight';
+          }
         } else {
-          lbl.className = 'inline-block font-lora font-bold text-[10.5px] sm:text-[11.5px] text-[#fff6e0] hover:text-[#ffffff] tracking-wide px-2.5 py-0.5 rounded-md bg-[#132238]/95 hover:bg-[#1c3252] border border-[#caa55d]/80 hover:border-[#ffd978] shadow-[0_2px_8px_rgba(0,0,0,0.5)] whitespace-nowrap text-center pointer-events-auto leading-tight transition-all duration-300';
+          // Yan ve alttaki seçilmemiş dilimler: Çember yayına teğet (tangent) yerleşim ile sıfır çakışma
+          // Slotun kendi açısı i * 120. Halkanın açısı currentAngle. Slotun anlık dünyadaki açısı = currentAngle + i * 120
+          const slotWorldAngle = ((currentAngle + i * 120) % 360 + 360) % 360;
+          // Teğet açısı: yayın yönüne göre 90° dik
+          const tangentAngle = (slotWorldAngle > 0 && slotWorldAngle < 180) ? -90 : 90;
+          lbl.style.transform = `rotate(${tangentAngle}deg) scale(${isSmall ? 0.72 : 0.82})`;
+          lbl.style.transformOrigin = 'center center';
+          lbl.style.opacity = '0.85';
+
+          const fontClass = isSmall
+            ? 'text-[7.5px] px-1.5 py-0.5'
+            : isMed
+            ? 'text-[9px] px-2 py-0.5'
+            : 'text-[10.5px] px-2.5 py-0.5';
+
+          lbl.className = `inline-block font-lora font-bold ${fontClass} text-[#fff6e0] hover:text-[#ffffff] tracking-tight rounded bg-[#132238]/95 hover:bg-[#1c3252] border border-[#caa55d]/70 shadow-[0_1px_4px_rgba(0,0,0,0.5)] whitespace-nowrap text-center pointer-events-auto leading-none transition-all duration-300`;
         }
       }
     }
@@ -547,23 +574,23 @@ function initAstrolabeDragAndDrop() {
 function setAstrolabeSealState(isLocked) {
   if (!astrolabeCenterSeal || !centerSealIcon) return;
   if (isLocked) {
-    astrolabeCenterSeal.className = 'absolute z-30 w-14 h-14 sm:w-16 sm:h-16 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#1b5e20] via-[#2e7d32] to-[#144718] border-2 border-[#caa55d] shadow-[0_0_20px_rgba(46,125,50,0.8),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 scale-105 pointer-events-none';
+    astrolabeCenterSeal.className = 'absolute z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-14 lg:h-14 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#1b5e20] via-[#2e7d32] to-[#144718] border-2 border-[#caa55d] shadow-[0_0_20px_rgba(46,125,50,0.8),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 scale-105 pointer-events-none';
     centerSealIcon.textContent = 'Uyumlu';
-    centerSealIcon.className = 'font-serif font-bold text-[11px] sm:text-xs text-[#fff9ea] drop-shadow text-center';
+    centerSealIcon.className = 'font-serif font-bold text-[8px] sm:text-[10px] md:text-xs lg:text-sm text-[#fff9ea] drop-shadow text-center';
 
     // Kartlara yeşil onay çerçevesi
-    if (cardAligned1) cardAligned1.className = 'flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
-    if (cardAligned2) cardAligned2.className = 'flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
-    if (cardAligned3) cardAligned3.className = 'flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
+    if (cardAligned1) cardAligned1.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
+    if (cardAligned2) cardAligned2.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
+    if (cardAligned3) cardAligned3.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
   } else {
-    astrolabeCenterSeal.className = 'absolute z-30 w-14 h-14 sm:w-16 sm:h-16 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_18px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none';
+    astrolabeCenterSeal.className = 'absolute z-30 w-9 h-9 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-14 lg:h-14 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_18px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none';
     centerSealIcon.textContent = 'Kilit';
-    centerSealIcon.className = 'font-serif font-bold text-xs sm:text-sm text-[#fff7e6] tracking-wider drop-shadow text-center';
+    centerSealIcon.className = 'font-serif font-bold text-[9px] sm:text-[11px] md:text-xs lg:text-sm text-[#fff7e6] tracking-wider drop-shadow text-center';
 
     // Kartları varsayılan renge döndür
-    if (cardAligned1) cardAligned1.className = 'flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
-    if (cardAligned2) cardAligned2.className = 'flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
-    if (cardAligned3) cardAligned3.className = 'flex-1 p-3.5 sm:p-4 md:p-4.5 rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
+    if (cardAligned1) cardAligned1.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
+    if (cardAligned2) cardAligned2.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
+    if (cardAligned3) cardAligned3.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
   }
 }
 
@@ -605,7 +632,7 @@ function checkAstrolabeLock() {
     playAstrolabeMismatchSound();
     if (astrolabeStatusText) {
       astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-[#8c1e1e] leading-relaxed font-bold';
-      astrolabeStatusText.textContent = 'Halkalar henüz doğru neden ve sonuç bağıyla hizalanmadı. Gelişmeleri ve gerekçeleri gözden geçirerek tekrar deneyiniz.';
+      astrolabeStatusText.textContent = 'Halkalar henüz doğru neden ve sonuç bağıyla hizalanmadı. Tekrar deneyiniz.';
     }
     
     // Kartlarda geçici kırmızı uyarı çerçevesi

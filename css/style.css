@@ -11,12 +11,28 @@
 /* Dokunmatik tıklama vurgusu engelleme */
 * {
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+/* Mobil Cihaz Güvenli Alanları (iPhone Çentik & Alt Çubuk Uyumu) */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
+body {
+  padding-top: var(--sat);
+  padding-right: var(--sar);
+  padding-bottom: var(--sab);
+  padding-left: var(--sal);
 }
 
 /* Parşömen ve Ahşap Dokulu İnce Kaydırma Çubukları */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,3 +54,16 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
+/* Mobil İçin Akıcı Dokunma ve Kaydırma */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Usturlap Kadranı Dokunmatik Kontrol */
+#astrolabeDialContainer {
+  touch-action: none;
+  -webkit-touch-callout: none;
+}
+

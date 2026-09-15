@@ -4,8 +4,9 @@
     {
       "name": "history-app",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "3000"],
-      "port": 3000
+      "runtimeArgs": ["-c", "import os, http.server; http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=int(os.environ.get('PORT', 8080)))"],
+      "port": 8080,
+      "autoPort": true
     }
   ]
 }

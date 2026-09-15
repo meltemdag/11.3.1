@@ -65,7 +65,7 @@ function renderHotspots() {
   EVENTS.forEach((item, index) => {
     const isWatched = watchedEvents.has(item.id);
     const btn = document.createElement('button');
-    btn.className = 'absolute group rounded-xl transition-all duration-300 cursor-pointer flex items-center justify-center p-2 focus:outline-none focus:ring-2 focus:ring-[#caa55d] hover:bg-stone-950/30 border border-transparent hover:border-[#caa55d]/50 hover:shadow-[inset_0_0_20px_rgba(202,165,93,0.2)] backdrop-blur-[0.5px]';
+    btn.className = 'absolute group rounded-xl cursor-pointer flex items-center justify-center focus:outline-none bg-transparent border-0 shadow-none';
     btn.style.left = item.coords.left;
     btn.style.top = item.coords.top;
     btn.style.width = item.coords.width;
