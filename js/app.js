@@ -225,7 +225,15 @@ function openEventVideo(index) {
 
   // Buton Durumları
   if (modalPrevBtn) modalPrevBtn.disabled = index === 0;
-  if (modalNextBtn) modalNextBtn.disabled = index === EVENTS.length - 1;
+  if (modalNextBtn) {
+    if (index < EVENTS.length - 1) {
+      modalNextBtn.disabled = false;
+      modalNextBtn.textContent = 'Sonraki Olay';
+    } else {
+      modalNextBtn.disabled = false;
+      modalNextBtn.textContent = 'Sonraki Aşamaya Geç';
+    }
+  }
 
   // İzlenme durumunu kaydet
   markAsWatched(ev.id);
@@ -235,6 +243,28 @@ function openEventVideo(index) {
 }
 window.openEventVideo = openEventVideo;
 
+// Zaman Kadranına Geçiş Butonlarını Güncelle
+function updateAstrolabeTransitionButtons() {
+  if (!btnProceedToAstrolabe) btnProceedToAstrolabe = document.getElementById('btnProceedToAstrolabe');
+  if (!btnOpenAstrolabe) btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
+
+  const isAllWatched = watchedEvents.size === EVENTS.length;
+  if (btnProceedToAstrolabe) {
+    if (isAllWatched) {
+      btnProceedToAstrolabe.classList.remove('hidden');
+    } else {
+      btnProceedToAstrolabe.classList.add('hidden');
+    }
+  }
+  if (btnOpenAstrolabe) {
+    if (isAllWatched) {
+      btnOpenAstrolabe.classList.remove('hidden');
+    } else {
+      btnOpenAstrolabe.classList.add('hidden');
+    }
+  }
+}
+
 // İzlendi Olarak İşaretle
 function markAsWatched(id) {
   if (!watchedEvents.has(id)) {
@@ -242,8 +272,9 @@ function markAsWatched(id) {
     saveProgress();
     renderHotspots();
     renderCards();
+    updateAstrolabeTransitionButtons();
 
-    // 9 adımın tamamı izlendiyse tamamlandı modalını hazırla ve SCORM bildirimi yap
+    // 9 adımın tamamı izlendiyse SCORM bildirimi yap
     if (watchedEvents.size === EVENTS.length) {
       notifyScormCompleted();
     }
@@ -256,16 +287,63 @@ function closeEventVideo() {
   if (videoModal) videoModal.classList.add('hidden');
   renderHotspots();
   renderCards();
-
-  // Eğer hepsi izlendiyse ve tamamlanma modalı henüz açılmadıysa göster
-  if (watchedEvents.size === EVENTS.length && !sessionStorage.getItem('congratsShown')) {
-    sessionStorage.setItem('congratsShown', 'true');
-    setTimeout(() => {
-      if (completionModal) completionModal.classList.remove('hidden');
-    }, 350);
-  }
+  updateAstrolabeTransitionButtons();
 }
 window.closeEventVideo = closeEventVideo;
+
+// Etkinliği Yeniden Başlat (En Başa Karşılama Ekranına Dönüş)
+function resetEntireActivity() {
+  notifyScormCompleted();
+  watchedEvents.clear();
+  try {
+    localStorage.removeItem('osmanli_11_3_1_watched');
+  } catch (e) {}
+  hasAutoTransitionedToAstrolabe = false;
+
+  if (completionModal) completionModal.classList.add('hidden');
+  if (typeof closeZamanKadrani === 'function') closeZamanKadrani();
+  if (videoModal) videoModal.classList.add('hidden');
+
+  if (typeof resetAstrolabeState === 'function') {
+    resetAstrolabeState();
+  }
+
+  renderHotspots();
+  renderCards();
+  updateAstrolabeTransitionButtons();
+
+  // En başa (Giriş Karşılama Ekranına) dön
+  const viewIntroPage = document.getElementById('viewIntroPage');
+  if (viewIntroPage) {
+    viewIntroPage.classList.remove('hidden', 'opacity-0');
+    viewIntroPage.classList.add('opacity-100');
+  }
+}
+window.resetEntireActivity = resetEntireActivity;
+
+// Etkinliği Bitir (Pencereyi Kapatma veya Bilgilendirme)
+function finishEntireActivity() {
+  notifyScormCompleted();
+  try {
+    window.close();
+  } catch (e) {}
+
+  // Tarayıcı güvenlik kısıtlaması nedeniyle sekme kapatılamazsa bilgilendir
+  const completionDesc = document.getElementById('completionDescription');
+  const buttonsContainer = document.getElementById('completionButtonsContainer');
+  if (completionDesc) {
+    completionDesc.textContent = 'Etkinlik tamamlanmıştır. Tarayıcı veya sekme penceresini kapatabilirsiniz.';
+  }
+  if (buttonsContainer) {
+    buttonsContainer.classList.add('hidden');
+  }
+}
+window.finishEntireActivity = finishEntireActivity;
+
+// Otomatik Geçiş Takip Bayrağı
+let hasAutoTransitionedToAstrolabe = false;
+let btnProceedToAstrolabe = null;
+let btnOpenAstrolabe = null;
 
 // Uygulamayı Başlat
 function initApp() {
@@ -290,6 +368,8 @@ function initApp() {
   completionModal = document.getElementById('completionModal');
   btnFinishComplete = document.getElementById('btnFinishComplete');
   btnRestartComplete = document.getElementById('btnRestartComplete');
+  btnProceedToAstrolabe = document.getElementById('btnProceedToAstrolabe');
+  btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
 
   // Video Modal Dinleyicileri
   if (modalCloseBtn) {
@@ -308,6 +388,15 @@ function initApp() {
     modalNextBtn.addEventListener('click', () => {
       if (currentEventIndex < EVENTS.length - 1) {
         openEventVideo(currentEventIndex + 1);
+      } else {
+        // Son olaydayken tıklandığında kadrana geçiş
+        if (currentEventIndex !== null) {
+          markAsWatched(EVENTS[currentEventIndex].id);
+        }
+        closeEventVideo();
+        if (typeof openZamanKadrani === 'function') {
+          openZamanKadrani();
+        }
       }
     });
   }
@@ -316,6 +405,16 @@ function initApp() {
     modalVideoPlayer.addEventListener('ended', () => {
       if (currentEventIndex !== null) {
         markAsWatched(EVENTS[currentEventIndex].id);
+        // Eğer tüm videolar izlendiyse ve henüz otomatik geçiş yapılmadıysa kadrana otomatik geç
+        if (watchedEvents.size === EVENTS.length && !hasAutoTransitionedToAstrolabe) {
+          hasAutoTransitionedToAstrolabe = true;
+          setTimeout(() => {
+            closeEventVideo();
+            if (typeof openZamanKadrani === 'function') {
+              openZamanKadrani();
+            }
+          }, 800);
+        }
       }
     });
   }
@@ -358,33 +457,26 @@ function initApp() {
   if (btnResetProgress) {
     btnResetProgress.addEventListener('click', () => {
       if (confirm('İzleme durumunu sıfırlayarak etkinliği baştan başlatmak istediğinize emin misiniz?')) {
-        watchedEvents.clear();
-        saveProgress();
-        sessionStorage.removeItem('congratsShown');
-        renderHotspots();
-        renderCards();
-        notifyScormCompleted();
+        resetEntireActivity();
       }
     });
   }
 
-  // Tebrik Modalı Butonları
+  // Tebrik Modalı Butonları (Yalnızca İki Buton)
   if (btnFinishComplete) {
-    btnFinishComplete.addEventListener('click', () => {
-      if (completionModal) completionModal.classList.add('hidden');
-      notifyScormCompleted();
-    });
+    btnFinishComplete.addEventListener('click', finishEntireActivity);
   }
 
   if (btnRestartComplete) {
-    btnRestartComplete.addEventListener('click', () => {
-      if (completionModal) completionModal.classList.add('hidden');
-      watchedEvents.clear();
-      saveProgress();
-      sessionStorage.removeItem('congratsShown');
-      renderHotspots();
-      renderCards();
-      notifyScormCompleted();
+    btnRestartComplete.addEventListener('click', resetEntireActivity);
+  }
+
+  // Etkinliğin Altındaki Sonraki Aşamaya Geç Butonu
+  if (btnProceedToAstrolabe) {
+    btnProceedToAstrolabe.addEventListener('click', () => {
+      if (typeof openZamanKadrani === 'function') {
+        openZamanKadrani();
+      }
     });
   }
 
@@ -404,6 +496,7 @@ function initApp() {
   loadProgress();
   renderHotspots();
   renderCards();
+  updateAstrolabeTransitionButtons();
 
   // Zaman Kadranını Başlat
   if (typeof initAstrolabe === 'function') {

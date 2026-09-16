@@ -776,17 +776,45 @@ function nextAstrolabeStage() {
   if (currentAstrolabeStageIndex < ASTROLABE_STAGES.length - 1) {
     loadAstrolabeStage(currentAstrolabeStageIndex + 1);
   } else {
-    // Tüm 3 Dönem Tamamlandı
+    // Tüm Kadranlar Tamamlandı ve Etkinliği Tamamla Butonuna Basıldı
     closeZamanKadrani();
     if (typeof notifyScormCompleted === 'function') {
       notifyScormCompleted();
     }
-    setTimeout(() => {
-      const completionModal = document.getElementById('completionModal');
-      if (completionModal) completionModal.classList.remove('hidden');
-    }, 300);
+    const completionModal = document.getElementById('completionModal');
+    if (completionModal) {
+      const completionDesc = document.getElementById('completionDescription');
+      if (completionDesc) {
+        completionDesc.textContent = '1876 – 1909 yılları arasındaki tüm olayları, nedenlerini ve ortaya çıkan sonuçlarını başarıyla inceleyerek zaman kadranındaki tüm kilitleri açtınız.';
+      }
+      const buttonsContainer = document.getElementById('completionButtonsContainer');
+      if (buttonsContainer) buttonsContainer.classList.remove('hidden');
+      completionModal.classList.remove('hidden');
+    }
   }
 }
+
+// Kadran Durumunu Sıfırlama
+function resetAstrolabeState() {
+  currentAstrolabeStageIndex = 0;
+  completedAstrolabeStages.clear();
+  isCurrentStageLocked = false;
+  ringState = { ring1: null, ring2: null, ring3: null };
+  ringRotations = { ring1: 0, ring2: 0, ring3: 0 };
+  
+  if (astrolabeStatusText) {
+    astrolabeStatusText.className = 'hidden';
+    astrolabeStatusText.textContent = '';
+  }
+  if (btnCheckLock) btnCheckLock.classList.remove('hidden');
+  if (btnNextKadran) {
+    btnNextKadran.classList.add('hidden');
+    btnNextKadran.textContent = 'Sonraki Aşamaya Geç';
+  }
+  setAstrolabeSealState(false);
+  loadAstrolabeStage(0);
+}
+window.resetAstrolabeState = resetAstrolabeState;
 
 // Zaman Kadranı Tam Ekran Sayfası Aç / Kapat
 function openZamanKadrani() {
