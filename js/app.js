@@ -388,6 +388,18 @@ function initApp() {
     });
   }
 
+  // Giriş Ekranı (Karşılama Sayfası) Başlat Butonu
+  const viewIntroPage = document.getElementById('viewIntroPage');
+  const btnStartActivity = document.getElementById('btnStartActivity');
+  if (btnStartActivity && viewIntroPage) {
+    btnStartActivity.addEventListener('click', () => {
+      viewIntroPage.classList.add('opacity-0');
+      setTimeout(() => {
+        viewIntroPage.classList.add('hidden');
+      }, 300);
+    });
+  }
+
   // Başlangıç Verilerini Yükle ve Çiz
   loadProgress();
   renderHotspots();
