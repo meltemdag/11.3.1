@@ -26,7 +26,10 @@ let btnRestartComplete;
 
 // SCORM Tamamlama Desteği
 function notifyScormCompleted() {
-  if (typeof pipwerks !== 'undefined' && pipwerks.scorm) {
+  if (typeof window.SCORM !== 'undefined') {
+    window.SCORM.complete(true);
+    window.SCORM.setStatus('completed');
+  } else if (typeof pipwerks !== 'undefined' && pipwerks.scorm) {
     pipwerks.scorm.set("cmi.core.lesson_status", "completed");
     pipwerks.scorm.save();
   }
@@ -212,6 +215,9 @@ window.resetEntireActivity = resetEntireActivity;
 // Etkinliği Bitir (Pencereyi Kapatma veya Bilgilendirme)
 function finishEntireActivity() {
   notifyScormCompleted();
+  if (typeof window.SCORM !== 'undefined') {
+    window.SCORM.terminate();
+  }
   try {
     window.close();
   } catch (e) {}
@@ -325,7 +331,19 @@ function initApp() {
   if (typeof initAstrolabe === 'function') {
     initAstrolabe();
   }
+
+  // SCORM Servisini Başlat
+  if (typeof window.SCORM !== 'undefined') {
+    window.SCORM.initialize();
+  }
 }
+
+// Pencere Kapatılırken SCORM Servisini Sonlandır
+window.addEventListener('beforeunload', () => {
+  if (typeof window.SCORM !== 'undefined') {
+    window.SCORM.terminate();
+  }
+});
 
 // DOM Hazır Olduğunda Başlat
 if (document.readyState === 'loading') {

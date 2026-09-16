@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest identifier="com.mebi.tarih.11_3_1" version="1.2"
+          xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                              http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+  <organizations default="mebi_tarih_11_3_1_org">
+    <organization identifier="mebi_tarih_11_3_1_org">
+      <title>Savaşlar, Fikirler ve Değişim (1876 – 1909)</title>
+      <item identifier="item_tarih_11_3_1" identifierref="resource_tarih_11_3_1">
+        <title>Savaşlar, Fikirler ve Değişim (1876 – 1909)</title>
+        <adlcp:masteryscore>50</adlcp:masteryscore>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="resource_tarih_11_3_1" type="webcontent" adlcp:scormtype="sco" href="index.html">
+      <file href="index.html"/>
+      <file href="scorm-api-wrapper.js"/>
+      <file href="css/style.css"/>
+      <file href="js/tailwind-config.js"/>
+      <file href="js/data.js"/>
+      <file href="js/astrolabe.js"/>
+      <file href="js/app.js"/>
+      <file href="intro_bg.jpg"/>
+      <file href="infografi.png"/>
+      <file href="2.infografi.png"/>
+      <file href="unlock.png"/>
+      <file href="kadran.mp3"/>
+      <file href="2.disli_ses.mp3"/>
+      <file href="dogru.mp3"/>
+      <file href="yanlis.mp3"/>
+      <file href="videolar/info1.mp4"/>
+      <file href="videolar/info2.mp4"/>
+      <file href="videolar/info3.mp4"/>
+      <file href="videolar/info4.mp4"/>
+      <file href="videolar/info5.mp4"/>
+      <file href="videolar/info6.mp4"/>
+      <file href="videolar/info7.mp4"/>
+      <file href="videolar/info8.mp4"/>
+      <file href="videolar/info9.mp4"/>
+    </resource>
+  </resources>
+</manifest>
