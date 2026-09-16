@@ -23,7 +23,6 @@ let sectionInfographic;
 let completionModal;
 let btnFinishComplete;
 let btnRestartComplete;
-let btnProceedToAstrolabe;
 
 // SCORM Tamamlama Desteği
 function notifyScormCompleted() {
