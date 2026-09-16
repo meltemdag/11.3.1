@@ -119,11 +119,11 @@ const ASTROLABE_STAGES = [
         }
       },
       1: {
-        explanation: "Büyük devletlerin Tersane Konferansı'nda alacağı kararlarla Osmanlı iç işlerine müdahale etmesini önleme gayesi, Kanun-ı Esasi'nin kabul edilmesini hızlandırmış; böylece padişahın mutlak yetkileri ilk kez yazılı bir anayasa metni ile yasal sınırlara bağlanmıştır.",
+        explanation: "Büyük devletlerin Tersane Konferansı kararlarıyla Osmanlı iç işlerine müdahale etmesini önleme gayesi, Kanun-ı Esasi'nin kabul edilmesini hızlandırmış; böylece Türk tarihinin ilk anayasası yürürlüğe girerek padişahın mutlak yetkileri yasal sınırlara bağlanmıştır.",
         hints: {
-          hintCause: "Kanun-ı Esasi'nin kabul edilmesini hızlandıran dış baskıya ve Tersane Konferansı kararlarıyla gelebilecek yabancı müdahaleyi önleme arayışına odaklanınız.",
-          hintEffect: "İlk anayasanın kabul edilmesiyle padişahın mutlak yetkilerinin yazılı bir metinle ilk defa çerçevelenmesi sonucuna odaklanınız.",
-          hintBoth: "Tersane Konferansı'ndaki dış müdahale tehlikesini (neden) ve padişahın yetkilerini sınırlayan ilk anayasal çerçeveyi (sonuç) birlikte değerlendiriniz."
+          hintCause: "Kanun-ı Esasi'nin kabul edilmesinde, Tersane Konferansı kararlarıyla gelebilecek yabancı müdahalesini engelleme arayışına odaklanınız.",
+          hintEffect: "Kanun-ı Esasi'nin kabulüyle Türk tarihinin ilk anayasasının yürürlüğe girmesi sonucuna odaklanınız.",
+          hintBoth: "Tersane Konferansı'ndaki dış müdahale tehlikesini (neden) ve ilk yazılı anayasanın yürürlüğe girmesi sonucunu (sonuç) birlikte değerlendiriniz."
         }
       },
       2: {
@@ -138,7 +138,7 @@ const ASTROLABE_STAGES = [
     rings: {
       ring1: [
         { triadId: 0, text: "Genç Osmanlıların mutlak otoriteyi sınırlandırarak anayasal düzene geçişi savunması", label: "Genç Osmanlılar" },
-        { triadId: 1, text: "Tersane Konferansı kararlarını ve büyük devletlerin iç işlerine müdahalesini engelleme arzusu", label: "Dış Müdahaleyi Önleme" },
+        { triadId: 1, text: "Büyük devletlerin Tersane Konferansı kararlarıyla Osmanlı iç işlerine müdahale etmesini önleme gayesi", label: "Tersane Konferansı" },
         { triadId: 2, text: "Farklı din ve milletlerden halkın temsilcileriyle ortak bir meclis oluşturma hedefi", label: "Temsil Arayışı" }
       ],
       ring2: [
@@ -149,7 +149,7 @@ const ASTROLABE_STAGES = [
       ring3: [
         { triadId: 2, text: "Müslüman ve gayrimüslim tebaanın temsilcilerinin ilk kez aynı parlamentoda toplanması", label: "Parlamenter Deneyim" },
         { triadId: 0, text: "Osmanlı Devleti'nin anayasal yönetime geçmesi ve ilk kez Meclis-i Umumi'nin açılması", label: "Anayasal Yönetim" },
-        { triadId: 1, text: "Padişahın mutlak yetkilerinin ilk kez yazılı bir anayasa ile çerçevelenmesi", label: "Anayasal Çerçeve" }
+        { triadId: 1, text: "Türk tarihinin ilk anayasasının yürürlüğe girerek padişah yetkilerini sınırlandırması", label: "İlk Anayasa" }
       ]
     }
   },
@@ -173,11 +173,11 @@ const ASTROLABE_STAGES = [
         }
       },
       1: {
-        explanation: "93 Harbi'nin devlette yol açtığı olağanüstü askeri ve idari kriz ortamı gerekçe gösterilerek Meclis-i Umumi kapatılmış; Kanun-ı Esasi fiilen askıya alınarak padişahın mutlak otoritesine dayalı merkeziyetçi bir yönetim düzenine geçilmiştir.",
+        explanation: "93 Harbi buhranının devlette yol açtığı olağanüstü kriz ortamı gerekçe gösterilerek 1878'de Meclis-i Umumi kapatılmış; Kanun-ı Esasi fiilen askıya alınarak padişahın mutlak otoritesine dayalı merkeziyetçi yönetim düzenine geçilmiştir.",
         hints: {
-          hintCause: "Meclis-i Umumi'nin kapatılmasında, 93 Harbi yenilgisinin devlette doğurduğu olağanüstü askeri ve idari kriz ortamına odaklanınız.",
-          hintEffect: "Meclisin kapatılmasıyla anayasanın askıya alınarak padişahın mutlak otoritesine dönülmesi sonucuna odaklanınız.",
-          hintBoth: "Savaşın getirdiği olağanüstü kriz gerekçesini (neden) ve anayasanın askıya alınarak başlayan mutlakıyet idaresini (sonuç) birlikte değerlendiriniz."
+          hintCause: "Meclisin kapatılmasında, 93 Harbi buhranının devlette ortaya çıkardığı olağanüstü askeri ve idari krize odaklanınız.",
+          hintEffect: "Meclisin kapatılmasıyla anayasanın askıya alınarak merkeziyetçi yönetime geçilmesi sonucuna odaklanınız.",
+          hintBoth: "93 Harbi'nin getirdiği buhran ortamını (neden) ve başlayan merkeziyetçi yönetim sürecini (sonuç) birlikte değerlendiriniz."
         }
       },
       2: {
@@ -191,7 +191,7 @@ const ASTROLABE_STAGES = [
     },
     rings: {
       ring1: [
-        { triadId: 1, text: "93 Harbi'nin devlette ortaya çıkardığı olağanüstü askeri ve idari kriz ortamı", label: "Savaş Buhranı" },
+        { triadId: 1, text: "93 Harbi mağlubiyetinin devlette ortaya çıkardığı olağanüstü askeri ve idari kriz ortamı", label: "93 Harbi Buhranı" },
         { triadId: 2, text: "Savaş sırasında meclis içindeki milletvekilleri arasında sert görüş ayrılıklarının çıkması", label: "Meclis İçi Ayrılıklar" },
         { triadId: 0, text: "Rusya'nın Osmanlı topraklarına saldırması ve Balkan bunalımının savaşa dönüşmesi", label: "Rus Saldırısı" }
       ],
@@ -219,45 +219,45 @@ const ASTROLABE_STAGES = [
     initial: { ring1: 0, ring2: 0, ring3: 0 },
     triads: {
       0: {
-        explanation: "Devletin dağılmasını önlemek adına merkezi otoriteyi güçlendirme arayışı, II. Abdülhamid Dönemi'nde sıkı bir denetim ve takip politikasının uygulanmasına yol açmış; basına getirilen sansür muhalif aydınların gizli cemiyetler kurarak yer altında teşkilatlanması sonucunu doğurmuştur.",
+        explanation: "Devletin parçalanmasını önleme ve merkezi otoriteyi güçlendirme arayışı sansür ve sıkı takip politikasının uygulanmasına yol açmış; bu baskı ortamı muhalif aydınların yer altına inerek gizli cemiyetler kurmasıyla sonuçlanmıştır.",
         hints: {
-          hintCause: "Bu dönemin yönetim tarzını şekillendiren, dağılmayı önlemek amacıyla merkezi otoriteyi güçlendirme ihtiyacına odaklanınız.",
-          hintEffect: "Sıkı idari denetimlerin sonucunda basına sansür getirilmesi ve muhalif aydınların gizli cemiyetler kurmasına odaklanınız.",
-          hintBoth: "Merkezi otoriteyi güçlendirme politikasını (neden) ve buna tepki olarak doğan gizli cemiyetleşme sürecini (sonuç) birlikte değerlendiriniz."
+          hintCause: "Uygulanan sıkı idari politikanın arkasında, devletin parçalanmasını önleme arayışına odaklanınız.",
+          hintEffect: "Sansür ve sıkı takip politikasının muhalif aydınları yer altında gizli cemiyetler kurmaya yöneltmesi sonucuna odaklanınız.",
+          hintBoth: "Parçalanmayı önleme arayışını (neden) ve aydınların yer altına inerek gizli cemiyetler kurması sonucunu birlikte değerlendiriniz."
         }
       },
       1: {
-        explanation: "Sıkı denetime ve sürgünlere tepki göstererek anayasal düzeni yeniden kurmak isteyen aydınların mücadelesi Jön Türk hareketini güçlendirmiş; bu hareket muhalif sivil ve askeri kadroların İttihat ve Terakki Cemiyeti çatısı altında tek bir güç olarak birleşmesiyle sonuçlanmıştır.",
+        explanation: "Sıkı denetime tepki gösteren aydın muhalefeti Jön Türklerin yükselişini sağlamış; bu hareket muhalif sivil ve askeri kadroların İttihat ve Terakki Cemiyeti çatısı altında birleşmesiyle sonuçlanmıştır.",
         hints: {
-          hintCause: "Jön Türk hareketinin güçlenmesinde, anayasal düzeni yeniden kurmak isteyen muhalif aydınların tepkisine odaklanınız.",
-          hintEffect: "Jön Türklerin örgütlenmesiyle muhalif aydın ve subayların İttihat ve Terakki çatısında birleşmesi sonucuna odaklanınız.",
-          hintBoth: "Meşrutiyeti savunan aydınların tepkisini (neden) ve İttihat ve Terakki Cemiyeti çatısı altında birleşmelerini (sonuç) birlikte değerlendiriniz."
+          hintCause: "Jön Türklerin yükselişinde, anayasal düzeni yeniden kurmak isteyen aydın muhalefetine odaklanınız.",
+          hintEffect: "Jön Türk hareketinin muhalif kadroları İttihat ve Terakki Cemiyeti çatısı altında birleştirmesi sonucuna odaklanınız.",
+          hintBoth: "Aydın muhalefetinin tepkisini (neden) ve İttihat ve Terakki Cemiyeti çatısı altında toplanmasını (sonuç) birlikte değerlendiriniz."
         }
       },
       2: {
-        explanation: "Devletin kurtuluşunu anayasal düzen ve meclisin açılmasında gören genç kadroların yürüttüğü gizli teşkilatlanma; hürriyet ve meşrutiyet düşüncelerinin özellikle Rumeli'deki ordu birlikleri ve genç subaylar arasında hızla yayılmasıyla sonuçlanmıştır.",
+        explanation: "Devletin kurtuluşunu meşrutiyette gören hürriyet düşüncesi genç kadrolar arasında gizli cemiyetleşme sürecini başlatmış; bu teşkilatlanma özellikle Rumeli'deki ordu birliklerinin ve genç subayların desteğini almasıyla sonuçlanmıştır.",
         hints: {
-          hintCause: "Gizli cemiyetleşme sürecinde, devletin kurtuluşunu anayasa ve meclisin yeniden açılmasında gören genç kadroların inancına odaklanınız.",
-          hintEffect: "Gizli örgütlenmenin sonucunda meşrutiyet düşüncesinin özellikle Rumeli'deki askeri birliklerde yayılmasına odaklanınız.",
-          hintBoth: "Anayasal inançla başlayan gizli örgütlenmeyi (neden) ve Rumeli'deki genç subaylar arasında kazandığı yaygın desteği (sonuç) birlikte değerlendiriniz."
+          hintCause: "Gizli cemiyetleşmenin doğuşunda, devletin kurtuluşunu anayasal hürriyette gören düşünceye odaklanınız.",
+          hintEffect: "Gizli cemiyetlerin Rumeli'deki ordu birlikleri ve genç subayların desteğini kazanması sonucuna odaklanınız.",
+          hintBoth: "Hürriyet düşüncesinin doğurduğu inancı (neden) ve cemiyetin ordu desteğini arkasına alması sonucunu birlikte değerlendiriniz."
         }
       }
     },
     rings: {
       ring1: [
         { triadId: 2, text: "Devletin kurtuluşunun anayasal düzen ve meclisin açılmasında olduğuna inanan genç kadrolar", label: "Hürriyet Düşüncesi" },
-        { triadId: 0, text: "Meclisin kapatılmasının ardından devletin parçalanmasını önleme ve merkezi otoriteyi güçlendirme arayışı", label: "Merkezi Otorite" },
+        { triadId: 0, text: "Meclisin kapatılmasının ardından devletin parçalanmasını önleme ve merkezi otoriteyi güçlendirme arayışı", label: "Parçalanmayı Önleme" },
         { triadId: 1, text: "Sıkı denetime ve sürgünlere tepki gösteren aydınların meşruti yönetimi yeniden kurmak istemesi", label: "Aydın Muhalefeti" }
       ],
       ring2: [
-        { triadId: 0, text: "II. Abdülhamid Dönemi (1878-1909)", label: "II. Abdülhamid Dönemi" },
+        { triadId: 0, text: "II. Abdülhamid Dönemi – Sansür ve Sıkı Takip Politikası", label: "Sansür ve Takip" },
         { triadId: 1, text: "Jön Türklerin Yükselişi (1902-1907)", label: "Jön Türkler" },
         { triadId: 2, text: "Meşrutiyet Yanlısı Gizli Cemiyetleşme Süreci", label: "Gizli Cemiyetleşme" }
       ],
       ring3: [
-        { triadId: 1, text: "Muhalif aydın ve subayların İttihat ve Terakki Cemiyeti çatısı altında birleşmesi", label: "Cemiyet Teşkilatı" },
-        { triadId: 2, text: "Meşrutiyet yanlısı fikirlerin özellikle Rumeli'deki ordu birlikleri ve genç subaylar arasında yayılması", label: "Ordu İçinde Yayılma" },
-        { triadId: 0, text: "Basına sansür uygulanması ve muhalif aydınların yer altına inerek gizli cemiyetler kurması", label: "Sıkı Takip ve Sansür" }
+        { triadId: 1, text: "Muhalif aydın ve subayların İttihat ve Terakki Cemiyeti çatısı altında birleşmesi", label: "İttihat ve Terakki" },
+        { triadId: 2, text: "Hürriyet yanlısı cemiyetlerin özellikle Rumeli'deki ordu ve genç subayların desteğini alması", label: "Ordu ve Subay Desteği" },
+        { triadId: 0, text: "Muhalif aydın ve genç subayların yer altına inerek gizli cemiyetler kurması", label: "Gizli Cemiyetler" }
       ]
     }
   },
@@ -273,11 +273,11 @@ const ASTROLABE_STAGES = [
     initial: { ring1: 0, ring2: 0, ring3: 0 },
     triads: {
       0: {
-        explanation: "İngiltere ile Rusya'nın Reval'de buluşarak Osmanlı topraklarını ve Makedonya'yı paylaşma yönünde uzlaşması; vatanın elden gideceğini anlayan İttihat ve Terakki mensubu genç subayların acil eylem kararı almasıyla sonuçlanmıştır.",
+        explanation: "İngiltere ile Rusya'nın Reval'de buluşmasıyla doğan dış müdahale tehlikesi Reval Görüşmeleri'ni gündeme taşımış; toprakların paylaşılacağını anlayan subayların saraya meşrutiyet baskısı yapmasıyla sonuçlanmıştır.",
         hints: {
           hintCause: "Reval Görüşmeleri'nin arka planında İngiltere ile Rusya'nın Osmanlı topraklarını paylaşma tehdidine odaklanınız.",
-          hintEffect: "Reval buluşmasının İttihatçı subaylarda yarattığı parçalanma endişesine ve aldıkları acil eylem kararına odaklanınız.",
-          hintBoth: "Reval'deki dış müdahale tehlikesini (neden) ve subayların aldığı acil eylem kararını (sonuç) birlikte değerlendiriniz."
+          hintEffect: "Reval buluşmasının ardından subayların vatanı korumak için saraya meşrutiyet baskısı yapması sonucuna odaklanınız.",
+          hintBoth: "Reval'deki dış müdahale tehlikesini (neden) ve subayların saraya kurduğu meşrutiyet baskısını (sonuç) birlikte değerlendiriniz."
         }
       },
       1: {
@@ -289,11 +289,11 @@ const ASTROLABE_STAGES = [
         }
       },
       2: {
-        explanation: "Makedonya'daki isyan ortamı ve Rumeli'den saraya çekilen yoğun baskı telgrafları merkezi idareyi köşeye sıkıştırmış; hükümetin askeri isyanı bastıramaması meşrutiyeti yeniden ilan etmek zorunda kalmasıyla sonuçlanmıştır.",
+        explanation: "Rumeli'deki askeri ayaklanmanın bastırılamaması ve ordunun saraya itaatsizliği Rumeli İhtilali'ni doğurmuş; sarayın askeri müdahale imkanını yitirerek meşrutiyeti yeniden kabul etmek zorunda kalmasıyla sonuçlanmıştır.",
         hints: {
-          hintCause: "Saraya çekilen telgrafların ardında Makedonya'daki karışıklıklar ve bölgede yayılan isyan dalgasına odaklanınız.",
-          hintEffect: "Baskı telgrafları ve ordu isyanı sonucunda yönetimin meşrutiyeti yeniden kabul etmek zorunda kalmasına odaklanınız.",
-          hintBoth: "Makedonya'daki başkaldırıyı (neden) ve yönetimin isyanı bastıramayarak meşrutiyeti kabul etmek zorunda kalışını (sonuç) birlikte değerlendiriniz."
+          hintCause: "Sarayın çaresiz kalmasında, Rumeli'deki askeri ayaklanmanın bastırılamaması ve ordunun itaatsizliğine odaklanınız.",
+          hintEffect: "Rumeli İhtilali karşısında merkezi yönetimin meşrutiyeti kabul etmek zorunda kalması sonucuna odaklanınız.",
+          hintBoth: "Ayaklanmanın bastırılamamasını (neden) ve sarayın meşrutiyeti kabul etmek zorunda kalışını (sonuç) birlikte değerlendiriniz."
         }
       }
     },
@@ -301,17 +301,17 @@ const ASTROLABE_STAGES = [
       ring1: [
         { triadId: 0, text: "İngiltere ile Rusya'nın Osmanlı topraklarını ve Makedonya'yı paylaşmak üzere bir araya gelmesi", label: "Dış Müdahale Tehlikesi" },
         { triadId: 1, text: "Reval kararları karşısında yabancı devletlerin müdahalesini önlemenin tek yolunun meşrutiyet görülmesi", label: "Vatanı Kurtarma Kararı" },
-        { triadId: 2, text: "Makedonya'da yaşanan karışıklıklar ve bölgede patlak veren isyan ortamı", label: "Makedonya Buhranı" }
+        { triadId: 2, text: "Rumeli'deki askeri ayaklanmanın bastırılamaması ve ordunun saraya itaat etmemesi", label: "Ayaklanmanın Yayılması" }
       ],
       ring2: [
-        { triadId: 2, text: "Meşrutiyet İlanı İçin Saraya Çekilen Baskı Telgrafları", label: "Rumeli Telgrafları" },
+        { triadId: 2, text: "1908 – Rumeli İhtilali ve Sarayın Çaresizliği", label: "Rumeli İhtilali" },
         { triadId: 0, text: "Reval Görüşmeleri ve Denge Politikası (1908)", label: "Reval Görüşmeleri" },
         { triadId: 1, text: "Rumeli Subaylarının Askerleriyle Dağa Çıkması (1908)", label: "Subayların Başkaldırısı" }
       ],
       ring3: [
         { triadId: 1, text: "Rumeli'deki askerî birliklerin meşrutiyetin yeniden ilanı için yönetime karşı ayaklanması", label: "Rumeli Ayaklanması" },
-        { triadId: 2, text: "Yönetimin Rumeli'deki askeri isyanı bastıramayarak meşrutiyeti yeniden kabul etmek zorunda kalması", label: "Yönetimin Geri Adımı" },
-        { triadId: 0, text: "Vatanın parçalanacağını anlayan İttihatçı subayların acil eylem kararı alması", label: "Eylem Kararı" }
+        { triadId: 2, text: "Merkezi idarenin ordu isyanını durduramayarak II. Meşrutiyet'i kabul etmek zorunda kalması", label: "Meşrutiyetin Kabulü" },
+        { triadId: 0, text: "Vatanın parçalanmasını önlemek isteyen subayların saraya meşrutiyet baskısı yapması", label: "Meşrutiyet Baskısı" }
       ]
     }
   },
@@ -381,19 +381,19 @@ const ASTROLABE_STAGES = [
     initial: { ring1: 0, ring2: 0, ring3: 0 },
     triads: {
       0: {
-        explanation: "Meşrutiyet yönetimine, yeniliklere ve İttihat ve Terakki'nin siyasetteki ağırlığına karşı duyulan hoşnutsuzluk kışkırtmalarla birleşmiş; bu durum başkentte anayasal meşruti düzeni devirmeyi hedefleyen büyük 31 Mart İsyanı'nın patlak vermesine yol açmıştır.",
+        explanation: "Meşrutiyet yönetimine, yeniliklere ve İttihat ve Terakki'nin siyasetteki ağırlığına karşı duyulan hoşnutsuzluk kışkırtmalarla birleşmiş; bu durum başkentte anayasal meşruti düzeni devirmeyi hedefleyen büyük 31 Mart Ayaklanması'nın patlak vermesine yol açmıştır.",
         hints: {
-          hintCause: "31 Mart Olayı'nın çıkışında, anayasal meşrutiyet yönetimine ve cemiyetin siyasetteki ağırlığına karşı duyulan rejim karşıtı kışkırtmalara odaklanınız.",
+          hintCause: "31 Mart Ayaklanması'nın çıkışında, anayasal meşrutiyet yönetimine ve cemiyetin siyasetteki ağırlığına karşı duyulan rejim karşıtı kışkırtmalara odaklanınız.",
           hintEffect: "Bu rahatsızlığın başkent İstanbul'da meşrutiyeti ortadan kaldırmayı amaçlayan gerici bir ayaklanmaya dönüşmesi sonucuna odaklanınız.",
           hintBoth: "Rejim karşıtı kışkırtmaları (neden) ve başkentte patlak veren büyük ayaklanmayı (sonuç) birlikte değerlendiriniz."
         }
       },
       1: {
-        explanation: "Başkentte patlak veren isyanın meclisi ve Kanun-ı Esasi'yi ortadan kaldırma tehlikesi yaratması üzerine Selanik'ten Hareket Ordusu yola çıkmış; ordu başkente girerek ayaklanmayı bastırmış ve anayasal düzeni yeniden koruma altına almıştır.",
+        explanation: "Başkentte patlak veren 31 Mart Olayı'nın anayasal düzeni tehdit etmesi üzerine Mahmut Şevket Paşa komutasındaki Hareket Ordusu İstanbul'a girmiş; ayaklanmayı bastırarak meşruti idareyi ve anayasayı koruma altına almıştır.",
         hints: {
-          hintCause: "Hareket Ordusu'nun İstanbul'a yürümesinde, isyanın anayasayı ve meşruti düzeni ortadan kaldırma tehlikesine odaklanınız.",
-          hintEffect: "Hareket Ordusu'nun başkente girmesiyle isyanın bastırılması ve anayasanın korunması sonucuna odaklanınız.",
-          hintBoth: "Meşruti düzenin karşılaştığı tehlikeyi (neden) ve Selanik'ten gelen ordunun isyanı bastırarak anayasayı korumasını (sonuç) birlikte değerlendiriniz."
+          hintCause: "Hareket Ordusu'nun İstanbul'a yürümesinde, başkentte patlak veren 31 Mart Olayı'nın meşruti düzeni tehdit etmesine odaklanınız.",
+          hintEffect: "Hareket Ordusu'nun başkente girmesiyle isyanın bastırılması ve meşruti düzenin korunması sonucuna odaklanınız.",
+          hintBoth: "31 Mart Olayı'nın doğurduğu tehlikeyi (neden) ve Hareket Ordusu'nun isyanı bastırarak anayasayı korumasını (sonuç) birlikte değerlendiriniz."
         }
       },
       2: {
@@ -409,16 +409,16 @@ const ASTROLABE_STAGES = [
       ring1: [
         { triadId: 2, text: "İsyanın bastırılmasının ardından meclisin devlet yönetimindeki üstünlüğünü yasal olarak güvenceye alma kararı", label: "Meclis İradesi" },
         { triadId: 0, text: "Meşrutiyet yönetimine ve İttihat ve Terakki'nin siyasetteki ağırlığına karşı duyulan rahatsızlık ve kışkırtmalar", label: "Rejim Karşıtlığı" },
-        { triadId: 1, text: "Başkentte başlayan ayaklanmanın meşruti düzeni ve anayasayı ortadan kaldırma tehlikesi yaratması", label: "Rejimi Koruma Kararı" }
+        { triadId: 1, text: "Başkentte meşrutiyet yönetimine ve anayasaya karşı büyük bir ayaklanmanın başlaması", label: "31 Mart Olayı" }
       ],
       ring2: [
         { triadId: 1, text: "1909 – Hareket Ordusu'nun İstanbul'a Girişi", label: "Hareket Ordusu" },
         { triadId: 2, text: "1909 – Kanun-ı Esasi Değişiklikleri", label: "1909 Anayasa Değişikliği" },
-        { triadId: 0, text: "31 Mart 1909 – 31 Mart Olayı", label: "31 Mart Olayı" }
+        { triadId: 0, text: "31 Mart 1909 – 31 Mart Ayaklanması", label: "31 Mart Ayaklanması" }
       ],
       ring3: [
-        { triadId: 0, text: "Başkentte meşrutiyet yönetimine son vermek amacıyla gerici büyük bir ayaklanmanın başlaması", label: "Gerici Ayaklanma" },
-        { triadId: 1, text: "Selanik'ten gelen ordunun ayaklanmayı bastırarak meşruti düzeni ve anayasayı güvenceye alması", label: "İsyanın Bastırılması" },
+        { triadId: 0, text: "Başkentte meşrutiyet yönetimine son vermek amacıyla gerici büyük bir ayaklanmanın patlak vermesi", label: "Gerici Ayaklanma" },
+        { triadId: 1, text: "Selanik'ten gelen ordunun ayaklanmayı bastırarak meşruti düzeni ve anayasayı koruması", label: "İsyanın Bastırılması" },
         { triadId: 2, text: "Padişahın meclisi kapatma yetkisinin sınırlandırılması, hükümetin meclise karşı sorumlu kılınması", label: "Meclis Üstünlüğü" }
       ]
     }
