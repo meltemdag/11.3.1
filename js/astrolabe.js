@@ -210,6 +210,7 @@ let ringElement2;
 let ringElement3;
 let astrolabeCenterSeal;
 let centerSealIcon;
+let centerSealLockSvg;
 let cardAligned1;
 let cardAligned2;
 let cardAligned3;
@@ -579,16 +580,19 @@ function initAstrolabeDragAndDrop() {
 
 // Merkez Mührü Kilit Görseli
 function setAstrolabeSealState(isLocked) {
-  if (!astrolabeCenterSeal || !centerSealIcon) return;
+  if (!astrolabeCenterSeal) return;
+  if (!centerSealLockSvg) centerSealLockSvg = document.getElementById('centerSealLockSvg');
+  if (!centerSealIcon) centerSealIcon = document.getElementById('centerSealIcon');
+
   if (isLocked) {
-    astrolabeCenterSeal.className = 'absolute z-30 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#1b5e20] via-[#2e7d32] to-[#144718] border-2 border-[#caa55d] shadow-[0_0_24px_rgba(46,125,50,0.9),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 scale-110 pointer-events-none';
-    if (centerSealIcon.tagName === 'IMG') {
+    // Açık durum (Uyumlu / Çözüldü): Yeşil parıltılı mühür ve unlock görseli (dokunulmadı)
+    astrolabeCenterSeal.className = 'absolute z-30 w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#1b5e20] via-[#2e7d32] to-[#144718] border-2 border-[#caa55d] shadow-[0_0_24px_rgba(46,125,50,0.9),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 scale-110 pointer-events-none';
+    if (centerSealLockSvg) centerSealLockSvg.classList.add('hidden');
+    if (centerSealIcon) {
+      centerSealIcon.classList.remove('hidden');
       centerSealIcon.src = 'unlock.png';
       centerSealIcon.alt = 'Kilit Açıldı';
       centerSealIcon.className = 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 object-contain drop-shadow-[0_0_12px_rgba(255,230,120,0.95)] brightness-110 transition-all duration-300 pointer-events-none select-none';
-    } else {
-      centerSealIcon.textContent = 'Uyumlu';
-      centerSealIcon.className = 'font-serif font-bold text-[8px] sm:text-[10px] md:text-xs lg:text-sm text-[#fff9ea] drop-shadow text-center';
     }
 
     // Kartlara yeşil onay çerçevesi
@@ -596,14 +600,12 @@ function setAstrolabeSealState(isLocked) {
     if (cardAligned2) cardAligned2.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
     if (cardAligned3) cardAligned3.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-emerald-600 bg-emerald-50/50 shadow-sm transition-all flex flex-col justify-center';
   } else {
-    astrolabeCenterSeal.className = 'absolute z-30 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_18px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none';
-    if (centerSealIcon.tagName === 'IMG') {
-      centerSealIcon.src = 'lock.png';
-      centerSealIcon.alt = 'Kilitli';
-      centerSealIcon.className = 'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] transition-all duration-300 pointer-events-none select-none';
-    } else {
-      centerSealIcon.textContent = 'Kilit';
-      centerSealIcon.className = 'font-serif font-bold text-[9px] sm:text-[11px] md:text-xs lg:text-sm text-[#fff7e6] tracking-wider drop-shadow text-center';
+    // Kilitli durum: Pirinç montaj plakası dokusu ve pirinç mekanik kilit SVG
+    astrolabeCenterSeal.className = 'absolute z-30 w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brass-mount border-2 border-[#caa043] shadow-[0_4px_14px_rgba(0,0,0,0.6)] flex items-center justify-center transition-all duration-500 pointer-events-none';
+    if (centerSealIcon) centerSealIcon.classList.add('hidden');
+    if (centerSealLockSvg) {
+      centerSealLockSvg.classList.remove('hidden');
+      centerSealLockSvg.className = 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] transition-all duration-300 pointer-events-none select-none';
     }
 
     // Kartları varsayılan renge döndür
@@ -727,6 +729,7 @@ function initAstrolabe() {
   ringElement3 = document.getElementById('ringElement3');
   astrolabeCenterSeal = document.getElementById('astrolabeCenterSeal');
   centerSealIcon = document.getElementById('centerSealIcon');
+  centerSealLockSvg = document.getElementById('centerSealLockSvg');
   cardAligned1 = document.getElementById('cardAligned1');
   cardAligned2 = document.getElementById('cardAligned2');
   cardAligned3 = document.getElementById('cardAligned3');

@@ -67,3 +67,9 @@ body {
   -webkit-touch-callout: none;
 }
 
+/* Mekanik Kilit Pirinç Montaj Plakası / Bezel Dokusu */
+.bg-brass-mount {
+  background: radial-gradient(circle at 50% 30%, #3e2613 0%, #1f1107 70%, #0c0602 100%);
+  box-shadow: 0 10px 25px -4px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255, 230, 160, 0.25);
+}
+

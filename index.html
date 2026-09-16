@@ -449,9 +449,66 @@
               </div>
             </div>
 
-            <!-- Merkez Kilit Osmanlı Mührü -->
-            <div id="astrolabeCenterSeal" class="absolute z-30 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#7a1414] via-[#941c1c] to-[#540d0d] border-2 border-[#e2be68] shadow-[0_0_15px_rgba(180,30,30,0.6),inset_0_1px_1px_rgba(255,255,255,0.4)] flex items-center justify-center transition-all duration-500 pointer-events-none">
-              <img id="centerSealIcon" src="lock.png" alt="Kilit" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] transition-all duration-300 pointer-events-none select-none" />
+            <!-- Merkez Kilit Montaj Plakası ve Kilidi -->
+            <div id="astrolabeCenterSeal" class="absolute z-30 w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brass-mount border-2 border-[#caa043] shadow-[0_4px_14px_rgba(0,0,0,0.6)] flex items-center justify-center transition-all duration-500 pointer-events-none">
+              <!-- Kilitli Durum: Pirinç Mekanik Kilit SVG -->
+              <svg id="centerSealLockSvg" class="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] transition-all duration-300 pointer-events-none select-none" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- 1. Metalik Pirinç Kulp Gradyanı -->
+                  <linearGradient id="shackleMetal" x1="18" y1="8" x2="46" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#fff8d6"/>
+                    <stop offset="30%" stop-color="#caa043"/>
+                    <stop offset="70%" stop-color="#735212"/>
+                    <stop offset="100%" stop-color="#caa043"/>
+                  </linearGradient>
+
+                  <!-- 2. Tombak Pirinç Kilit Gövde Gradyanı -->
+                  <linearGradient id="lockBodyGradient" x1="14" y1="25" x2="50" y2="58" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#fce5a3"/>
+                    <stop offset="25%" stop-color="#d4af37"/>
+                    <stop offset="65%" stop-color="#8a661f"/>
+                    <stop offset="100%" stop-color="#4a330b"/>
+                  </linearGradient>
+
+                  <!-- 3. Yakut Mühür / Yuva Merkez Radyal Gradyanı -->
+                  <radialGradient id="keyholeRuby" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ff4757"/>
+                    <stop offset="65%" stop-color="#990d18"/>
+                    <stop offset="100%" stop-color="#2a0306"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- KİLİT KULPU (SHACKLE) -->
+                <g id="shackleGroup" class="lock-shackle">
+                  <!-- Derinlik gölgesi -->
+                  <path d="M23 27V18C23 13.0294 27.0294 9 32 9C36.9706 9 41 13.0294 41 18V27" stroke="rgba(0,0,0,0.5)" stroke-width="5.5" stroke-linecap="round"/>
+                  <!-- Metal kulp yüzeyi -->
+                  <path d="M23 27V18C23 13.0294 27.0294 9 32 9C36.9706 9 41 13.0294 41 18V27" stroke="url(#shackleMetal)" stroke-width="4.5" stroke-linecap="round"/>
+                  <!-- Işık yansıması -->
+                  <path d="M23 22V26" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+                </g>
+
+                <!-- TOMBAK KİLİT GÖVDESİ -->
+                <rect x="16" y="25" width="32" height="27" rx="5" fill="url(#lockBodyGradient)" stroke="#ffd87d" stroke-width="1.2"/>
+                
+                <!-- GRAVÜR VE RUMİ İŞLEMELER -->
+                <path d="M20 29C24 32 28 32 32 29C36 32 40 32 44 29" stroke="#664610" stroke-width="0.8" fill="none" opacity="0.85"/>
+                <path d="M20 47C24 44 28 44 32 47C36 44 40 44 44 47" stroke="#664610" stroke-width="0.8" fill="none" opacity="0.85"/>
+
+                <!-- PİRİNÇ KÖŞE PERÇİNLERİ -->
+                <circle cx="19.5" cy="28.5" r="1.1" fill="#fff5cc" stroke="#664610" stroke-width="0.4"/>
+                <circle cx="44.5" cy="28.5" r="1.1" fill="#fff5cc" stroke="#664610" stroke-width="0.4"/>
+                <circle cx="19.5" cy="47.5" r="1.1" fill="#fff5cc" stroke="#664610" stroke-width="0.4"/>
+                <circle cx="44.5" cy="47.5" r="1.1" fill="#fff5cc" stroke="#664610" stroke-width="0.4"/>
+
+                <!-- MERKEZİ YAKUT GÖZ / ANAHTAR YUVASI -->
+                <circle cx="32" cy="38" r="5.5" fill="#120a03" stroke="#ffd87d" stroke-width="0.9"/>
+                <path id="keyholeSlot" d="M32 35C31.05 35 30.28 35.77 30.28 36.72C30.28 37.31 30.58 37.83 31.03 38.13L30.28 42H33.72L32.97 38.13C33.42 37.83 33.72 37.31 33.72 36.72C33.72 35.77 32.95 35 32 35Z" fill="url(#keyholeRuby)"/>
+                <circle cx="32" cy="36.7" r="1" fill="#ffffff" opacity="0.75"/>
+              </svg>
+
+              <!-- Açık Durum: Unlock Görseli -->
+              <img id="centerSealIcon" src="unlock.png" alt="Kilit Açıldı" class="hidden w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 object-contain drop-shadow-[0_0_12px_rgba(255,230,120,0.95)] brightness-110 transition-all duration-300 pointer-events-none select-none" />
             </div>
 
           </div>
