@@ -261,16 +261,6 @@ function closeEventVideo() {
   renderHotspots();
   renderCards();
   updateAstrolabeTransitionButtons();
-
-  // Eğer 9 videonun tamamı izlendiyse ve henüz kadrana geçilmediyse otomatik kadrana geç
-  if (watchedEvents.size === EVENTS.length && !hasAutoTransitionedToAstrolabe) {
-    hasAutoTransitionedToAstrolabe = true;
-    setTimeout(() => {
-      if (typeof openZamanKadrani === 'function') {
-        openZamanKadrani();
-      }
-    }, 500);
-  }
 }
 window.closeEventVideo = closeEventVideo;
 
