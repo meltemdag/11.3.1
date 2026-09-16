@@ -10,7 +10,6 @@ let watchedEvents = new Set();
 
 // DOM Elemanları
 let hotspotContainer;
-let cardsContainer;
 let videoModal;
 let modalVideoPlayer;
 let modalVideoSource;
@@ -20,14 +19,11 @@ let modalNarrationText;
 let modalConnectionText;
 let modalCloseBtn;
 let modalStepIndicators;
-let btnResetProgress;
-let viewTabInfographic;
-let viewTabCards;
 let sectionInfographic;
-let sectionCards;
 let completionModal;
 let btnFinishComplete;
 let btnRestartComplete;
+let btnProceedToAstrolabe;
 
 // SCORM Tamamlama Desteği
 function notifyScormCompleted() {
@@ -94,73 +90,6 @@ function renderHotspots() {
   });
 }
 
-// 2. Kart Akışı Görünümünü İnşa Et
-function renderCards() {
-  if (!cardsContainer) return;
-  cardsContainer.innerHTML = '';
-  EVENTS.forEach((item, index) => {
-    const isWatched = watchedEvents.has(item.id);
-    const card = document.createElement('div');
-    card.className = `bg-white rounded-xl overflow-hidden shadow-sm border transition-all flex flex-col ${
-      isWatched ? 'border-emerald-300 ring-1 ring-emerald-300' : 'border-stone-200 hover:border-stone-400'
-    }`;
-
-    card.innerHTML = `
-      <div class="relative aspect-video bg-stone-900 overflow-hidden group cursor-pointer" onclick="openEventVideo(${index})">
-        <img 
-          src="${encodeURI(item.image)}" 
-          alt="${item.title}" 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-        <div class="absolute top-2.5 left-2.5">
-          <span class="px-2.5 py-1 rounded-md bg-stone-950/80 backdrop-blur-sm text-amber-300 text-xs font-bold border border-amber-500/30">
-            ${item.stepTitle}
-          </span>
-        </div>
-        <!-- Merkez Katman: İzlendiyse sabit onay tiki, izlenmediyse hover ile Oynat -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          ${
-            isWatched
-              ? `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#1a5d2a] via-[#236837] to-[#13431f] border-2 border-[#caa55d] outline outline-1 outline-[#caa55d]/40 outline-offset-1 flex items-center justify-center shadow-[0_3px_12px_rgba(20,60,30,0.55),0_0_10px_rgba(202,165,93,0.35)] group-hover:scale-110 transition-transform duration-200 pointer-events-none">
-                   <svg class="w-4.5 h-4.5 text-[#fff9ea] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                     <polyline points="20 6 9 17 4 12"></polyline>
-                   </svg>
-                 </div>`
-              : `<div class="opacity-0 group-hover:opacity-100 transition-opacity">
-                   <div class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] border border-[#e2be68] text-[#fff7e6] outline outline-1 outline-[#caa55d]/40 outline-offset-1 flex items-center gap-2 shadow-lg backdrop-blur-sm">
-                     <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
-                     <span class="font-serif font-bold text-xs uppercase tracking-widest drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-                       Oynat
-                     </span>
-                     <span class="w-1.5 h-1.5 rounded-full bg-[#f4cf7e] shadow-[0_0_4px_#f5df9e]"></span>
-                   </div>
-                 </div>`
-          }
-        </div>
-      </div>
-      <div class="p-4 flex-1 flex flex-col justify-between gap-3 bg-gradient-to-b from-[#fffdf9] to-[#fcf6e8]">
-        <div>
-          <h3 class="font-serif font-bold text-[#221206] text-base mb-1.5">${item.title}</h3>
-          <p class="font-serif text-[#4a3522] text-xs sm:text-sm line-clamp-3 leading-relaxed">${item.narration}</p>
-        </div>
-        <button 
-          class="w-full py-2 px-3 rounded-lg text-xs sm:text-sm font-serif font-semibold tracking-wider transition-all cursor-pointer ${
-            isWatched 
-              ? 'bg-gradient-to-r from-[#184d28] via-[#236837] to-[#184d28] text-[#fff9ea] border border-[#caa55d] shadow-sm' 
-              : 'bg-gradient-to-r from-[#7a1414] via-[#941c1c] to-[#7a1414] text-[#fff7e6] border border-[#d8b058] shadow-sm'
-          }"
-          onclick="openEventVideo(${index})"
-        >
-          ${isWatched ? 'Tekrar Oynat' : 'Oynat'}
-        </button>
-      </div>
-    `;
-
-    cardsContainer.appendChild(card);
-  });
-}
-
 // Modal Adım Göstergeleri
 function renderStepIndicators() {
   if (!modalStepIndicators) return;
@@ -219,7 +148,6 @@ window.openEventVideo = openEventVideo;
 // Zaman Kadranına Geçiş Butonlarını Güncelle
 function updateAstrolabeTransitionButtons() {
   if (!btnProceedToAstrolabe) btnProceedToAstrolabe = document.getElementById('btnProceedToAstrolabe');
-  if (!btnOpenAstrolabe) btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
 
   const isAllWatched = Boolean(watchedEvents && watchedEvents.size === EVENTS.length);
   if (btnProceedToAstrolabe) {
@@ -237,7 +165,6 @@ function markAsWatched(id) {
   if (!watchedEvents.has(id)) {
     watchedEvents.add(id);
     renderHotspots();
-    renderCards();
     updateAstrolabeTransitionButtons();
 
     // 9 adımın tamamı izlendiyse SCORM bildirimi yap
@@ -252,7 +179,6 @@ function closeEventVideo() {
   if (modalVideoPlayer) modalVideoPlayer.pause();
   if (videoModal) videoModal.classList.add('hidden');
   renderHotspots();
-  renderCards();
   updateAstrolabeTransitionButtons();
 }
 window.closeEventVideo = closeEventVideo;
@@ -273,7 +199,6 @@ function resetEntireActivity() {
   }
 
   renderHotspots();
-  renderCards();
   updateAstrolabeTransitionButtons();
 
   // En başa (Giriş Karşılama Ekranına) dön
@@ -311,7 +236,6 @@ let btnProceedToAstrolabe = null;
 // Uygulamayı Başlat
 function initApp() {
   hotspotContainer = document.getElementById('hotspotContainer');
-  cardsContainer = document.getElementById('cardsContainer');
   videoModal = document.getElementById('videoModal');
   modalVideoPlayer = document.getElementById('modalVideoPlayer');
   modalVideoSource = document.getElementById('modalVideoSource');
@@ -321,11 +245,7 @@ function initApp() {
   modalConnectionText = document.getElementById('modalConnectionText');
   modalCloseBtn = document.getElementById('modalCloseBtn');
   modalStepIndicators = document.getElementById('modalStepIndicators');
-  btnResetProgress = document.getElementById('btnResetProgress');
-  viewTabInfographic = document.getElementById('viewTabInfographic');
-  viewTabCards = document.getElementById('viewTabCards');
   sectionInfographic = document.getElementById('sectionInfographic');
-  sectionCards = document.getElementById('sectionCards');
   completionModal = document.getElementById('completionModal');
   btnFinishComplete = document.getElementById('btnFinishComplete');
   btnRestartComplete = document.getElementById('btnRestartComplete');
@@ -362,27 +282,7 @@ function initApp() {
     }
   });
 
-  // Görünüm Sekmeleri
-  if (viewTabInfographic && viewTabCards) {
-    viewTabInfographic.addEventListener('click', () => {
-      if (sectionInfographic) sectionInfographic.classList.remove('hidden');
-      if (sectionCards) sectionCards.classList.add('hidden');
-    });
 
-    viewTabCards.addEventListener('click', () => {
-      if (sectionCards) sectionCards.classList.remove('hidden');
-      if (sectionInfographic) sectionInfographic.classList.add('hidden');
-    });
-  }
-
-  // Sıfırlama Butonu
-  if (btnResetProgress) {
-    btnResetProgress.addEventListener('click', () => {
-      if (confirm('İzleme durumunu sıfırlayarak etkinliği baştan başlatmak istediğinize emin misiniz?')) {
-        resetEntireActivity();
-      }
-    });
-  }
 
   // Tebrik Modalı Butonları (Yalnızca İki Buton)
   if (btnFinishComplete) {
@@ -420,7 +320,6 @@ function initApp() {
   hasAutoTransitionedToAstrolabe = false;
 
   renderHotspots();
-  renderCards();
   updateAstrolabeTransitionButtons();
 
   // Zaman Kadranını Başlat

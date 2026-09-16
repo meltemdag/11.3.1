@@ -11,5 +11,6 @@ build/
 # IDE ve Sistem Dosyalari
 .vscode/
 .idea/
+.claude/
 .DS_Store
 Thumbs.db
