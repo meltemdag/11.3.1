@@ -97,22 +97,19 @@ const EVENTS = [
   }
 ];
 
-// 3 Kadran Aşaması (Her Aşamada 3 Konu Eş Zamanlı Olarak Hizalanır)
-// Öğrenci bildiği konuyu üst ibreye hizaladığında, diğer iki konu da otomatik olarak doğru eşleşir.
+// 6 Kadran Aşaması (Her Aşamada 3 Konu Eş Zamanlı Olarak Hizalanır)
+// Halkalardaki konular karışık sırada dizilmiştir; öğrenci seçtiği konuyu hizaladığında diğer iki konu da otomatik kilitlenir.
 const ASTROLABE_STAGES = [
   // =========================================================================
-  // 1. AŞAMA
-  // Dilim 0: Kanun-ı Esasi ve I. Meşrutiyet (1876)
-  // Dilim 1: 93 Harbi (1877-1878)
-  // Dilim 2: Meclis-i Umumi'nin Kapatılması (1878)
+  // 1. AŞAMA: İlk Anayasal Düzen ve Meclis (1876)
   // =========================================================================
   {
     id: 1,
     title: "1. Aşama",
     pillName: "1. Aşama",
-    correct: { ring1: 0, ring2: 0, ring3: 0 },
-    initial: { ring1: 1, ring2: 0, ring3: 2 },
-    explanation: "I. Meşrutiyet, 93 Harbi ve Meclisin Kapatılması süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
+    correct: { ring1: 0, ring2: 2, ring3: 1 },
+    initial: { ring1: 0, ring2: 0, ring3: 0 },
+    explanation: "I. Meşrutiyet'in ilanı, Kanun-ı Esasi'nin kabulü ve Meclis-i Umumi'nin açılması süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
     hints: {
       event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
       cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
@@ -122,36 +119,33 @@ const ASTROLABE_STAGES = [
     },
     rings: {
       ring1: [
-        { text: "Genç Osmanlıların mutlak otoriteyi sınırlandırarak anayasal düzene geçişi savunması", label: "Genç Osmanlılar" },
-        { text: "Rusya'nın Osmanlı topraklarına saldırması ve Balkan bunalımının savaşa dönüşmesi", label: "Rus Saldırısı" },
-        { text: "93 Harbi'nin devlette ortaya çıkardığı ağır buhran ve kriz ortamı", label: "93 Harbi Buhranı" }
+        { triadId: 0, text: "Genç Osmanlıların mutlak otoriteyi sınırlandırarak anayasal düzene geçişi savunması", label: "Genç Osmanlılar" },
+        { triadId: 1, text: "Tersane Konferansı kararlarını ve büyük devletlerin iç işlerine müdahalesini engelleme arzusu", label: "Dış Müdahaleyi Önleme" },
+        { triadId: 2, text: "Farklı din ve milletlerden halkın temsilcileriyle ortak bir meclis oluşturma hedefi", label: "Temsil Arayışı" }
       ],
       ring2: [
-        { text: "1876 – Kanun-ı Esasi ve I. Meşrutiyet", label: "I. Meşrutiyet" },
-        { text: "1877-1878 – 93 Harbi", label: "93 Harbi" },
-        { text: "1878 – Meclis-i Umumi'nin Kapatılması", label: "Meclisin Kapatılması" }
+        { triadId: 1, text: "1876 – Kanun-ı Esasi'nin Kabul Edilmesi", label: "Kanun-ı Esasi" },
+        { triadId: 2, text: "1877 – Meclis-i Umumi'nin İlk Kez Açılması", label: "İlk Meclis" },
+        { triadId: 0, text: "1876 – Kanun-ı Esasi ve I. Meşrutiyet", label: "I. Meşrutiyet" }
       ],
       ring3: [
-        { text: "Osmanlı Devleti'nin anayasal yönetime geçmesi ve ilk kez Meclis-i Umumi'nin açılması", label: "Anayasal Yönetim" },
-        { text: "Cephelerde ağır mağlubiyetler alınması, büyük göç dalgaları ve devlette mali kriz çıkması", label: "Ağır Kayıplar ve Göç" },
-        { text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" }
+        { triadId: 2, text: "Müslüman ve gayrimüslim tebaanın temsilcilerinin ilk kez aynı parlamentoda toplanması", label: "Parlamenter Deneyim" },
+        { triadId: 0, text: "Osmanlı Devleti'nin anayasal yönetime geçmesi ve ilk kez Meclis-i Umumi'nin açılması", label: "Anayasal Yönetim" },
+        { triadId: 1, text: "Padişahın mutlak yetkilerinin ilk kez yazılı bir anayasa ile çerçevelenmesi", label: "Anayasal Çerçeve" }
       ]
     }
   },
 
   // =========================================================================
-  // 2. AŞAMA
-  // Dilim 0: II. Abdülhamid Dönemi (1878-1909)
-  // Dilim 1: Jön Türklerin Yükselişi (1902-1907)
-  // Dilim 2: Reval Görüşmeleri ve Denge Politikası (1908)
+  // 2. AŞAMA: 93 Harbi ve Meclisin Kapatılması (1877 – 1878)
   // =========================================================================
   {
     id: 2,
     title: "2. Aşama",
     pillName: "2. Aşama",
-    correct: { ring1: 0, ring2: 0, ring3: 0 },
-    initial: { ring1: 2, ring2: 1, ring3: 0 },
-    explanation: "Merkeziyetçi yönetim ve sansür, Jön Türklerin teşkilatlanması ve Reval Görüşmeleri süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
+    correct: { ring1: 2, ring2: 1, ring3: 0 },
+    initial: { ring1: 0, ring2: 0, ring3: 0 },
+    explanation: "93 Harbi'nin getirdiği ağır mağlubiyetler ve Meclis-i Umumi'nin tatil edilmesiyle merkeziyetçi döneme geçiş süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
     hints: {
       event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
       cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
@@ -161,36 +155,33 @@ const ASTROLABE_STAGES = [
     },
     rings: {
       ring1: [
-        { text: "Meclisin kapatılmasının ardından devletin parçalanmasını önleme ve merkezi otoriteyi güçlendirme arayışı", label: "Merkezi Otorite" },
-        { text: "Sıkı denetim ve sansüre tepki gösteren aydınların anayasal düzeni yeniden kurmak istemesi", label: "Aydın Muhalefeti" },
-        { text: "İngiltere ile Rusya'nın Osmanlı topraklarını ve Makedonya'yı paylaşmak üzere buluşması", label: "Dış Müdahale Tehlikesi" }
+        { triadId: 1, text: "93 Harbi'nin devlette ortaya çıkardığı olağanüstü askeri ve idari kriz ortamı", label: "Savaş Buhranı" },
+        { triadId: 2, text: "Savaş sırasında meclis içindeki milletvekilleri arasında sert görüş ayrılıklarının çıkması", label: "Meclis İçi Ayrılıklar" },
+        { triadId: 0, text: "Rusya'nın Osmanlı topraklarına saldırması ve Balkan bunalımının savaşa dönüşmesi", label: "Rus Saldırısı" }
       ],
       ring2: [
-        { text: "II. Abdülhamid Dönemi (1878-1909)", label: "II. Abdülhamid Dönemi" },
-        { text: "Jön Türklerin Yükselişi (1902-1907)", label: "Jön Türkler" },
-        { text: "Reval Görüşmeleri ve Denge Politikası (1908)", label: "Reval Görüşmeleri" }
+        { triadId: 2, text: "1878 – Meclis-i Mebusan'ın Süresiz Tatili", label: "Meclisin Tatili" },
+        { triadId: 0, text: "1877-1878 – 93 Harbi", label: "93 Harbi" },
+        { triadId: 1, text: "1878 – Meclis-i Umumi'nin Kapatılması", label: "Meclisin Kapatılması" }
       ],
       ring3: [
-        { text: "Basına sansür uygulanması ve muhalif aydınların yer altına inerek gizli cemiyetler kurması", label: "Sıkı Takip ve Sansür" },
-        { text: "Muhalif kadroların İttihat ve Terakki çatısında birleşerek özellikle Rumeli subayları arasında yayılması", label: "Gizli Teşkilatlanma" },
-        { text: "Vatanın parçalanacağını anlayan İttihatçı subayların Rumeli'de meşrutiyet için ayaklanarak dağa çıkması", label: "Rumeli Ayaklanması" }
+        { triadId: 0, text: "Cephelerde ağır mağlubiyetler alınması, büyük göç dalgaları ve devlette mali kriz çıkması", label: "Ağır Kayıplar ve Göç" },
+        { triadId: 1, text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" },
+        { triadId: 2, text: "Otuz yıl boyunca anayasal kurumların çalıştırılmadığı mutlakıyet idaresine dönülmesi", label: "Anayasanın Askıya Alınması" }
       ]
     }
   },
 
   // =========================================================================
-  // 3. AŞAMA
-  // Dilim 0: 23 Temmuz 1908 – II. Meşrutiyet'in İlanı
-  // Dilim 1: İttihat ve Terakki'nin Güçlenmesi (1908-1909)
-  // Dilim 2: 31 Mart 1909 – 31 Mart Olayı
+  // 3. AŞAMA: Merkeziyetçi İdare ve Muhalefetin Doğuşu (1878 – 1907)
   // =========================================================================
   {
     id: 3,
     title: "3. Aşama",
     pillName: "3. Aşama",
-    correct: { ring1: 0, ring2: 0, ring3: 0 },
-    initial: { ring1: 0, ring2: 2, ring3: 1 },
-    explanation: "II. Meşrutiyet'in ilanı, İttihat ve Terakki'nin güçlenmesi ve 31 Mart Olayı süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
+    correct: { ring1: 1, ring2: 0, ring3: 2 },
+    initial: { ring1: 0, ring2: 0, ring3: 0 },
+    explanation: "Merkeziyetçi yönetim politikaları, Jön Türk muhalefeti ve cemiyetin orduda teşkilatlanması süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
     hints: {
       event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
       cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
@@ -200,19 +191,127 @@ const ASTROLABE_STAGES = [
     },
     rings: {
       ring1: [
-        { text: "Dış müdahaleleri engellemenin ve devletin dağılmasını önlemenin tek yolunun meşrutiyet olarak görülmesi", label: "Dağılmayı Önleme Kararı" },
-        { text: "Meşrutiyetin ilanında başrol oynayan ordu ve genç subayların cemiyeti desteklemesi", label: "Genç Subay Desteği" },
-        { text: "Meşrutiyet yönetimine ve İttihat ve Terakki'nin siyasetteki ağırlığına karşı duyulan rahatsızlık ve kışkırtmalar", label: "Rejim Karşıtlığı" }
+        { triadId: 2, text: "Devletin kurtuluşunun anayasal düzen ve meclisin açılmasında olduğuna inanan genç kadrolar", label: "Hürriyet Düşüncesi" },
+        { triadId: 0, text: "Meclisin kapatılmasının ardından devletin parçalanmasını önleme ve merkezi otoriteyi güçlendirme arayışı", label: "Merkezi Otorite" },
+        { triadId: 1, text: "Sıkı denetime ve sürgünlere tepki gösteren aydınların meşruti yönetimi yeniden kurmak istemesi", label: "Aydın Muhalefeti" }
       ],
       ring2: [
-        { text: "23 Temmuz 1908 – II. Meşrutiyet'in İlanı", label: "II. Meşrutiyet" },
-        { text: "İttihat ve Terakki'nin Güçlenmesi (1908-1909)", label: "İttihat ve Terakki" },
-        { text: "31 Mart 1909 – 31 Mart Olayı", label: "31 Mart Olayı" }
+        { triadId: 0, text: "II. Abdülhamid Dönemi (1878-1909)", label: "II. Abdülhamid Dönemi" },
+        { triadId: 1, text: "Jön Türklerin Yükselişi (1902-1907)", label: "Jön Türkler" },
+        { triadId: 2, text: "Meşrutiyet Yanlısı Gizli Cemiyetleşme Süreci", label: "Gizli Cemiyetleşme" }
       ],
       ring3: [
-        { text: "Otuz yıllık aranın ardından Meclis-i Mebusan'ın açılarak padişahın mutlak otoritesinin sınırlandırılması", label: "Meclisin Açılması" },
-        { text: "Cemiyetin devlet yönetiminde ve siyasi kararlarda en belirleyici güç hâline gelmesi", label: "Yönetimde Etkinlik" },
-        { text: "Hareket Ordusu'nun isyanı bastırması, II. Abdülhamid'in tahttan indirilmesi ve meclis üstünlüğünün kesinleşmesi", label: "Meclis Üstünlüğü" }
+        { triadId: 1, text: "Muhalif aydın ve subayların İttihat ve Terakki Cemiyeti çatısı altında birleşmesi", label: "Cemiyet Teşkilatı" },
+        { triadId: 2, text: "Meşrutiyet yanlısı fikirlerin özellikle Rumeli'deki ordu birlikleri ve genç subaylar arasında yayılması", label: "Ordu İçinde Yayılma" },
+        { triadId: 0, text: "Basına sansür uygulanması ve muhalif aydınların yer altına inerek gizli cemiyetler kurması", label: "Sıkı Takip ve Sansür" }
+      ]
+    }
+  },
+
+  // =========================================================================
+  // 4. AŞAMA: Reval Görüşmeleri ve Rumeli Başkaldırısı (1908)
+  // =========================================================================
+  {
+    id: 4,
+    title: "4. Aşama",
+    pillName: "4. Aşama",
+    correct: { ring1: 0, ring2: 1, ring3: 2 },
+    initial: { ring1: 0, ring2: 0, ring3: 0 },
+    explanation: "Reval Görüşmeleri'nin yarattığı dış tehdit, subayların Rumeli'de dağa çıkması ve saraya yönelik meşrutiyet baskısı süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
+    hints: {
+      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
+      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
+      effect: "2. kadranda seçtiğiniz olayın doğurduğu doğrudan sonuca odaklanarak 3. kadranı hizalayınız.",
+      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
+      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    },
+    rings: {
+      ring1: [
+        { triadId: 0, text: "İngiltere ile Rusya'nın Osmanlı topraklarını ve Makedonya'yı paylaşmak üzere bir araya gelmesi", label: "Dış Müdahale Tehlikesi" },
+        { triadId: 1, text: "Reval kararları karşısında yabancı devletlerin müdahalesini önlemenin tek yolunun meşrutiyet görülmesi", label: "Vatanı Kurtarma Kararı" },
+        { triadId: 2, text: "Makedonya'da yaşanan karışıklıklar ve bölgede patlak veren isyan ortamı", label: "Makedonya Buhranı" }
+      ],
+      ring2: [
+        { triadId: 2, text: "Meşrutiyet İlanı İçin Saraya Çekilen Baskı Telgrafları", label: "Rumeli Telgrafları" },
+        { triadId: 0, text: "Reval Görüşmeleri ve Denge Politikası (1908)", label: "Reval Görüşmeleri" },
+        { triadId: 1, text: "Rumeli Subaylarının Askerleriyle Dağa Çıkması (1908)", label: "Subayların Başkaldırısı" }
+      ],
+      ring3: [
+        { triadId: 1, text: "Rumeli'deki askerî birliklerin meşrutiyetin yeniden ilanı için yönetime karşı ayaklanması", label: "Rumeli Ayaklanması" },
+        { triadId: 2, text: "Yönetimin Rumeli'deki askeri isyanı bastıramayarak meşrutiyeti yeniden kabul etmek zorunda kalması", label: "Yönetimin Geri Adımı" },
+        { triadId: 0, text: "Vatanın parçalanacağını anlayan İttihatçı subayların acil eylem kararı alması", label: "Eylem Kararı" }
+      ]
+    }
+  },
+
+  // =========================================================================
+  // 5. AŞAMA: II. Meşrutiyet'in İlanı ve Hürriyet Ortamı (1908)
+  // =========================================================================
+  {
+    id: 5,
+    title: "5. Aşama",
+    pillName: "5. Aşama",
+    correct: { ring1: 2, ring2: 0, ring3: 1 },
+    initial: { ring1: 0, ring2: 0, ring3: 0 },
+    explanation: "II. Meşrutiyet'in ilanı, meclisin kapılarını otuz yıl sonra yeniden açması ve İttihat ve Terakki'nin siyasette güçlenmesi süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
+    hints: {
+      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
+      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
+      effect: "2. kadranda seçtiğiniz olayın devlette doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.",
+      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
+      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    },
+    rings: {
+      ring1: [
+        { triadId: 1, text: "Meşrutiyetin ilanıyla birlikte basındaki sansürün kalkması ve anayasal güvencelerin verilmesi", label: "Sansürün Kalkması" },
+        { triadId: 2, text: "Meşrutiyetin ilan edilmesinde başrol oynayan ordu ve genç subayların cemiyeti sahiplenmesi", label: "Genç Subay Desteği" },
+        { triadId: 0, text: "Rumeli'deki askerî ayaklanma ve halkın meşrutiyetin ilanı yönündeki yoğun baskısı", label: "Halk ve Ordu Baskısı" }
+      ],
+      ring2: [
+        { triadId: 0, text: "23 Temmuz 1908 – II. Meşrutiyet'in İlanı", label: "II. Meşrutiyet" },
+        { triadId: 1, text: "1908 – İstanbul Meydanlarında Hürriyet İlanı", label: "Hürriyet Ortamı" },
+        { triadId: 2, text: "İttihat ve Terakki'nin Güçlenmesi (1908-1909)", label: "İttihat ve Terakki" }
+      ],
+      ring3: [
+        { triadId: 2, text: "Cemiyetin devlet yönetiminde ve hükümet kararlarında en belirleyici güç hâline gelmesi", label: "Yönetimde Etkinlik" },
+        { triadId: 0, text: "Otuz yıllık aranın ardından Meclis-i Mebusan'ın açılarak padişahın mutlak otoritesinin sınırlandırılması", label: "Meclisin Açılması" },
+        { triadId: 1, text: "Meydanlarda büyük bir coşku yaşanması ve çok partili siyasi hayata geçişin başlaması", label: "Çok Partili Dönem" }
+      ]
+    }
+  },
+
+  // =========================================================================
+  // 6. AŞAMA: 31 Mart Olayı ve Meclis Üstünlüğü (1909)
+  // =========================================================================
+  {
+    id: 6,
+    title: "6. Aşama",
+    pillName: "6. Aşama",
+    correct: { ring1: 1, ring2: 2, ring3: 0 },
+    initial: { ring1: 0, ring2: 0, ring3: 0 },
+    explanation: "31 Mart Olayı'nın bastırılması, Hareket Ordusu'nun müdahalesi ve 1909 Anayasa değişiklikleriyle meclis üstünlüğünün kesinleşmesi süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
+    hints: {
+      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
+      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
+      effect: "2. kadranda seçtiğiniz olayın devlette doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.",
+      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
+      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    },
+    rings: {
+      ring1: [
+        { triadId: 2, text: "İsyanın bastırılmasının ardından meclisin devlet yönetimindeki üstünlüğünü yasal olarak güvenceye alma kararı", label: "Meclis İradesi" },
+        { triadId: 0, text: "Meşrutiyet yönetimine ve İttihat ve Terakki'nin siyasetteki ağırlığına karşı duyulan rahatsızlık ve kışkırtmalar", label: "Rejim Karşıtlığı" },
+        { triadId: 1, text: "Başkentte başlayan ayaklanmanın meşruti düzeni ve anayasayı ortadan kaldırma tehlikesi yaratması", label: "Rejimi Koruma Kararı" }
+      ],
+      ring2: [
+        { triadId: 1, text: "1909 – Hareket Ordusu'nun İstanbul'a Girişi", label: "Hareket Ordusu" },
+        { triadId: 2, text: "1909 – Kanun-ı Esasi Değişiklikleri", label: "1909 Anayasa Değişikliği" },
+        { triadId: 0, text: "31 Mart 1909 – 31 Mart Olayı", label: "31 Mart Olayı" }
+      ],
+      ring3: [
+        { triadId: 0, text: "Başkentte meşrutiyet yönetimine son vermek amacıyla gerici büyük bir ayaklanmanın başlaması", label: "Gerici Ayaklanma" },
+        { triadId: 1, text: "Selanik'ten gelen ordunun ayaklanmayı bastırarak meşruti düzeni ve anayasayı güvenceye alması", label: "İsyanın Bastırılması" },
+        { triadId: 2, text: "Padişahın meclisi kapatma yetkisinin sınırlandırılması, hükümetin meclise karşı sorumlu kılınması", label: "Meclis Üstünlüğü" }
       ]
     }
   }

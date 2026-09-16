@@ -265,7 +265,7 @@ function loadAstrolabeStage(index) {
     setAstrolabeSealState(true);
     if (astrolabeStatusText) {
       astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-emerald-950 leading-relaxed font-bold';
-      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Bu aşama başarıyla kilitlendi.</span> ${stage.explanation}`;
+      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Bu aşamanın kilidi başarıyla açıldı.</span> ${stage.explanation}`;
     }
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
     if (btnNextKadran) {
@@ -690,11 +690,15 @@ function checkAstrolabeLock() {
     return;
   }
 
-  // Üç halka da birbiriyle aynı dilime oturduğunda (0-0-0, 1-1-1 veya 2-2-2)
-  // Çarktaki 3 olayın tüm neden-sonuç bağları eş zamanlı olarak doğru hizalanmış olur.
-  const isRing1Correct = (ringState.ring1 === ringState.ring2);
+  // Üç halkadaki seçili ögelerin triadId değerleri eşleştiğinde
+  // Çarktaki 3 konunun tüm neden-sonuç bağları eş zamanlı olarak doğru hizalanmış olur.
+  const item1 = stage.rings.ring1[ringState.ring1];
+  const item2 = stage.rings.ring2[ringState.ring2];
+  const item3 = stage.rings.ring3[ringState.ring3];
+
+  const isRing1Correct = Boolean(item1 && item2 && item1.triadId === item2.triadId);
   const isRing2Correct = true; // Merkez olay referans alınır
-  const isRing3Correct = (ringState.ring3 === ringState.ring2);
+  const isRing3Correct = Boolean(item3 && item2 && item3.triadId === item2.triadId);
   const isCorrect = isRing1Correct && isRing3Correct;
 
   if (isCorrect) {
@@ -706,7 +710,7 @@ function checkAstrolabeLock() {
 
     if (astrolabeStatusText) {
       astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-emerald-950 bg-emerald-50/90 border border-emerald-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-bold';
-      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı!</span> Bu döneme ait 3 olayın tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı. ${stage.explanation}`;
+      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı!</span> Bu aşamadaki 3 konunun tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı. ${stage.explanation}`;
     }
 
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
