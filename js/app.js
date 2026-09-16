@@ -343,7 +343,6 @@ window.finishEntireActivity = finishEntireActivity;
 // Otomatik Geçiş Takip Bayrağı
 let hasAutoTransitionedToAstrolabe = false;
 let btnProceedToAstrolabe = null;
-let btnOpenAstrolabe = null;
 
 // Uygulamayı Başlat
 function initApp() {
