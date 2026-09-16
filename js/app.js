@@ -229,13 +229,6 @@ function updateAstrolabeTransitionButtons() {
       btnProceedToAstrolabe.classList.add('hidden');
     }
   }
-  if (btnOpenAstrolabe) {
-    if (isAllWatched) {
-      btnOpenAstrolabe.classList.remove('hidden');
-    } else {
-      btnOpenAstrolabe.classList.add('hidden');
-    }
-  }
 }
 
 // İzlendi Olarak İşaretle (Yalnızca video bitince veya sonraki adıma geçince çağrılır)
@@ -337,7 +330,6 @@ function initApp() {
   btnFinishComplete = document.getElementById('btnFinishComplete');
   btnRestartComplete = document.getElementById('btnRestartComplete');
   btnProceedToAstrolabe = document.getElementById('btnProceedToAstrolabe');
-  btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
 
   // Video Modal Kapat Butonu Dinleyicisi
   if (modalCloseBtn) {
