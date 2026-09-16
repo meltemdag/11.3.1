@@ -193,7 +193,7 @@ function playAstrolabeMismatchFallback() {
 
 // Kadran Durum Değişkenleri
 let currentAstrolabeStageIndex = 0;
-let ringState = { ring1: 0, ring2: 0, ring3: 0 };
+let ringState = { ring1: null, ring2: null, ring3: null };
 let completedAstrolabeStages = new Set();
 let isCurrentStageLocked = false;
 
@@ -240,9 +240,10 @@ function loadAstrolabeStage(index) {
     ringState.ring2 = stage.correct.ring2;
     ringState.ring3 = stage.correct.ring3;
   } else {
-    ringState.ring1 = stage.initial.ring1;
-    ringState.ring2 = stage.initial.ring2;
-    ringState.ring3 = stage.initial.ring3;
+    // Başlangıçta hiçbir kadran seçili gelmez (nötr ara açı)
+    ringState.ring1 = null;
+    ringState.ring2 = null;
+    ringState.ring3 = null;
   }
 
   // Halka Dilim Etiketlerini Doldur
@@ -302,7 +303,11 @@ function rotateRingManual(ringNumber, directionOrSlot, isDirectSlot = false) {
     if (ringState[key] === directionOrSlot) return;
     ringState[key] = directionOrSlot;
   } else {
-    ringState[key] = (ringState[key] + directionOrSlot + 3) % 3;
+    if (ringState[key] === null || ringState[key] === undefined) {
+      ringState[key] = (directionOrSlot > 0) ? 0 : 2;
+    } else {
+      ringState[key] = (ringState[key] + directionOrSlot + 3) % 3;
+    }
   }
 
   // Dilime geçiş ve oturma (2.disli_ses.mp3)
@@ -336,11 +341,12 @@ function updateAstrolabeVisuals() {
   const r3 = dialD * 0.150;
   const ringRadii = { 1: r1, 2: r2, 3: r3 };
 
-  // Kadran ana dönüş açıları (Her dilim 120°)
+  // Kadran ana dönüş açıları (Seçilmediyse ara açı 60°, seçildiyse ilgili dilim)
+  const neutralAngle = 60;
   const angles = {
-    1: -ringState.ring1 * 120,
-    2: -ringState.ring2 * 120,
-    3: -ringState.ring3 * 120
+    1: ringState.ring1 !== null && ringState.ring1 !== undefined ? -ringState.ring1 * 120 : neutralAngle,
+    2: ringState.ring2 !== null && ringState.ring2 !== undefined ? -ringState.ring2 * 120 : neutralAngle,
+    3: ringState.ring3 !== null && ringState.ring3 !== undefined ? -ringState.ring3 * 120 : neutralAngle
   };
 
   if (ringElement1) ringElement1.style.transform = `rotate(${angles[1]}deg)`;
@@ -368,7 +374,7 @@ function updateAstrolabeVisuals() {
         slot.style.transform = `rotate(${i * 120}deg) translateY(-${radius}px)`;
       }
 
-      const isSelected = (i === selectedSlot);
+      const isSelected = (selectedSlot !== null && selectedSlot !== undefined && i === selectedSlot);
       const labelText = ringData && ringData[i] ? ringData[i].label : '';
 
       if (lbl) {
@@ -410,15 +416,38 @@ function updateAstrolabeVisuals() {
     }
   }
 
-  // Sağ taraftaki kartların metinlerini güncelle
-  if (textAligned1 && stage.rings.ring1[ringState.ring1]) {
-    textAligned1.textContent = stage.rings.ring1[ringState.ring1].text;
+  // Sağ taraftaki kartların metinlerini ve durumlarını kademeli güncelle
+  // 1. Kart: Neden
+  if (cardAligned1 && textAligned1) {
+    if (ringState.ring1 !== null && ringState.ring1 !== undefined && stage.rings.ring1[ringState.ring1]) {
+      cardAligned1.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center min-h-[58px] sm:min-h-[66px] md:min-h-[74px]';
+      textAligned1.textContent = stage.rings.ring1[ringState.ring1].text;
+    } else {
+      cardAligned1.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-dashed border-[#caa55d]/50 bg-[#fffdf9]/60 shadow-none transition-all flex flex-col justify-center min-h-[58px] sm:min-h-[66px] md:min-h-[74px]';
+      textAligned1.innerHTML = '<span class="italic text-stone-400 font-normal text-xs sm:text-sm">1. Kadranı çevirerek neden seçiniz...</span>';
+    }
   }
-  if (textAligned2 && stage.rings.ring2[ringState.ring2]) {
-    textAligned2.textContent = stage.rings.ring2[ringState.ring2].text;
+
+  // 2. Kart: Olay
+  if (cardAligned2 && textAligned2) {
+    if (ringState.ring2 !== null && ringState.ring2 !== undefined && stage.rings.ring2[ringState.ring2]) {
+      cardAligned2.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center min-h-[58px] sm:min-h-[66px] md:min-h-[74px]';
+      textAligned2.textContent = stage.rings.ring2[ringState.ring2].text;
+    } else {
+      cardAligned2.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-dashed border-[#dfb76c]/50 bg-[#fffdf9]/60 shadow-none transition-all flex flex-col justify-center min-h-[58px] sm:min-h-[66px] md:min-h-[74px]';
+      textAligned2.innerHTML = '<span class="italic text-stone-400 font-normal text-xs sm:text-sm">2. Kadranı çevirerek olay seçiniz...</span>';
+    }
   }
-  if (textAligned3 && stage.rings.ring3[ringState.ring3]) {
-    textAligned3.textContent = stage.rings.ring3[ringState.ring3].text;
+
+  // 3. Kart: Sonuç
+  if (cardAligned3 && textAligned3) {
+    if (ringState.ring3 !== null && ringState.ring3 !== undefined && stage.rings.ring3[ringState.ring3]) {
+      cardAligned3.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center min-h-[58px] sm:min-h-[66px] md:min-h-[74px]';
+      textAligned3.textContent = stage.rings.ring3[ringState.ring3].text;
+    } else {
+      cardAligned3.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-dashed border-[#f3d07e]/50 bg-[#fffdf9]/60 shadow-none transition-all flex flex-col justify-center min-h-[58px] sm:min-h-[66px] md:min-h-[74px]';
+      textAligned3.innerHTML = '<span class="italic text-stone-400 font-normal text-xs sm:text-sm">3. Kadranı çevirerek sonuç seçiniz...</span>';
+    }
   }
 }
 
@@ -470,7 +499,7 @@ function initAstrolabeDragAndDrop() {
     isDraggingRing = true;
     dragStartPointerAngle = getPointerAngleFromCenter(e, centerX, centerY);
     const currentSlot = ringState[`ring${activeDragRingNumber}`];
-    dragStartRingAngle = -currentSlot * 120;
+    dragStartRingAngle = (currentSlot !== null && currentSlot !== undefined) ? -currentSlot * 120 : 60;
     currentDragAngle = dragStartRingAngle;
     lastDragSoundAngle = currentDragAngle;
     playKadranRotateSound();
@@ -518,7 +547,8 @@ function initAstrolabeDragAndDrop() {
 
     // Çevirme anında seçili üst madalyonu anlık olarak yatay tut
     for (let i = 0; i < 3; i++) {
-      const isSelected = (i === ringState[`ring${activeDragRingNumber}`]);
+      const currentSlot = ringState[`ring${activeDragRingNumber}`];
+      const isSelected = (currentSlot !== null && currentSlot !== undefined && i === currentSlot);
       const lbl = document.getElementById(`ringLabel${activeDragRingNumber}_${i}`);
       if (lbl && isSelected) {
         lbl.style.transition = 'none';
@@ -602,10 +632,8 @@ function setAstrolabeSealState(isLocked) {
       centerSealLockSvg.className = 'w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] transition-all duration-300 pointer-events-none select-none';
     }
 
-    // Kartları varsayılan renge döndür
-    if (cardAligned1) cardAligned1.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#caa55d] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
-    if (cardAligned2) cardAligned2.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#dfb76c] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
-    if (cardAligned3) cardAligned3.className = 'px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl border-2 border-[#f3d07e] bg-[#fffdf9]/95 shadow-sm transition-all flex flex-col justify-center';
+    // Kartları seçim durumuna göre güncelle
+    updateAstrolabeVisuals();
   }
 }
 
@@ -641,6 +669,32 @@ function getAstrolabeGuidingText(stage, isR1, isR2, isR3) {
 // Kilidi Kontrol Et (Doğru Yeşil, Yanlış Kırmızı Geri Bildirim)
 function checkAstrolabeLock() {
   const stage = ASTROLABE_STAGES[currentAstrolabeStageIndex];
+
+  // Henüz seçim yapılmamış kadran var mı kontrol et
+  if (ringState.ring1 === null || ringState.ring2 === null || ringState.ring3 === null) {
+    playAstrolabeMismatchSound();
+    if (astrolabeStatusText) {
+      astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-[#8c1e1e] bg-[#fff5f5] border border-rose-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-medium';
+      astrolabeStatusText.textContent = 'Lütfen kontrol etmeden önce üç kadranı da çevirerek neden, olay ve sonuç seçiminizi tamamlayınız.';
+    }
+
+    const checkList = [
+      { card: cardAligned1, val: ringState.ring1 },
+      { card: cardAligned2, val: ringState.ring2 },
+      { card: cardAligned3, val: ringState.ring3 }
+    ];
+    checkList.forEach(({ card, val }) => {
+      if (!card) return;
+      if (val === null) {
+        card.classList.add('border-rose-500', 'bg-rose-50/60');
+        setTimeout(() => {
+          card.classList.remove('border-rose-500', 'bg-rose-50/60');
+        }, 1500);
+      }
+    });
+    return;
+  }
+
   const isRing1Correct = (ringState.ring1 === stage.correct.ring1);
   const isRing2Correct = (ringState.ring2 === stage.correct.ring2);
   const isRing3Correct = (ringState.ring3 === stage.correct.ring3);
