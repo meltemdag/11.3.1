@@ -109,13 +109,31 @@ const ASTROLABE_STAGES = [
     pillName: "1. Aşama",
     correct: { ring1: 0, ring2: 2, ring3: 1 },
     initial: { ring1: 0, ring2: 0, ring3: 0 },
-    explanation: "I. Meşrutiyet'in ilanı, Kanun-ı Esasi'nin kabulü ve Meclis-i Umumi'nin açılması süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
-    hints: {
-      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
-      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
-      effect: "2. kadranda seçtiğiniz olayın devlette doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.",
-      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
-      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    triads: {
+      0: {
+        explanation: "Genç Osmanlıların mutlak otoriteyi sınırlandırarak anayasal düzene geçişi savunması, 1876'da Kanun-ı Esasi'nin kabul edilerek I. Meşrutiyet'in ilan edilmesini sağlamış; böylece Osmanlı Devleti ilk anayasasına kavuşarak halk temsilcilerinden oluşan Meclis-i Umumi'yi açmıştır.",
+        hints: {
+          hintCause: "1876'da meşrutiyetin ilan edilmesinde, padişahın mutlak otoritesini anayasa ile sınırlamak isteyen aydın hareketine (Genç Osmanlılar) odaklanınız.",
+          hintEffect: "I. Meşrutiyet'in ilanıyla birlikte devlette yaşanan en önemli idari değişime, yani halk temsilcilerinden oluşan ilk meclisin açılmasına odaklanınız.",
+          hintBoth: "1876 Meşrutiyet adımını hazırlayan Genç Osmanlılar hareketini (neden) ve açılan meclisle başlayan ilk anayasal parlamenter dönemi (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      1: {
+        explanation: "Büyük devletlerin Tersane Konferansı'nda alacağı kararlarla Osmanlı iç işlerine müdahale etmesini önleme gayesi, Kanun-ı Esasi'nin kabul edilmesini hızlandırmış; böylece padişahın mutlak yetkileri ilk kez yazılı bir anayasa metni ile yasal sınırlara bağlanmıştır.",
+        hints: {
+          hintCause: "Kanun-ı Esasi'nin kabul edilmesini hızlandıran dış baskıya ve Tersane Konferansı kararlarıyla gelebilecek yabancı müdahaleyi önleme arayışına odaklanınız.",
+          hintEffect: "İlk anayasanın kabul edilmesiyle padişahın mutlak yetkilerinin yazılı bir metinle ilk defa çerçevelenmesi sonucuna odaklanınız.",
+          hintBoth: "Tersane Konferansı'ndaki dış müdahale tehlikesini (neden) ve padişahın yetkilerini sınırlayan ilk anayasal çerçeveyi (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      2: {
+        explanation: "İmparatorluktaki farklı din ve milletlerden tebaayı bir arada tutacak ortak bir temsil organı kurma hedefi, 1877'de Meclis-i Umumi'nin açılmasını sağlamış; bu durum Müslüman ve gayrimüslim mebusların ilk kez aynı çatı altında toplanarak ortak parlamenter deneyim kazanmasıyla sonuçlanmıştır.",
+        hints: {
+          hintCause: "İlk meclisin açılmasında, imparatorluktaki farklı din ve unsurlardan tebaayı ortak bir yönetimde bir arada tutma hedefine odaklanınız.",
+          hintEffect: "Meclis-i Umumi'nin toplanmasıyla Müslüman ve gayrimüslim temsilcilerin ilk kez aynı meclis çatısı altında bir araya gelmesi sonucuna odaklanınız.",
+          hintBoth: "Farklı milletleri ortak mecliste toplama hedefini (neden) ve mebusların bir arada kazandığı ilk parlamenter tecrübeyi (sonuç) birlikte değerlendiriniz."
+        }
+      }
     },
     rings: {
       ring1: [
@@ -145,13 +163,31 @@ const ASTROLABE_STAGES = [
     pillName: "2. Aşama",
     correct: { ring1: 2, ring2: 1, ring3: 0 },
     initial: { ring1: 0, ring2: 0, ring3: 0 },
-    explanation: "93 Harbi'nin getirdiği ağır mağlubiyetler ve Meclis-i Umumi'nin tatil edilmesiyle merkeziyetçi döneme geçiş süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
-    hints: {
-      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
-      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
-      effect: "2. kadranda seçtiğiniz olayın doğurduğu doğrudan sonuca odaklanarak 3. kadranı hizalayınız.",
-      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
-      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    triads: {
+      0: {
+        explanation: "Balkan bunalımının tırmanması üzerine Rusya'nın Osmanlı topraklarına saldırması 93 Harbi'ni başlatmış; cephelerde yaşanan ağır yenilgiler yüz binlerce muhacirin başkente göç etmesine ve devlette büyük bir mali çöküşün doğmasına yol açmıştır.",
+        hints: {
+          hintCause: "93 Harbi'nin çıkışında Rus ordularının sınırları aşarak Osmanlı topraklarına saldırmasına ve Balkan bunalımının savaşa evrilmesine odaklanınız.",
+          hintEffect: "93 Harbi'nin devlette açtığı derin yaralara; ağır toprak kayıpları, göç dalgaları ve mali buhrana odaklanınız.",
+          hintBoth: "Rus ordularının başlattığı saldırıyı (neden) ve savaşın yol açtığı büyük göç dalgaları ile mali yıkımı (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      1: {
+        explanation: "93 Harbi'nin devlette yol açtığı olağanüstü askeri ve idari kriz ortamı gerekçe gösterilerek Meclis-i Umumi kapatılmış; Kanun-ı Esasi fiilen askıya alınarak padişahın mutlak otoritesine dayalı merkeziyetçi bir yönetim düzenine geçilmiştir.",
+        hints: {
+          hintCause: "Meclis-i Umumi'nin kapatılmasında, 93 Harbi yenilgisinin devlette doğurduğu olağanüstü askeri ve idari kriz ortamına odaklanınız.",
+          hintEffect: "Meclisin kapatılmasıyla anayasanın askıya alınarak padişahın mutlak otoritesine dönülmesi sonucuna odaklanınız.",
+          hintBoth: "Savaşın getirdiği olağanüstü kriz gerekçesini (neden) ve anayasanın askıya alınarak başlayan mutlakıyet idaresini (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      2: {
+        explanation: "93 Harbi sırasında Meclis-i Mebusan'daki hükümet ve milletvekilleri arasında yaşanan sert tartışmalar ve bölünmeler meclisin tatil edilmesine gerekçe yapılmış; böylece otuz yıl boyunca meclisin toplanmadığı ve anayasal kurumların işletilmediği bir dönem başlamıştır.",
+        hints: {
+          hintCause: "Meclisin süresiz tatil edilmesinde, savaş esnasında mebuslar arasında meclis kürsüsünde yaşanan sert görüş ayrılıklarına odaklanınız.",
+          hintEffect: "Meclisin tatil edilmesiyle anayasal kurumların otuz yıl boyunca kapalı kaldığı mutlakıyet idaresine odaklanınız.",
+          hintBoth: "Meclis içindeki sert görüş ayrılıklarını (neden) ve otuz yıl sürecek meclissiz mutlakıyet sürecini (sonuç) birlikte değerlendiriniz."
+        }
+      }
     },
     rings: {
       ring1: [
@@ -181,13 +217,31 @@ const ASTROLABE_STAGES = [
     pillName: "3. Aşama",
     correct: { ring1: 1, ring2: 0, ring3: 2 },
     initial: { ring1: 0, ring2: 0, ring3: 0 },
-    explanation: "Merkeziyetçi yönetim politikaları, Jön Türk muhalefeti ve cemiyetin orduda teşkilatlanması süreçlerinin tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
-    hints: {
-      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
-      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
-      effect: "2. kadranda seçtiğiniz olayın devlette doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.",
-      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
-      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    triads: {
+      0: {
+        explanation: "Devletin dağılmasını önlemek adına merkezi otoriteyi güçlendirme arayışı, II. Abdülhamid Dönemi'nde sıkı bir denetim ve takip politikasının uygulanmasına yol açmış; basına getirilen sansür muhalif aydınların gizli cemiyetler kurarak yer altında teşkilatlanması sonucunu doğurmuştur.",
+        hints: {
+          hintCause: "Bu dönemin yönetim tarzını şekillendiren, dağılmayı önlemek amacıyla merkezi otoriteyi güçlendirme ihtiyacına odaklanınız.",
+          hintEffect: "Sıkı idari denetimlerin sonucunda basına sansür getirilmesi ve muhalif aydınların gizli cemiyetler kurmasına odaklanınız.",
+          hintBoth: "Merkezi otoriteyi güçlendirme politikasını (neden) ve buna tepki olarak doğan gizli cemiyetleşme sürecini (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      1: {
+        explanation: "Sıkı denetime ve sürgünlere tepki göstererek anayasal düzeni yeniden kurmak isteyen aydınların mücadelesi Jön Türk hareketini güçlendirmiş; bu hareket muhalif sivil ve askeri kadroların İttihat ve Terakki Cemiyeti çatısı altında tek bir güç olarak birleşmesiyle sonuçlanmıştır.",
+        hints: {
+          hintCause: "Jön Türk hareketinin güçlenmesinde, anayasal düzeni yeniden kurmak isteyen muhalif aydınların tepkisine odaklanınız.",
+          hintEffect: "Jön Türklerin örgütlenmesiyle muhalif aydın ve subayların İttihat ve Terakki çatısında birleşmesi sonucuna odaklanınız.",
+          hintBoth: "Meşrutiyeti savunan aydınların tepkisini (neden) ve İttihat ve Terakki Cemiyeti çatısı altında birleşmelerini (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      2: {
+        explanation: "Devletin kurtuluşunu anayasal düzen ve meclisin açılmasında gören genç kadroların yürüttüğü gizli teşkilatlanma; hürriyet ve meşrutiyet düşüncelerinin özellikle Rumeli'deki ordu birlikleri ve genç subaylar arasında hızla yayılmasıyla sonuçlanmıştır.",
+        hints: {
+          hintCause: "Gizli cemiyetleşme sürecinde, devletin kurtuluşunu anayasa ve meclisin yeniden açılmasında gören genç kadroların inancına odaklanınız.",
+          hintEffect: "Gizli örgütlenmenin sonucunda meşrutiyet düşüncesinin özellikle Rumeli'deki askeri birliklerde yayılmasına odaklanınız.",
+          hintBoth: "Anayasal inançla başlayan gizli örgütlenmeyi (neden) ve Rumeli'deki genç subaylar arasında kazandığı yaygın desteği (sonuç) birlikte değerlendiriniz."
+        }
+      }
     },
     rings: {
       ring1: [
@@ -217,13 +271,31 @@ const ASTROLABE_STAGES = [
     pillName: "4. Aşama",
     correct: { ring1: 0, ring2: 1, ring3: 2 },
     initial: { ring1: 0, ring2: 0, ring3: 0 },
-    explanation: "Reval Görüşmeleri'nin yarattığı dış tehdit, subayların Rumeli'de dağa çıkması ve saraya yönelik meşrutiyet baskısı süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
-    hints: {
-      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
-      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
-      effect: "2. kadranda seçtiğiniz olayın doğurduğu doğrudan sonuca odaklanarak 3. kadranı hizalayınız.",
-      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
-      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    triads: {
+      0: {
+        explanation: "İngiltere ile Rusya'nın Reval'de buluşarak Osmanlı topraklarını ve Makedonya'yı paylaşma yönünde uzlaşması; vatanın elden gideceğini anlayan İttihat ve Terakki mensubu genç subayların acil eylem kararı almasıyla sonuçlanmıştır.",
+        hints: {
+          hintCause: "Reval Görüşmeleri'nin arka planında İngiltere ile Rusya'nın Osmanlı topraklarını paylaşma tehdidine odaklanınız.",
+          hintEffect: "Reval buluşmasının İttihatçı subaylarda yarattığı parçalanma endişesine ve aldıkları acil eylem kararına odaklanınız.",
+          hintBoth: "Reval'deki dış müdahale tehlikesini (neden) ve subayların aldığı acil eylem kararını (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      1: {
+        explanation: "Reval kararlarının doğurduğu tehlikeyi önlemenin tek yolunun meşrutiyet olduğuna inanan subayların harekete geçmesi; Resneli Niyazi ve Enver Bey gibi komutanların birlikleriyle dağa çıkıp yönetime karşı ayaklanarak meşrutiyetin ilanını talep etmesine yol açmıştır.",
+        hints: {
+          hintCause: "Subayların dağa çıkmasında, yabancı devletlerin müdahalesini durdurmanın tek yolunun meşrutiyette görülmesine odaklanınız.",
+          hintEffect: "Subayların eyleminin sonucunda Rumeli'deki askeri birliklerin meşrutiyet talebiyle ayaklanmasına odaklanınız.",
+          hintBoth: "Vatanı kurtarma kararını (neden) ve subayların askerleriyle Rumeli'de başlattığı askeri ayaklanmayı (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      2: {
+        explanation: "Makedonya'daki isyan ortamı ve Rumeli'den saraya çekilen yoğun baskı telgrafları merkezi idareyi köşeye sıkıştırmış; hükümetin askeri isyanı bastıramaması meşrutiyeti yeniden ilan etmek zorunda kalmasıyla sonuçlanmıştır.",
+        hints: {
+          hintCause: "Saraya çekilen telgrafların ardında Makedonya'daki karışıklıklar ve bölgede yayılan isyan dalgasına odaklanınız.",
+          hintEffect: "Baskı telgrafları ve ordu isyanı sonucunda yönetimin meşrutiyeti yeniden kabul etmek zorunda kalmasına odaklanınız.",
+          hintBoth: "Makedonya'daki başkaldırıyı (neden) ve yönetimin isyanı bastıramayarak meşrutiyeti kabul etmek zorunda kalışını (sonuç) birlikte değerlendiriniz."
+        }
+      }
     },
     rings: {
       ring1: [
@@ -253,13 +325,31 @@ const ASTROLABE_STAGES = [
     pillName: "5. Aşama",
     correct: { ring1: 2, ring2: 0, ring3: 1 },
     initial: { ring1: 0, ring2: 0, ring3: 0 },
-    explanation: "II. Meşrutiyet'in ilanı, meclisin kapılarını otuz yıl sonra yeniden açması ve İttihat ve Terakki'nin siyasette güçlenmesi süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
-    hints: {
-      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
-      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
-      effect: "2. kadranda seçtiğiniz olayın devlette doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.",
-      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
-      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    triads: {
+      0: {
+        explanation: "Rumeli'deki askeri ayaklanmalar ve cemiyetin uyguladığı yoğun baskı karşısında II. Meşrutiyet 23 Temmuz 1908'de yeniden ilan edilmiş; bu gelişme otuz yıllık aradan sonra meclisin toplanarak padişahın mutlak yetkilerini bir kez daha sınırlandırmasıyla sonuçlanmıştır.",
+        hints: {
+          hintCause: "II. Meşrutiyet'in ilanında, Rumeli'de dağa çıkan subayların ve halkın saraya uyguladığı yoğun baskıya odaklanınız.",
+          hintEffect: "II. Meşrutiyet'in ilanıyla otuz yıllık aradan sonra meclisin yeniden açılarak otoriteyi sınırlandırması sonucuna odaklanınız.",
+          hintBoth: "Rumeli'den gelen yoğun ordu baskısını (neden) ve otuz yıl sonra meclisin açılarak mutlak otoriteyi sınırlamasını (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      1: {
+        explanation: "Meşrutiyetin ilanıyla birlikte basındaki sansürün kaldırılması ve anayasal güvencelerin verilmesi İstanbul meydanlarında hürriyet coşkusu yaratmış; doğan serbest tartışma ortamı ilk siyasi fırkaların kurularak çok partili hayata geçilmesini sağlamıştır.",
+        hints: {
+          hintCause: "Hürriyet kutlamalarında, basındaki sansürün kaldırılması ve anayasal hakların tanınmasına odaklanınız.",
+          hintEffect: "Meydanlardaki serbestliğin ve coşkunun çok partili siyasi hayata geçişi başlatması sonucuna odaklanınız.",
+          hintBoth: "Sansürün kalkmasıyla doğan hürriyeti (neden) ve cemiyetlerin partileşerek çok partili dönemi başlatmasını (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      2: {
+        explanation: "Meşrutiyetin ilanında başrol oynayan ordunun ve genç subayların cemiyeti sahiplenmesi İttihat ve Terakki'nin gücünü pekiştirmiş; cemiyet ordu desteğiyle hükümet kararları ve devlet idaresinde en belirleyici siyasi güç hâline gelmiştir.",
+        hints: {
+          hintCause: "İttihat ve Terakki'nin siyasette güçlenmesinde, ordunun ve genç subayların cemiyete verdiği desteğe odaklanınız.",
+          hintEffect: "Cemiyetin güçlenmesinin devlet yönetiminde ve hükümet kararlarında en belirleyici güç hâline gelmesi sonucuna odaklanınız.",
+          hintBoth: "Genç subayların cemiyete sağladığı askeri desteği (neden) ve cemiyetin devlet yönetimindeki belirleyici güce dönüşmesini (sonuç) birlikte değerlendiriniz."
+        }
+      }
     },
     rings: {
       ring1: [
@@ -289,13 +379,31 @@ const ASTROLABE_STAGES = [
     pillName: "6. Aşama",
     correct: { ring1: 1, ring2: 2, ring3: 0 },
     initial: { ring1: 0, ring2: 0, ring3: 0 },
-    explanation: "31 Mart Olayı'nın bastırılması, Hareket Ordusu'nun müdahalesi ve 1909 Anayasa değişiklikleriyle meclis üstünlüğünün kesinleşmesi süreçlerinin neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı.",
-    hints: {
-      event: "Kadranda yer alan olaylardan bildiğiniz birini belirleyiniz ve bu olayın neden-sonuç zincirine odaklanınız.",
-      cause: "2. kadranda seçtiğiniz olaya yol açan nedene odaklanarak 1. kadranı hizalayınız.",
-      effect: "2. kadranda seçtiğiniz olayın devlette doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.",
-      both: "Seçtiğiniz olayın hem nedenini hem de sonucunu gözden geçirerek üç halkayı aynı hizaya getiriniz.",
-      general: "Kadrandaki üç konunun neden ve sonuç ilişkilerini değerlendiriniz."
+    triads: {
+      0: {
+        explanation: "Meşrutiyet yönetimine, yeniliklere ve İttihat ve Terakki'nin siyasetteki ağırlığına karşı duyulan hoşnutsuzluk kışkırtmalarla birleşmiş; bu durum başkentte anayasal meşruti düzeni devirmeyi hedefleyen büyük 31 Mart İsyanı'nın patlak vermesine yol açmıştır.",
+        hints: {
+          hintCause: "31 Mart Olayı'nın çıkışında, anayasal meşrutiyet yönetimine ve cemiyetin siyasetteki ağırlığına karşı duyulan rejim karşıtı kışkırtmalara odaklanınız.",
+          hintEffect: "Bu rahatsızlığın başkent İstanbul'da meşrutiyeti ortadan kaldırmayı amaçlayan gerici bir ayaklanmaya dönüşmesi sonucuna odaklanınız.",
+          hintBoth: "Rejim karşıtı kışkırtmaları (neden) ve başkentte patlak veren büyük ayaklanmayı (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      1: {
+        explanation: "Başkentte patlak veren isyanın meclisi ve Kanun-ı Esasi'yi ortadan kaldırma tehlikesi yaratması üzerine Selanik'ten Hareket Ordusu yola çıkmış; ordu başkente girerek ayaklanmayı bastırmış ve anayasal düzeni yeniden koruma altına almıştır.",
+        hints: {
+          hintCause: "Hareket Ordusu'nun İstanbul'a yürümesinde, isyanın anayasayı ve meşruti düzeni ortadan kaldırma tehlikesine odaklanınız.",
+          hintEffect: "Hareket Ordusu'nun başkente girmesiyle isyanın bastırılması ve anayasanın korunması sonucuna odaklanınız.",
+          hintBoth: "Meşruti düzenin karşılaştığı tehlikeyi (neden) ve Selanik'ten gelen ordunun isyanı bastırarak anayasayı korumasını (sonuç) birlikte değerlendiriniz."
+        }
+      },
+      2: {
+        explanation: "31 Mart Ayaklanması'nın bastırılmasının ardından meclisin üstünlüğünü kanunla güvenceye alma iradesi, 1909'da Kanun-ı Esasi'de köklü değişiklikler yapılmasını sağlamış; padişahın meclisi kapatma yetkisi sınırlandırılarak hükümet saraya değil doğrudan meclise sorumlu hâle getirilmiştir.",
+        hints: {
+          hintCause: "1909 anayasa değişikliklerinde, isyanın ardından meclisin iradesini yasal olarak teminat altına alma kararına odaklanınız.",
+          hintEffect: "Anayasa değişiklikleriyle hükümetin doğrudan meclise sorumlu kılınması ve padişah yetkilerinin kısıtlanması sonucuna odaklanınız.",
+          hintBoth: "Meclis üstünlüğünü sağlama iradesini (neden) ve hükümetin meclise sorumlu kılınarak padişahın yetkilerinin sınırlandırılması sonucunu (sonuç) birlikte değerlendiriniz."
+        }
+      }
     },
     rings: {
       ring1: [

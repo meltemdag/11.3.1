@@ -264,8 +264,11 @@ function loadAstrolabeStage(index) {
   if (isCurrentStageLocked) {
     setAstrolabeSealState(true);
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-emerald-950 leading-relaxed font-bold';
-      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Bu aşamanın kilidi başarıyla açıldı.</span> ${stage.explanation}`;
+      const activeTriadId = (stage.rings.ring2 && stage.rings.ring2[ringState.ring2]) ? stage.rings.ring2[ringState.ring2].triadId : 0;
+      const triadInfo = (stage.triads && stage.triads[activeTriadId]) ? stage.triads[activeTriadId] : null;
+      const explanationText = triadInfo ? triadInfo.explanation : stage.explanation;
+      astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-emerald-950 bg-emerald-50/90 border border-emerald-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 shadow-sm leading-relaxed max-w-xl text-center transition-all duration-300 font-medium';
+      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold block mb-1">Bu aşamanın kilidi başarıyla açıldı.</span> ${explanationText}`;
     }
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
     if (btnNextKadran) {
@@ -638,27 +641,30 @@ function setAstrolabeSealState(isLocked) {
 }
 
 // Yönlendirici Açıklama Üretici (Pedagojik Geri Bildirim)
-function getAstrolabeGuidingText(stage, isR1, isR2, isR3) {
-  if (!stage || !stage.hints) {
+function getAstrolabeGuidingText(stage, isR1, isR2, isR3, selectedTriadId) {
+  const triad = (stage && stage.triads && selectedTriadId !== undefined && stage.triads[selectedTriadId]) ? stage.triads[selectedTriadId] : null;
+  const hints = triad ? triad.hints : (stage ? stage.hints : null);
+
+  if (!hints) {
     return 'Kadranlardaki neden, olay ve sonuç ilişkisini yeniden değerlendiriniz.';
   }
 
   // 1. Neden ve Sonuç her ikisi de seçili olaya uyumsuz ise
   if (!isR1 && !isR3) {
-    return `2. kadranda seçtiğiniz olayı referans alınız. ${stage.hints.both}`;
+    return `2. kadranda seçtiğiniz olayı referans alınız. ${hints.hintBoth || 'Bu olayın neden ve sonuç ilişkisini birlikte değerlendiriniz.'}`;
   }
 
   // 2. Sonuç doğru, Neden (1. Kadran) seçili olaya uyumsuz ise
   if (!isR1 && isR3) {
-    return `Olay ve sonuç bağlantınız uyumlu. ${stage.hints.cause}`;
+    return `Olay ve sonuç bağlantınız uyumludur. ${hints.hintCause || '2. kadrandaki olayı hazırlayan nedene odaklanarak 1. kadranı hizalayınız.'}`;
   }
 
   // 3. Neden doğru, Sonuç (3. Kadran) seçili olaya uyumsuz ise
   if (isR1 && !isR3) {
-    return `Neden ve olay bağlantınız uyumlu. ${stage.hints.effect}`;
+    return `Neden ve olay bağlantınız uyumludur. ${hints.hintEffect || '2. kadrandaki olayın doğurduğu sonuca odaklanarak 3. kadranı hizalayınız.'}`;
   }
 
-  return stage.hints.general;
+  return 'Kadranlardaki neden, olay ve sonuç ilişkisini yeniden değerlendiriniz.';
 }
 
 // Kilidi Kontrol Et (Doğru Yeşil, Yanlış Kırmızı Geri Bildirim)
@@ -708,9 +714,13 @@ function checkAstrolabeLock() {
     setAstrolabeSealState(true);
     renderAstrolabePills();
 
+    const alignedTriadId = item2 ? item2.triadId : 0;
+    const triadInfo = (stage.triads && stage.triads[alignedTriadId]) ? stage.triads[alignedTriadId] : null;
+    const explanationText = triadInfo ? triadInfo.explanation : stage.explanation;
+
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-emerald-950 bg-emerald-50/90 border border-emerald-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-bold';
-      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı!</span> Bu aşamadaki 3 konunun tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı. ${stage.explanation}`;
+      astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-emerald-950 bg-emerald-50/90 border border-emerald-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 shadow-sm leading-relaxed max-w-xl text-center transition-all duration-300 font-medium';
+      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold block mb-1">Kilit açıldı!</span> ${explanationText}`;
     }
 
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
@@ -731,7 +741,8 @@ function checkAstrolabeLock() {
     
     // Yönlendirici açıklama metni
     if (astrolabeStatusText) {
-      const guidingText = getAstrolabeGuidingText(stage, isRing1Correct, isRing2Correct, isRing3Correct);
+      const selectedTriadId = (item2 && item2.triadId !== undefined) ? item2.triadId : 0;
+      const guidingText = getAstrolabeGuidingText(stage, isRing1Correct, isRing2Correct, isRing3Correct, selectedTriadId);
       astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-[#8c1e1e] bg-[#fff5f5] border border-rose-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-medium';
       astrolabeStatusText.textContent = guidingText;
     }
