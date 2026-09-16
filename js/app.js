@@ -18,8 +18,6 @@ let modalStepBadge;
 let modalTitle;
 let modalNarrationText;
 let modalConnectionText;
-let modalPrevBtn;
-let modalNextBtn;
 let modalCloseBtn;
 let modalStepIndicators;
 let btnResetProgress;
@@ -213,18 +211,6 @@ function openEventVideo(index) {
     }
   }
 
-  // Buton Durumları
-  if (modalPrevBtn) modalPrevBtn.disabled = index === 0;
-  if (modalNextBtn) {
-    if (index < EVENTS.length - 1) {
-      modalNextBtn.disabled = false;
-      modalNextBtn.textContent = 'Sonraki Olay';
-    } else {
-      modalNextBtn.disabled = false;
-      modalNextBtn.textContent = 'Sonraki Aşamaya Geç';
-    }
-  }
-
   renderStepIndicators();
   if (videoModal) videoModal.classList.remove('hidden');
 }
@@ -275,6 +261,16 @@ function closeEventVideo() {
   renderHotspots();
   renderCards();
   updateAstrolabeTransitionButtons();
+
+  // Eğer 9 videonun tamamı izlendiyse ve henüz kadrana geçilmediyse otomatik kadrana geç
+  if (watchedEvents.size === EVENTS.length && !hasAutoTransitionedToAstrolabe) {
+    hasAutoTransitionedToAstrolabe = true;
+    setTimeout(() => {
+      if (typeof openZamanKadrani === 'function') {
+        openZamanKadrani();
+      }
+    }, 500);
+  }
 }
 window.closeEventVideo = closeEventVideo;
 
@@ -340,8 +336,6 @@ function initApp() {
   modalTitle = document.getElementById('modalTitle');
   modalNarrationText = document.getElementById('modalNarrationText');
   modalConnectionText = document.getElementById('modalConnectionText');
-  modalPrevBtn = document.getElementById('modalPrevBtn');
-  modalNextBtn = document.getElementById('modalNextBtn');
   modalCloseBtn = document.getElementById('modalCloseBtn');
   modalStepIndicators = document.getElementById('modalStepIndicators');
   btnResetProgress = document.getElementById('btnResetProgress');
@@ -355,50 +349,16 @@ function initApp() {
   btnProceedToAstrolabe = document.getElementById('btnProceedToAstrolabe');
   btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
 
-  // Video Modal Dinleyicileri
+  // Video Modal Kapat Butonu Dinleyicisi
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', closeEventVideo);
   }
-  
-  if (modalPrevBtn) {
-    modalPrevBtn.addEventListener('click', () => {
-      if (currentEventIndex > 0) {
-        openEventVideo(currentEventIndex - 1);
-      }
-    });
-  }
 
-  if (modalNextBtn) {
-    modalNextBtn.addEventListener('click', () => {
-      if (currentEventIndex < EVENTS.length - 1) {
-        openEventVideo(currentEventIndex + 1);
-      } else {
-        // Son olaydayken tıklandığında kadrana geçiş
-        if (currentEventIndex !== null) {
-          markAsWatched(EVENTS[currentEventIndex].id);
-        }
-        closeEventVideo();
-        if (typeof openZamanKadrani === 'function') {
-          openZamanKadrani();
-        }
-      }
-    });
-  }
-
+  // Video Bittiğinde İzlenme Durumunu Kaydet
   if (modalVideoPlayer) {
     modalVideoPlayer.addEventListener('ended', () => {
       if (currentEventIndex !== null) {
         markAsWatched(EVENTS[currentEventIndex].id);
-        // Eğer tüm videolar izlendiyse ve henüz otomatik geçiş yapılmadıysa kadrana otomatik geç
-        if (watchedEvents.size === EVENTS.length && !hasAutoTransitionedToAstrolabe) {
-          hasAutoTransitionedToAstrolabe = true;
-          setTimeout(() => {
-            closeEventVideo();
-            if (typeof openZamanKadrani === 'function') {
-              openZamanKadrani();
-            }
-          }, 800);
-        }
       }
     });
   }
@@ -411,15 +371,11 @@ function initApp() {
     });
   }
 
-  // Klavye Kısayolları (ESC, Sol, Sağ Ok)
+  // Klavye Kısayolu (ESC ile Pencereyi Kapatma)
   window.addEventListener('keydown', (e) => {
     if (videoModal && !videoModal.classList.contains('hidden')) {
       if (e.key === 'Escape') {
         closeEventVideo();
-      } else if (e.key === 'ArrowLeft' && currentEventIndex > 0) {
-        openEventVideo(currentEventIndex - 1);
-      } else if (e.key === 'ArrowRight' && currentEventIndex < EVENTS.length - 1) {
-        openEventVideo(currentEventIndex + 1);
       }
     }
   });
