@@ -643,24 +643,19 @@ function getAstrolabeGuidingText(stage, isR1, isR2, isR3) {
     return 'Kadranlardaki neden, olay ve sonuç ilişkisini yeniden değerlendiriniz.';
   }
 
-  // 1. Olay (2. Kadran) yanlış ise öncelikle olaya odaklanma
-  if (!isR2) {
-    return `2. Kadrandaki olayı gözden geçiriniz: ${stage.hints.event}`;
-  }
-
-  // 2. Olay doğru, Neden ve Sonuç her ikisi de yanlış ise
+  // 1. Neden ve Sonuç her ikisi de seçili olaya uyumsuz ise
   if (!isR1 && !isR3) {
-    return `Dönemin olayını doğru belirlediniz. ${stage.hints.both}`;
+    return `2. kadranda seçtiğiniz olayı referans alınız. ${stage.hints.both}`;
   }
 
-  // 3. Olay ve Sonuç doğru, Neden (1. Kadran) yanlış ise
+  // 2. Sonuç doğru, Neden (1. Kadran) seçili olaya uyumsuz ise
   if (!isR1 && isR3) {
-    return `Olay ve sonuç bağlantınız doğru. 1. Kadrandaki nedene odaklanınız: ${stage.hints.cause}`;
+    return `Olay ve sonuç bağlantınız uyumlu. ${stage.hints.cause}`;
   }
 
-  // 4. Olay ve Neden doğru, Sonuç (3. Kadran) yanlış ise
+  // 3. Neden doğru, Sonuç (3. Kadran) seçili olaya uyumsuz ise
   if (isR1 && !isR3) {
-    return `Neden ve olay bağlantınız doğru. 3. Kadrandaki sonuca odaklanınız: ${stage.hints.effect}`;
+    return `Neden ve olay bağlantınız uyumlu. ${stage.hints.effect}`;
   }
 
   return stage.hints.general;
@@ -695,10 +690,12 @@ function checkAstrolabeLock() {
     return;
   }
 
-  const isRing1Correct = (ringState.ring1 === stage.correct.ring1);
-  const isRing2Correct = (ringState.ring2 === stage.correct.ring2);
-  const isRing3Correct = (ringState.ring3 === stage.correct.ring3);
-  const isCorrect = isRing1Correct && isRing2Correct && isRing3Correct;
+  // Üç halka da birbiriyle aynı dilime oturduğunda (0-0-0, 1-1-1 veya 2-2-2)
+  // Çarktaki 3 olayın tüm neden-sonuç bağları eş zamanlı olarak doğru hizalanmış olur.
+  const isRing1Correct = (ringState.ring1 === ringState.ring2);
+  const isRing2Correct = true; // Merkez olay referans alınır
+  const isRing3Correct = (ringState.ring3 === ringState.ring2);
+  const isCorrect = isRing1Correct && isRing3Correct;
 
   if (isCorrect) {
     isCurrentStageLocked = true;
@@ -709,7 +706,7 @@ function checkAstrolabeLock() {
 
     if (astrolabeStatusText) {
       astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-emerald-950 bg-emerald-50/90 border border-emerald-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-bold';
-      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı.</span> ${stage.explanation}`;
+      astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı!</span> Bu döneme ait 3 olayın tüm neden ve sonuç bağları eş zamanlı olarak başarıyla hizalandı. ${stage.explanation}`;
     }
 
     if (btnCheckLock) btnCheckLock.classList.add('hidden');
