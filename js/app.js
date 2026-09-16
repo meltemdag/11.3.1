@@ -40,21 +40,11 @@ function notifyScormCompleted() {
 }
 window.notifyScormCompleted = notifyScormCompleted;
 
-// Yerel Hafızadan Yükleme
-function loadProgress() {
+// İlerleme Durumu Yönetimi (Her Yeniden Başlatmada Temiz Başlangıç)
+function clearStoredProgress() {
   try {
-    const saved = localStorage.getItem('osmanli_11_3_1_watched');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      watchedEvents = new Set(parsed);
-    }
-  } catch (e) {}
-}
-
-// Yerel Hafızaya Kaydetme
-function saveProgress() {
-  try {
-    localStorage.setItem('osmanli_11_3_1_watched', JSON.stringify(Array.from(watchedEvents)));
+    localStorage.removeItem('osmanli_11_3_1_watched');
+    sessionStorage.removeItem('congratsShown');
   } catch (e) {}
 }
 
@@ -235,9 +225,6 @@ function openEventVideo(index) {
     }
   }
 
-  // İzlenme durumunu kaydet
-  markAsWatched(ev.id);
-
   renderStepIndicators();
   if (videoModal) videoModal.classList.remove('hidden');
 }
@@ -248,7 +235,7 @@ function updateAstrolabeTransitionButtons() {
   if (!btnProceedToAstrolabe) btnProceedToAstrolabe = document.getElementById('btnProceedToAstrolabe');
   if (!btnOpenAstrolabe) btnOpenAstrolabe = document.getElementById('btnOpenAstrolabe');
 
-  const isAllWatched = watchedEvents.size === EVENTS.length;
+  const isAllWatched = Boolean(watchedEvents && watchedEvents.size === EVENTS.length);
   if (btnProceedToAstrolabe) {
     if (isAllWatched) {
       btnProceedToAstrolabe.classList.remove('hidden');
@@ -265,11 +252,11 @@ function updateAstrolabeTransitionButtons() {
   }
 }
 
-// İzlendi Olarak İşaretle
+// İzlendi Olarak İşaretle (Yalnızca video bitince veya sonraki adıma geçince çağrılır)
 function markAsWatched(id) {
+  if (!id) return;
   if (!watchedEvents.has(id)) {
     watchedEvents.add(id);
-    saveProgress();
     renderHotspots();
     renderCards();
     updateAstrolabeTransitionButtons();
@@ -294,10 +281,8 @@ window.closeEventVideo = closeEventVideo;
 // Etkinliği Yeniden Başlat (En Başa Karşılama Ekranına Dönüş)
 function resetEntireActivity() {
   notifyScormCompleted();
+  clearStoredProgress();
   watchedEvents.clear();
-  try {
-    localStorage.removeItem('osmanli_11_3_1_watched');
-  } catch (e) {}
   hasAutoTransitionedToAstrolabe = false;
 
   if (completionModal) completionModal.classList.add('hidden');
@@ -491,8 +476,11 @@ function initApp() {
     });
   }
 
-  // Başlangıç Verilerini Yükle ve Çiz
-  loadProgress();
+  // Başlangıç Verilerini Sıfırdan Başlat (Eski kalıntıları temizle)
+  clearStoredProgress();
+  watchedEvents = new Set();
+  hasAutoTransitionedToAstrolabe = false;
+
   renderHotspots();
   renderCards();
   updateAstrolabeTransitionButtons();
