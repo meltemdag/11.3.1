@@ -14,31 +14,23 @@
 <body class="bg-stone-100 text-stone-800 font-sans h-full min-h-screen flex flex-col antialiased overflow-y-auto lg:overflow-hidden">
 
   <!-- GİRİŞ EKRANI -->
-  <div id="viewIntroPage" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-br from-[#f2e7d3] via-[#faf4e7] to-[#ebd9be] select-none transition-opacity duration-300 shadow-[inset_0_0_120px_rgba(130,85,30,0.22)]">
+  <div id="viewIntroPage" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 select-none transition-opacity duration-300 overflow-hidden">
     
-    <!-- Arka Plan Dönem Dokusu (Osmanlı Geometrik Şebeke Su Yolu) -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.055]" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="introOttomanPattern" width="56" height="56" patternUnits="userSpaceOnUse">
-          <path d="M28 0 L56 28 L28 56 L0 28 Z" fill="none" stroke="#6d471b" stroke-width="1"/>
-          <circle cx="28" cy="28" r="14" fill="none" stroke="#6d471b" stroke-width="0.8"/>
-          <circle cx="28" cy="28" r="5" fill="none" stroke="#8b1e1e" stroke-width="0.8"/>
-          <path d="M28 14 L28 42 M14 28 L42 28" stroke="#6d471b" stroke-width="0.75"/>
-          <circle cx="0" cy="0" r="7" fill="none" stroke="#6d471b" stroke-width="0.8"/>
-          <circle cx="56" cy="0" r="7" fill="none" stroke="#6d471b" stroke-width="0.8"/>
-          <circle cx="0" cy="56" r="7" fill="none" stroke="#6d471b" stroke-width="0.8"/>
-          <circle cx="56" cy="56" r="7" fill="none" stroke="#6d471b" stroke-width="0.8"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#introOttomanPattern)"/>
-    </svg>
+    <!-- Dönemi Yansıtan Tarihsel Arka Plan Görseli (19. Yüzyıl Osmanlı İstanbul Manzarası) -->
+    <img src="intro_bg.jpg" alt="19. Yüzyıl Osmanlı İstanbul Manzarası" class="absolute inset-0 w-full h-full object-cover object-center scale-105 filter brightness-90 contrast-[1.02]" />
+
+    <!-- Sıcak Dönem Tonu ve Derinlik Katmanı -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1b1008]/80 via-[#26160c]/45 to-[#160e07]/75 backdrop-blur-[1.5px]"></div>
+    
+    <!-- İpeksi Vinyet Gölgesi -->
+    <div class="absolute inset-0 shadow-[inset_0_0_160px_rgba(15,8,3,0.85)] pointer-events-none"></div>
 
     <!-- Dış Kenarlık Zencirek Bordürü (El Yazması Çerçevesi) -->
-    <div class="absolute inset-2 sm:inset-4 md:inset-6 border-2 border-[#caa55d]/45 rounded-2xl pointer-events-none"></div>
-    <div class="absolute inset-3 sm:inset-5 md:inset-7 border border-[#8b1e1e]/25 border-dashed rounded-xl pointer-events-none"></div>
+    <div class="absolute inset-2 sm:inset-4 md:inset-6 border-2 border-[#caa55d]/40 rounded-2xl pointer-events-none"></div>
+    <div class="absolute inset-3 sm:inset-5 md:inset-7 border border-[#dfb76c]/20 border-dashed rounded-xl pointer-events-none"></div>
 
     <!-- Giriş Levhası / Çerçeve -->
-    <div class="relative w-full max-w-xl sm:max-w-2xl bg-gradient-to-b from-[#fffefc] via-[#fcf6e8] to-[#f4e8cf] rounded-2xl border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/45 outline-offset-4 shadow-[0_20px_50px_rgba(110,70,25,0.18),0_6px_18px_rgba(110,70,25,0.1),inset_0_0_24px_rgba(202,165,93,0.14)] p-6 sm:p-8 md:p-12 text-center flex flex-col items-center">
+    <div class="relative w-full max-w-xl sm:max-w-2xl bg-gradient-to-b from-[#fffefc] via-[#fcf6e8] to-[#f4e8cf] rounded-2xl border-2 border-[#caa55d] outline outline-1 outline-[#8b1e1e]/45 outline-offset-4 shadow-[0_25px_60px_rgba(0,0,0,0.55),0_8px_24px_rgba(30,15,5,0.4),inset_0_0_24px_rgba(202,165,93,0.14)] p-6 sm:p-8 md:p-12 text-center flex flex-col items-center">
       
       <!-- Köşebent Tezhip Çıkıntıları (Rûmî Motifler) -->
       <svg class="absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 w-5 h-5 sm:w-6 sm:h-6 text-[#b99041] pointer-events-none" viewBox="0 0 32 32" fill="none" aria-hidden="true">
