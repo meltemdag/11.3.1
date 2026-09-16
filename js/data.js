@@ -110,6 +110,13 @@ const ASTROLABE_STAGES = [
     correct: { ring1: 0, ring2: 1, ring3: 1 },
     initial: { ring1: 1, ring2: 0, ring3: 0 },
     explanation: "Genç Osmanlıların anayasal yönetim mücadelesiyle Kanun-ı Esasi ilan edilmiş; Meclis-i Umumi açılarak Osmanlı Devleti anayasal yönetime geçiş yapmıştır.",
+    hints: {
+      event: "1876 yılında Kanun-ı Esasi'nin kabulüyle başlayan ilk anayasal süreci gözden geçiriniz.",
+      cause: "Mutlak otoriteyi sınırlandırarak anayasal bir meclis açılmasını savunan aydın grubuna odaklanınız.",
+      effect: "Anayasanın kabulüyle devlet yönetiminde ve meclis yapısında meydana gelen değişimi göz önünde bulundurunuz.",
+      both: "1876'da anayasal yönetimi savunan düşünce hareketini ve anayasanın kabulüyle açılan meclisi değerlendiriniz.",
+      general: "1876 yılında anayasal yönetime geçiş sürecini ve bu doğrultuda atılan adımları düşününüz."
+    },
     rings: {
       ring1: [
         { text: "Genç Osmanlıların mutlak otoriteyi sınırlandırarak anayasal yönetime geçişi savunması", label: "Genç Osmanlılar" },
@@ -122,7 +129,7 @@ const ASTROLABE_STAGES = [
         { text: "23 Temmuz 1908 – II. Meşrutiyet'in İlanı", label: "II. Meşrutiyet" }
       ],
       ring3: [
-        { text: "Savaşın ardından meclisin kapatılması ve yönetimde padişahın yetkilerinin artması", label: "Meclisin Kapatılması" },
+        { text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" },
         { text: "Osmanlı Devleti'nin anayasal yönetime geçiş yapması, Kanun-ı Esasi'nin ilanı ve Meclis-i Umumi'nin açılması", label: "Anayasal Yönetim" },
         { text: "İstanbul'da meşrutiyete karşı çıkan gerici grupların ayaklanma başlatması", label: "31 Mart İsyanı" }
       ]
@@ -136,7 +143,14 @@ const ASTROLABE_STAGES = [
     pillName: "1878",
     correct: { ring1: 1, ring2: 0, ring3: 2 },
     initial: { ring1: 0, ring2: 1, ring3: 0 },
-    explanation: "93 Harbi'nde Rusya karşısında verilen ağır kayıplar devlet politikasını derinden etkilemiş; savaşın ardından Meclis-i Umumi kapatılarak yönetimde padişahın yetkileri artmıştır.",
+    explanation: "93 Harbi'nde Rusya karşısında verilen ağır kayıpların ardından Meclis-i Umumi kapatılmış; Kanun-ı Esasi askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmiştir.",
+    hints: {
+      event: "1878 yılında meclisin durumuna ve yönetimin işleyişine dair alınan kararı inceleyiniz.",
+      cause: "Devlet politikasını ve meclisin durumunu derinden etkileyen büyük savaşı ve kayıpları hatırlayınız.",
+      effect: "Meclisin kapatılmasının ardından anayasanın durumuna ve merkeziyetçi yönetim yapısına odaklanınız.",
+      both: "93 Harbi'nin getirdiği ağır koşulları ve bu durumun meclisin kapatılmasıyla başlayan merkeziyetçi yönetim üzerindeki etkisini değerlendiriniz.",
+      general: "1877-1878 Osmanlı-Rus Savaşı'nın (93 Harbi) ardından meclisin kapatılması ve merkeziyetçi döneme geçiş sürecini düşününüz."
+    },
     rings: {
       ring1: [
         { text: "İngiltere ve Rusya'nın Osmanlı topraklarını paylaşacağı endişesinin ortaya çıkması", label: "Reval Paylaşımı" },
@@ -151,7 +165,7 @@ const ASTROLABE_STAGES = [
       ring3: [
         { text: "Halkın büyük desteğiyle meşrutiyetin yeniden ilan edilmesi", label: "II. Meşrutiyet" },
         { text: "İttihat ve Terakki Cemiyeti'nin devlet yönetiminde etkili hâle gelmesi", label: "Cemiyetin Etkinliği" },
-        { text: "Savaşın ardından Meclis-i Umumi'nin kapatılması ve yönetimde padişahın yetkilerinin artması", label: "Meclisin Kapatılması" }
+        { text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" }
       ]
     }
   },
@@ -165,6 +179,13 @@ const ASTROLABE_STAGES = [
     correct: { ring1: 0, ring2: 1, ring3: 1 },
     initial: { ring1: 1, ring2: 0, ring3: 0 },
     explanation: "İngiltere ve Rusya'nın Osmanlı topraklarını paylaşma endişesi Jön Türkleri harekete geçirmiş; meşrutiyetin yeniden ilanı için mücadele hız kazanmıştır.",
+    hints: {
+      event: "1908 yılında iki büyük devlet arasında gerçekleşen ve Osmanlı topraklarını tehlikeye düşüren diplomatik görüşmeyi düşününüz.",
+      cause: "İngiltere ve Rusya'nın Osmanlı topraklarına yönelik planlarının yarattığı endişeye odaklanınız.",
+      effect: "Toprakların paylaşılacağı endişesi karşısında meşrutiyet yanlısı aydınların nasıl harekete geçtiğini göz önünde bulundurunuz.",
+      both: "Reval Görüşmeleri'nin yarattığı tehlikeyi ve bu durumun meşrutiyet mücadelesini nasıl hızlandırdığını düşününüz.",
+      general: "Reval Görüşmeleri'nin yarattığı dış tehdidi ve meşrutiyet yanlılarının bu duruma karşı tutumunu değerlendiriniz."
+    },
     rings: {
       ring1: [
         { text: "İngiltere ve Rusya'nın Reval Görüşmeleri'nde Osmanlı topraklarını paylaşacağı endişesinin ortaya çıkması", label: "Reval Endişesi" },
@@ -177,7 +198,7 @@ const ASTROLABE_STAGES = [
         { text: "1877-1878 – 93 Harbi", label: "93 Harbi" }
       ],
       ring3: [
-        { text: "Meclisin kapatılarak padişahın mutlak otorite dönemine geçilmesi", label: "Meclisin Kapatılması" },
+        { text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" },
         { text: "Toprakların paylaşılacağı endişesiyle Jön Türklerin harekete geçmesi ve meşrutiyet mücadelesini hızlandırması", label: "Jön Türk Hareketi" },
         { text: "İstanbul'da meşrutiyete karşı gerici bir ayaklanmanın başlaması", label: "31 Mart Ayaklanması" }
       ]
@@ -192,6 +213,13 @@ const ASTROLABE_STAGES = [
     correct: { ring1: 0, ring2: 1, ring3: 0 },
     initial: { ring1: 1, ring2: 0, ring3: 1 },
     explanation: "Jön Türklerin mücadelesi ve halkın büyük desteğiyle 23 Temmuz 1908'de meşrutiyet yeniden ilan edilmiş; İstanbul'da hürriyet coşkusu yaşanmıştır.",
+    hints: {
+      event: "23 Temmuz 1908 tarihinde halk ve ordu desteğiyle yeniden yürürlüğe giren yönetim şeklini belirleyiniz.",
+      cause: "Meşrutiyetin yeniden ilanı için orduda ve toplumda yürütülen örgütlü mücadeleye odaklanınız.",
+      effect: "İlanın ardından halk arasında ve sokaklarda yaşanan hürriyet coşkusunu göz önünde bulundurunuz.",
+      both: "Jön Türklerin örgütlü mücadelesini ve meşrutiyetin ilanıyla topluma yansıyan heyecanı değerlendiriniz.",
+      general: "II. Meşrutiyet'in ilan sürecini ve toplumda uyandırdığı etkiyi değerlendiriniz."
+    },
     rings: {
       ring1: [
         { text: "Yurt dışında ve orduda örgütlenen Jön Türklerin meşrutiyetin yeniden ilanı için halk desteğiyle mücadele başlatması", label: "Jön Türkler ve Ordu" },
@@ -206,7 +234,7 @@ const ASTROLABE_STAGES = [
       ring3: [
         { text: "Halkın büyük desteğiyle meşrutiyetin yeniden ilan edilmesi ve İstanbul'da hürriyet coşkusunun yaşanması", label: "Hürriyet Coşkusu" },
         { text: "Devletin merkezi otoriteyi güçlendirip muhalefet düşüncesini sınırlandırması", label: "Merkezi Otorite" },
-        { text: "Meclis-i Umumi'nin süresiz tatil edilerek kapatılması", label: "Meclisin Kapatılması" }
+        { text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" }
       ]
     }
   },
@@ -220,6 +248,13 @@ const ASTROLABE_STAGES = [
     correct: { ring1: 1, ring2: 1, ring3: 0 },
     initial: { ring1: 0, ring2: 0, ring3: 1 },
     explanation: "Ordu ve genç subayların desteğini alan İttihat ve Terakki Cemiyeti güçlenerek devlet yönetiminde etkili hâle gelmiştir.",
+    hints: {
+      event: "1908-1909 sürecinde devlet kademelerinde etkinliğini artıran siyasi cemiyete odaklanınız.",
+      cause: "Cemiyetin güç kazanmasında ordunun ve özellikle genç subay kesiminin desteğini hatırlayınız.",
+      effect: "Cemiyetin güçlenmesiyle birlikte devlet yönetimi ve karar mekanizmasındaki ağırlığına odaklanınız.",
+      both: "Ordunun sağladığı desteği ve bu desteğin cemiyeti devlet yönetiminde nasıl bir güce dönüştürdüğünü düşününüz.",
+      general: "İttihat ve Terakki Cemiyeti'nin ordu desteğiyle yönetimde nasıl etkili hâle geldiğini değerlendiriniz."
+    },
     rings: {
       ring1: [
         { text: "İngiltere ve Rusya'nın Osmanlı topraklarını paylaşma endişesi", label: "Reval Zirvesi" },
@@ -234,7 +269,7 @@ const ASTROLABE_STAGES = [
       ring3: [
         { text: "İttihat ve Terakki Cemiyeti'nin devlet yönetiminde en etkili güç hâline gelmesi", label: "Cemiyetin Etkinliği" },
         { text: "Osmanlı Devleti'nin anayasal yönetime geçerek ilk kez Meclis-i Umumi'yi açması", label: "İlk Meclis" },
-        { text: "Meclisin kapatılarak yönetimde padişahın yetkilerinin artması", label: "Meclisin Kapatılması" }
+        { text: "Kanun-ı Esasi'nin askıya alınarak padişahın mutlak otoritesine dayanan merkeziyetçi yönetime geçilmesi", label: "Merkeziyetçi Yönetim" }
       ]
     }
   },
@@ -247,6 +282,13 @@ const ASTROLABE_STAGES = [
     correct: { ring1: 0, ring2: 1, ring3: 0 },
     initial: { ring1: 1, ring2: 0, ring3: 1 },
     explanation: "Meşrutiyet yönetimine ve cemiyetin etkinliğine tepki gösteren grupların kışkırtmasıyla meşrutiyete karşı çıkan grupların ayaklanması İstanbul'da başlamıştır.",
+    hints: {
+      event: "1909 yılında meşrutiyet yönetimine karşı başkentte patlak veren ayaklanmayı düşününüz.",
+      cause: "Yeni rejime ve cemiyetin etkinliğine karşı duyulan rahatsızlık ve kışkırtmalara odaklanınız.",
+      effect: "Meşrutiyet karşıtı çevrelerin başkentte başlattığı gerici isyan hareketini göz önünde bulundurunuz.",
+      both: "Rejime karşı oluşan hoşnutsuzluğu ve bu durumun başkentte yol açtığı büyük ayaklanmayı değerlendiriniz.",
+      general: "Meşrutiyet düzenine karşı çıkan grupların 31 Mart Olayı'nı başlatma sürecini düşününüz."
+    },
     rings: {
       ring1: [
         { text: "Meşrutiyet yönetimine ve İttihat ve Terakki'nin devlet yönetimindeki etkinliğine karşı hoşnutsuzluğun artması", label: "Rejim Karşıtlığı" },

@@ -321,12 +321,6 @@ function rotateRingManual(ringNumber, directionOrSlot, isDirectSlot = false) {
   }
 
   updateAstrolabeVisuals();
-
-  // Durum metnini sıfırla (Kilit kontrol edilene kadar gizli tut)
-  if (astrolabeStatusText && !isCurrentStageLocked) {
-    astrolabeStatusText.className = 'hidden';
-    astrolabeStatusText.textContent = '';
-  }
 }
 window.rotateRingManual = rotateRingManual;
 
@@ -615,14 +609,42 @@ function setAstrolabeSealState(isLocked) {
   }
 }
 
+// Yönlendirici Açıklama Üretici (Pedagojik Geri Bildirim)
+function getAstrolabeGuidingText(stage, isR1, isR2, isR3) {
+  if (!stage || !stage.hints) {
+    return 'Kadranlardaki neden, olay ve sonuç ilişkisini yeniden değerlendiriniz.';
+  }
+
+  // 1. Olay (2. Kadran) yanlış ise öncelikle olaya odaklanma
+  if (!isR2) {
+    return `2. Kadrandaki olayı gözden geçiriniz: ${stage.hints.event}`;
+  }
+
+  // 2. Olay doğru, Neden ve Sonuç her ikisi de yanlış ise
+  if (!isR1 && !isR3) {
+    return `Dönemin olayını doğru belirlediniz. ${stage.hints.both}`;
+  }
+
+  // 3. Olay ve Sonuç doğru, Neden (1. Kadran) yanlış ise
+  if (!isR1 && isR3) {
+    return `Olay ve sonuç bağlantınız doğru. 1. Kadrandaki nedene odaklanınız: ${stage.hints.cause}`;
+  }
+
+  // 4. Olay ve Neden doğru, Sonuç (3. Kadran) yanlış ise
+  if (isR1 && !isR3) {
+    return `Neden ve olay bağlantınız doğru. 3. Kadrandaki sonuca odaklanınız: ${stage.hints.effect}`;
+  }
+
+  return stage.hints.general;
+}
+
 // Kilidi Kontrol Et (Doğru Yeşil, Yanlış Kırmızı Geri Bildirim)
 function checkAstrolabeLock() {
   const stage = ASTROLABE_STAGES[currentAstrolabeStageIndex];
-  const isCorrect = (
-    ringState.ring1 === stage.correct.ring1 &&
-    ringState.ring2 === stage.correct.ring2 &&
-    ringState.ring3 === stage.correct.ring3
-  );
+  const isRing1Correct = (ringState.ring1 === stage.correct.ring1);
+  const isRing2Correct = (ringState.ring2 === stage.correct.ring2);
+  const isRing3Correct = (ringState.ring3 === stage.correct.ring3);
+  const isCorrect = isRing1Correct && isRing2Correct && isRing3Correct;
 
   if (isCorrect) {
     isCurrentStageLocked = true;
@@ -632,7 +654,7 @@ function checkAstrolabeLock() {
     renderAstrolabePills();
 
     if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-emerald-950 leading-relaxed font-bold';
+      astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-emerald-950 bg-emerald-50/90 border border-emerald-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-bold';
       astrolabeStatusText.innerHTML = `<span class="text-emerald-800 font-bold">Kilit açıldı.</span> ${stage.explanation}`;
     }
 
@@ -649,20 +671,35 @@ function checkAstrolabeLock() {
       }
     }
   } else {
-    // Yanlış işlem geri bildirimi: Kırmızı renk ve açıklama
+    // Yanlış işlem geri bildirimi: Kırmızı renk ve pedagojik yönlendirici açıklama
     playAstrolabeMismatchSound();
-    if (astrolabeStatusText) {
-      astrolabeStatusText.className = 'font-lora text-sm sm:text-base text-[#8c1e1e] leading-relaxed font-bold';
-      astrolabeStatusText.textContent = 'Halkalar henüz doğru neden ve sonuç bağıyla hizalanmadı. Tekrar deneyiniz.';
-    }
     
-    // Kartlarda geçici kırmızı uyarı çerçevesi
-    [cardAligned1, cardAligned2, cardAligned3].forEach(c => {
-      if (c) {
-        c.classList.add('border-red-600', 'bg-red-50/40');
+    // Yönlendirici açıklama metni
+    if (astrolabeStatusText) {
+      const guidingText = getAstrolabeGuidingText(stage, isRing1Correct, isRing2Correct, isRing3Correct);
+      astrolabeStatusText.className = 'font-lora text-xs sm:text-sm md:text-base text-[#8c1e1e] bg-[#fff5f5] border border-rose-300/80 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-sm leading-snug sm:leading-relaxed max-w-xl text-center transition-all duration-300 font-medium';
+      astrolabeStatusText.textContent = guidingText;
+    }
+
+    // Kartlarda hedefli görsel geri bildirim (Hatalı olanlar kırmızı, doğru olanlar yeşil ile hafif vurgulanır)
+    const cardStatusList = [
+      { card: cardAligned1, isCorrect: isRing1Correct },
+      { card: cardAligned2, isCorrect: isRing2Correct },
+      { card: cardAligned3, isCorrect: isRing3Correct }
+    ];
+
+    cardStatusList.forEach(({ card, isCorrect: isItemCorrect }) => {
+      if (!card) return;
+      if (!isItemCorrect) {
+        card.classList.add('border-rose-600', 'bg-rose-50/70', 'ring-1', 'ring-rose-400');
         setTimeout(() => {
-          c.classList.remove('border-red-600', 'bg-red-50/40');
-        }, 1000);
+          card.classList.remove('border-rose-600', 'bg-rose-50/70', 'ring-1', 'ring-rose-400');
+        }, 1800);
+      } else {
+        card.classList.add('border-emerald-600', 'bg-emerald-50/60');
+        setTimeout(() => {
+          card.classList.remove('border-emerald-600', 'bg-emerald-50/60');
+        }, 1800);
       }
     });
   }
