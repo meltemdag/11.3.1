@@ -132,6 +132,7 @@ function openEventVideo(index) {
   if (modalVideoPlayer && modalVideoSource) {
     modalVideoPlayer.pause();
     modalVideoSource.src = ev.video;
+    modalVideoPlayer.src = ev.video;
     modalVideoPlayer.load();
     
     const playPromise = modalVideoPlayer.play();

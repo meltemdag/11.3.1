@@ -1,6 +1,5 @@
 # Buyuk boyutlu dosyalar
 *.pdf
-videolar/*.mp4
 
 # Bagimliliklar ve Derleme ciktilari
 node_modules/

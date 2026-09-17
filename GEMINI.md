@@ -81,7 +81,7 @@ Projelerde asla ampül ikonu kullanma
 - **Doğrudan ve Net Bilgilendirme:** Yanıtlarda yalnızca yapılan değişiklikleri, düzeltilen kısımları ve teknik detayları doğrudan açıklayınız; gereksiz kapanış cümlelerinden ve yönlendirmelerden kaçınınız.
 
 
-## 🚫 9 Aşağıdaki kelimelerin kullanımında dikkat et:
+## 🚫 9 Aşağıdaki cümlelerin yerine yenileri kullanılmalı:
 Haçlı Seferleri yerine Haçlı Saldırıları
 Orta Asya yerine Türkistan
 Bizans yerine Doğu Roma
@@ -89,7 +89,7 @@ Coğrafi Keşifler yerine SömürgecilikPolitikaları / Sömürgeciliğin Başla
 Tehcir Kanunu yerine Sevk ve İskân Kanunu
 Ermeni Meselesi yerine Asılsız Ermeni İddiaları
 Pontus Meselesi yerine Asılsız Pontus İddiaları
-Ege Denizi yerine Adalar (Ege) Denizi
+Ege Denizi yerine Adalar (Ege) Denizi kullanılmalı
 
 ## 🚫 10 Aşağıdaki kelimelerin projede/etknkliklerde olmasını kesinlikle istemiyorum
 -metinlerin yada başlıkların yanında kategori ya da etiket
